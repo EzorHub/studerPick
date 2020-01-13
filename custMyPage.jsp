@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<html>
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -24,219 +26,592 @@
 
 
 
-
 <!-- -----------------------------------dashboard layout-horizontal------------------------------------------>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Dashboard layout-horizontal</title>   
 <!-- Bootstrap-->
-<link href="admin-dashboardUi/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="admin-dashboardUi/lib/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <!--Common Plugins CSS -->
 <link href="admin-dashboardUi/css/plugins/plugins.css" rel="stylesheet">
-<!-- ÅÇ Plugins CSS -->
+<!-- íƒ­ Plugins CSS -->
 <link href="admin-dashboardUi/css/plugins/plugins.css" rel="stylesheet">
 <link href="admin-dashboardUi/css/style.css" rel="stylesheet">
 <!--fonts-->
-<link href="admin-dashboardUi/lib/line-icons/line-icons.css" rel="stylesheet">
-<link href="admin-dashboardUi/lib/font-awesome/css/fontawesome-all.min.css" rel="stylesheet">
-<link href="admin-dashboardUi/lib/chartist/chartist.min.css" rel="stylesheet" />
+<link href="admin-dashboardUi/lib/line-icons/line-icons.css"
+	rel="stylesheet">
+<link
+	href="admin-dashboardUi/lib/font-awesome/css/fontawesome-all.min.css"
+	rel="stylesheet">
+<link href="admin-dashboardUi/lib/chartist/chartist.min.css"
+	rel="stylesheet" />
 <link href="admin-dashboardUi/css/chartist-custom.css" rel="stylesheet" />
 <!-- jvectormap -->
-<link href="admin-dashboardUi/lib/vector-map/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+<link
+	href="admin-dashboardUi/lib/vector-map/jquery-jvectormap-2.0.2.css"
+	rel="stylesheet" />
 <link href="admin-dashboardUi/css/style.css" rel="stylesheet">
 
 
 <!-- -----------------------------------dashboard button------------------------------------------>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Dashboard-button</title>
-<!-- Bootstrap-->
-<link href="admin-dashboardUi/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<!--Common Plugins CSS -->
-<link href="admin-dashboardUi/css/plugins/plugins.css" rel="stylesheet">
-<!--fonts-->
-<link href="admin-dashboardUi/lib/line-icons/line-icons.css" rel="stylesheet">
-<link href="admin-dashboardUi/lib/font-awesome/css/fontawesome-all.min.css"
-	rel="stylesheet">
 <link href="admin-dashboardUi/css/style1.css" rel="stylesheet">
+<style>
+        .out{
+            width: auto;
+            text-align: center;
+            /*border: 1px solid none;*/
+            padding: 20px;
+            margin: 15px;
+        }
+        .col-lg-6.mb-30.in{
+            align-items: center;
+            display: inline-block;
+            width: 50%;
+            /*border: 1px solid red;*/
+            height: 100px;
+        }
+        
+        #page_cafe{
+            align-content: center;
+        }
+  
+/*         .cafe_content {
+            margin: 10px;
+        } */
 
+       #cafe_tab_nav {
+            text-align: center;
+/*             padding: 5px; border: 5px; */
+/*             resize: horizontal; */
+        } 
+
+        .cafe_list {
+            /*resize: none;*/
+            margin:5px;
+            padding: 40px;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12) !important;
+            border-radius: 10px 10px 10px 10px;
+            margin-top: 23px;
+            /*ê·¸ë¦¼ì íš¨ê³¼*/
+            
+        }
+
+        .list_header,
+        .list_header>* {
+            display: block !important;
+        }
+
+        .list_content>p {
+            text-align: left;
+            margin:0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 0px;
+        }
+        ul>li>a>h4 {
+        	margin:0px !important;        	
+        }
+        /* ul>li>a>p {
+        	color: 	#FF7F50;
+        } */
+        .rounded shadow-sm p-3 bg-white{
+        	text-align: center;
+        }
+       .centered {
+        width: 130px;
+        left: 50%; 
+        margin-left: 430px;
+      }
+/*ìŠ¤íˆ¬ë”ë¶€ë¶„  */
+.shadow {
+    box-shadow: 3px 3px 3px 3px #999
+}
+.margin_div {
+	margin: 3%;
+}
+.clsimg{
+	width:500px; 
+	height:280px; 
+}
+.clsdiv{
+	width:540px; 
+	margin-left:20px;
+	margin-bottom:20px;
+} 
+</style>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var cust_no = $("#cust_no").val();
+  		/* var cust_no = 11; */
+  		
+
+
+ 		
+		//----------------------ìŠ¤íˆ¬ë” ëª©ë¡ìˆ˜-------------------------------------
+		$.getJSON("allStdCnt?cust_no="+cust_no, function(data){
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#all_std').append(cnt_all); 
+   		}); 
+		
+		$.getJSON("ingStdCnt?cust_no="+cust_no, function(data){
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#ing_std').append(cnt_all); 
+   		}); 
+		
+		$.getJSON("endStdCnt?cust_no="+cust_no, function(data){
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#end_std').append(cnt_all); 
+   		}); 
+		
+		$.getJSON("watingStdCnt?cust_no="+cust_no, function(data){
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#wtg_std').append(cnt_all); 
+   		}); 
+		
+		$.getJSON("myStdCnt?cust_no="+cust_no, function(data){
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#my_std').append(cnt_all); 
+   		}); 
+
+
+        //ì¹´í˜ ëª©ë¡ ìˆ˜ ë°˜í™˜------------------------------------------------------   
+       	$.getJSON("cnt_all_mypage?cust_no="+cust_no, function(data){  
+   			 var cnt_all = $("<span></span>").html("( "+data+" )");
+       		$( '#_all').append(cnt_all); 
+   		});        
+       	$.getJSON("cnt_reserved_mypage?cust_no="+cust_no, function(data){
+       		var cnt_reserved = $("<span></span>").html("( "+data+" )");
+   			 $("#_reserved").append(cnt_reserved);
+   		});
+       	$.getJSON("cnt_used_mypage?cust_no="+cust_no, function(data){
+       		var cnt_used = $("<span></span>").html("( "+data+" )");
+   			 $("#_used").append(cnt_used); 
+   		});
+       	$.getJSON("cnt_pass_mypage?cust_no="+cust_no, function(data){
+       		var cnt_pass = $("<span></span>").html("( "+data+" )");
+   			 $("#_pass").append(cnt_pass); 
+   		});
+      //ì¹´í˜ ëª©ë¡ ë°˜í™˜------------------------------------------------------
+	 	
+    	$.getJSON("all_mypage?cust_no="+cust_no, function(data){
+    		
+	       	 $.each(data, function (idx, mp) {
+	       	    	var div1 = $('<div></div>').addClass('cafe_list');
+	       	    	var div2 = $('<div></div>').addClass('list_header');					
+	       	    	var div3 = $('<div></div>').attr({"style":"float:left;"});					
+	       	    	var cname = $("<p></p>").html("<b>ì¹´í˜ëª…: <font color='#e17804;'>"+mp.mp_cafe_name+"</font></b>").attr({
+					"style":"font-size:13.5;"});
+					$(div3).append(cname);				
+					$(div2).append(div3);
+					var div5 = $('<div></div>').attr({"style":"clear:both;"});
+					var div6 = $('<div></div>').addClass("list_content").attr({"style":"text-align:left;"});
+					mp.mp_reser_date = mp.mp_reser_date.substr(0,10);		
+					var content_date = $('<p></p>').html("<b>ë‚ ì§œ: "+mp.mp_reser_date+"</b>");
+					var content_time = $('<p></p>').html("ì‹œê°„: "+mp.mp_reser_start+":00 ~  ("+mp.mp_reser_time+" ì‹œê°„ ì´ìš©)");
+					var content_limit = $('<p></p>').html("ì¸ì›: "+mp.mp_user_num+" ëª…");
+					var content_addr = $('<p></p>').html("ì£¼ì†Œ: "+mp.mp_cafe_loc);
+					$(div6).append(content_date, content_time, content_limit, content_addr);					
+					$(div1).append(div2, div5, div6);					
+					$("#cafe_all").append(div1);
+					
+	       	    });
+       		}); 
+    	
+    	     $.getJSON("reserved_mypage?cust_no="+cust_no, function(data){
+	       	     $.each(data, function (idx, mp) {
+	       	    	var div1 = $('<div></div>').addClass('cafe_list');
+	       	    	var div2 = $('<div></div>').addClass('list_header');					
+	       	    	var div3 = $('<div></div>').attr({"style":"float:left;"});					
+	       	    	var cname = $('<p></p>').html("<b>ì¹´í˜ëª…: <font color='#e17804;'>"+mp.mp_cafe_name+"</font></b>").attr({
+					"style":"font-size:13.5;"});
+					$(div3).append(cname);			
+					$(div2).append(div3);
+					var div5 = $('<div></div>').attr({"style":"clear:both;"});
+					var div6 = $('<div></div>').addClass("list_content").attr({"style":"text-align:left;"});
+					mp.mp_reser_date = mp.mp_reser_date.substr(0,10);		
+					var content_date = $('<p></p>').html("<b>ë‚ ì§œ: "+mp.mp_reser_date+"</b>");
+					var content_time = $('<p></p>').html("ì‹œê°„: "+mp.mp_reser_start+":00 ~  ("+mp.mp_reser_time+" ì‹œê°„ ì´ìš©)");
+					var content_limit = $('<p></p>').html("ì¸ì›: "+mp.mp_user_num+" ëª…");
+					var content_addr = $('<p></p>').html("ì£¼ì†Œ: "+mp.mp_cafe_loc);
+					$(div6).append(content_date, content_time, content_limit, content_addr);					
+					$(div1).append(div2, div5, div6);					
+					$("#cafe_reserved").append(div1);
+					
+	       	    }); 
+       		}); 
+
+    	
+    	     $.getJSON("used_mypage?cust_no="+cust_no, function(data){
+	       	    $.each(data, function (idx, mp) {
+	       	    	
+	       	    	var div1 = $('<div></div>').addClass('cafe_list');
+	       	    	var div2 = $('<div></div>').addClass('list_header');					
+	       	    	var div3 = $('<div></div>').attr({"style":"float:left;"});					
+	       	    	var cname = $('<p></p>').html("<b>ì¹´í˜ëª…: <font color='#e17804;'>"+mp.mp_cafe_name+"</font></b>").attr({
+					"style":"font-size:13.5;"});
+					$(div3).append(cname);	
+					$(div2).append(div3);
+					div5 = $('<div></div>').attr({"style":"clear:both;"});
+					div6 = $('<div></div>').addClass("list_content").attr({"style":"text-align:left;"});
+					mp.mp_reser_date = mp.mp_reser_date.substr(0,10);		
+					var content_date = $('<p></p>').html("<b>ë‚ ì§œ: "+mp.mp_reser_date+"</b>");
+					var content_time = $('<p></p>').html("ì‹œê°„: "+mp.mp_reser_start+":00 ~  ("+mp.mp_reser_time+" ì‹œê°„ ì´ìš©)");
+					var content_limit = $('<p></p>').html("ì¸ì›: "+mp.mp_user_num+" ëª…");
+					var content_addr = $('<p></p>').html("ì£¼ì†Œ: "+mp.mp_cafe_loc);
+					$(div6).append(content_date, content_time, content_limit, content_addr);					
+					$(div1).append(div2, div5, div6);					
+					$("#cafe_used").append(div1);
+	       	    });
+       		}); 
+    	    //------------------------------------------------------------------------------1114 ì¹´í˜_ì´ìš©ê¶Œ íƒ­_ì¶”ê°€ 
+    	     $.getJSON("pass_mypage?cust_no="+cust_no, function(data){
+ 	       	    $.each(data, function (idx, mp) {
+ 	       	    	
+ 	       	    	//--------------------------------------------------------------
+ 	       	    	var div1 = $('<div></div>').addClass('cafe_list');
+ 	       	    	var div2 = $('<div></div>').addClass('list_header');					
+ 	       	    	var div3 = $('<div></div>').attr({"style":"float:left;"});					
+ 	       	    	var cname = $('<p></p>').html("<b>ì¹´í˜ëª…: <font color='#e17804;'>"+mp.mps_cafe_name+"</font></b>").attr({
+ 					"style":"font-size:13.5;"});
+ 					$(div3).append(cname);					
+ 					$(div2).append(div3);
+ 					var div5 = $('<div></div>').attr({"style":"clear:both;"});
+ 					var div6 = $('<div></div>').addClass("list_content").attr({"style":"text-align:left;"});
+ 				
+ 					var content_no = $('<p></p>').html("<b>ê²°ì œë²ˆí˜¸: "+mp.mps_pay_no+"</b>");
+					var content_name = $('<p></p>').html("<b>ì´ìš©ê¶Œëª…: "+mp.mps_pass_content+"</b>");
+					var content_price = $('<p></p>').html("ê²°ì œê¸ˆì•¡: "+mp.mps_totalprice+" ì›"); 					
+					var content_hrs = $('<p></p>').html("ì˜ì—…ì‹œê°„: "+mp.mps_cafe_hrs);
+ 					var content_tel = $('<p></p>').html("ì „í™”ë²ˆí˜¸: "+mp.mps_cafe_phone);
+ 					var content_addr = $('<p></p>').html("ì£¼ì†Œ: "+mp.mps_cafe_loc);
+ 					var content_notice = $('<p></p>').attr({"style":"color:#ed941f;font-size:11px;font-weight:bold;"}).html("[ê²°ì œë²ˆí˜¸]ë¡œ ì´ìš©ê°€ëŠ¥í•˜ë©°, ê¸°íƒ€ ë¬¸ì˜ì‚¬í•­ì´ ìˆìœ¼ì‹œë©´ í•´ë‹¹ ì¹´í˜ë¡œ(ì˜ì—…ì‹œê°„ ê¸°ì¤€) ì–¸ì œë“ ì§€ ì—°ë½ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+ 					
+ 					$(div6).append(content_no, content_name, content_price, content_hrs, content_tel, content_addr, content_notice);					
+ 					$(div1).append(div2, div5, div6);			
+ 					
+ 					$("#cafe_pass").append(div1);
+ 	       	    	
+ 	       	    });
+        		}); 
+		
+		
+<!--ìŠ¤íˆ¬ë”ë¶€ë¶„-->
+		$.ajax({
+			url : "allStd?cust_no="+cust_no,
+			success : function(data) {
+				var arr = eval("(" + data + ")");
+				$.each(arr,function(idx, item) {
+					var div1 = $("<div class='clsdiv'></div>");
+					var div2 = $("<div class='iCard border1 p-2 rounded bg-white shadow margin_div'></div>");
+					var a_img = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'></a>");
+					var img_std = $("<img src='images/std_img/upload/"+item.std_image+"' alt=''class='img-fluid rounded clsimg'>");
+					$(a_img).append(img_std);
+					var div3 = $("<div class='iCard-content p-1 pt-15 pb-15'></div>");
+					var h2 = $("<h2 class='fs16 text-dark font400 mb-5 text-capitalize'></h2>");
+					var a_title = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var strong_name = $("<strong class='font600'style='color: #252525'></strong>").html("&nbsp&nbsp"+item.std_name);
+					$(a_title).append(strong_name)
+					$(h2).append(a_title);
+					var span1 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-calendar mr-2'></i>ê¸°ê°„");
+					var string_se = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_start+ "-"+ item.std_end);
+					var span2 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-user mr-2'></i>ì¸ì›");
+					var string_limit = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_limit);
+					var span3 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-map-marker mr-2'></i>ì¥ì†Œ");
+					var string_loc = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_loc);
+
+					$(span1).append(string_se);
+					$(span2).append(string_limit);
+					$(span3).append(string_loc);
+					$(div2).append(a_img, div3, h2,span1, span2, span3);
+					$(div1).append(div2);
+					$("#append_all").append(div1);
+
+				});
+
+			}
+		});
+		
+		$.ajax({
+			url : "ingStd?cust_no="+cust_no,
+			success : function(data) {
+				var arr = eval("(" + data + ")");
+				$.each(arr,function(idx, item) {
+					var div1 = $("<div class='clsdiv'></div>");
+					var div2 = $("<div class='iCard border1 p-2 rounded bg-white shadow margin_div'></div>");
+					var a_img = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var img_std = $("<img src='images/std_img/upload/"+item.std_image+"' alt=''class='img-fluid rounded clsimg'>");
+					$(a_img).append(img_std);
+					var div3 = $("<div class='iCard-content p-1 pt-15 pb-15'></div>");
+					var h2 = $("<h2 class='fs16 text-dark font400 mb-5 text-capitalize'></h2>");
+					var a_title = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var strong_name = $("<strong class='font600'style='color: #252525'></strong>").html("&nbsp&nbsp"+item.std_name);
+					$(a_title).append(strong_name)
+					$(h2).append(a_title);
+					var span1 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-calendar mr-2'></i>ê¸°ê°„");
+					var string_se = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_start+ "-"+ item.std_end);
+					var span2 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-user mr-2'></i>ì¸ì›");
+					var string_limit = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_limit);
+					var span3 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-map-marker mr-2'></i>ì¥ì†Œ");
+					var string_loc = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_loc);
+
+					$(span1).append(string_se);
+					$(span2).append(string_limit);
+					$(span3).append(string_loc);
+					$(div2).append(a_img, div3, h2,span1, span2, span3);
+					$(div1).append(div2);
+					$("#append_ing").append(div1);
+
+				});
+
+			}
+		});
+		
+		$.ajax({
+			url : "endStd?cust_no="+cust_no,
+			success : function(data) {
+				var arr = eval("(" + data + ")");
+				$.each(arr,function(idx, item) {
+					var div1 = $("<div class='clsdiv'></div>");
+					var div2 = $("<div class='iCard border1 p-2 rounded bg-white shadow margin_div'></div>");
+					var a_img = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=1'>");
+					var img_std = $("<img src='images/std_img/upload/"+item.std_image+"' alt=''class='img-fluid rounded clsimg'>");
+					$(a_img).append(img_std);
+					var div3 = $("<div class='iCard-content p-1 pt-15 pb-15'></div>");
+					var h2 = $("<h2 class='fs16 text-dark font400 mb-5 text-capitalize'></h2>");
+					var a_title = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=1'>");
+					var strong_name = $("<strong class='font600'style='color: #252525'></strong>").html("&nbsp&nbsp"+item.std_name);
+					$(a_title).append(strong_name)
+					$(h2).append(a_title);
+					var span1 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-calendar mr-2'></i>ê¸°ê°„");
+					var string_se = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_start+ "-"+ item.std_end);
+					var span2 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-user mr-2'></i>ì¸ì›");
+					var string_limit = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_limit);
+					var span3 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-map-marker mr-2'></i>ì¥ì†Œ");
+					var string_loc = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_loc);
+
+					$(span1).append(string_se);
+					$(span2).append(string_limit);
+					$(span3).append(string_loc);
+					$(div2).append(a_img, div3, h2,span1, span2, span3);
+					$(div1).append(div2);
+					$("#append_end").append(div1);
+
+				});
+
+			}
+		});
+		
+		$.ajax({
+			url : "watingStd?cust_no="+cust_no,
+			success : function(data) {
+				var arr = eval("(" + data + ")");
+				$.each(arr,function(idx, item) {
+					var div1 = $("<div class='clsdiv'></div>");
+					var div2 = $("<div class='iCard border1 p-2 rounded bg-white shadow margin_div'></div>");
+					var a_img = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var img_std = $("<img src='images/std_img/upload/"+item.std_image+"' alt=''class='img-fluid rounded clsimg'>");
+					$(a_img).append(img_std);
+					var div3 = $("<div class='iCard-content p-1 pt-15 pb-15'></div>");
+					var h2 = $("<h2 class='fs16 text-dark font400 mb-5 text-capitalize'></h2>");
+					var a_title = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var strong_name = $("<strong class='font600'style='color: #252525'></strong>").html("&nbsp&nbsp"+item.std_name);
+					$(a_title).append(strong_name)
+					$(h2).append(a_title);
+					var span1 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-calendar mr-2'></i>ê¸°ê°„");
+					var string_se = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_start+ "-"+ item.std_end);
+					var span2 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-user mr-2'></i>ì¸ì›");
+					var string_limit = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_limit);
+					var span3 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-map-marker mr-2'></i>ì¥ì†Œ");
+					var string_loc = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_loc);
+
+					$(span1).append(string_se);
+					$(span2).append(string_limit);
+					$(span3).append(string_loc);
+					$(div2).append(a_img, div3, h2,span1, span2, span3);
+					$(div1).append(div2);
+					$("#append_wtg").append(div1);
+
+				});
+
+			}
+		});
+		
+		$.ajax({
+			url : "myStd?cust_no="+cust_no,
+			success : function(data) {
+				var arr = eval("(" + data + ")");
+				$.each(arr,function(idx, item) {
+					var div1 = $("<div class='clsdiv'></div>");
+					var div2 = $("<div class='iCard border1 p-2 rounded bg-white shadow margin_div'></div>");
+					var a_img = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var img_std = $("<img src='images/std_img/upload/"+item.std_image+"' alt=''class='img-fluid rounded clsimg'>");
+					$(a_img).append(img_std);
+					var div3 = $("<div class='iCard-content p-1 pt-15 pb-15'></div>");
+					var h2 = $("<h2 class='fs16 text-dark font400 mb-5 text-capitalize'></h2>");
+					var a_title = $("<a href='detailStd.do?std_no="+Number(item.std_no)+"&isClosed=-1'>");
+					var strong_name = $("<strong class='font600'style='color: #252525'></strong>").html("&nbsp&nbsp"+item.std_name);
+					$(a_title).append(strong_name)
+					$(h2).append(a_title);
+					var span1 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-calendar mr-2'></i>ê¸°ê°„");
+					var string_se = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_start+ "-"+ item.std_end);
+					var span2 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-user mr-2'></i>ì¸ì›");
+					var string_limit = $("<span class='font630' style='color: #4782D3'></span>").html("&nbsp&nbsp"+ item.std_limit);
+					var span3 = $("<span class='iCard-meta fs14 d-block mb-13' style='color: #6E6E6E'></span>").html("&nbsp&nbsp<i class='fa fa-map-marker mr-2'></i>ì¥ì†Œ");
+					var string_loc = $("<span class='font630' style='color: #4782D3; margin-bottom:5px;'></span>").html("&nbsp&nbsp"+ item.std_loc);
+					var btn_mge = $("<a href='manageStd?std_no="+Number(item.std_no)+"' class='btn btn-gradient-light btn-icon btn-icon-right btn-sm' style='margin-right:7px;margin-left:4px;'></a>").html("<i class='fa fa-arrow-right'></i>&nbsp;&nbsp;ê´€ë¦¬&nbsp;&nbsp;");
+					var btn_upt = $("<a href='updateStd?std_no="+Number(item.std_no)+"' class='btn btn-gradient-light btn-icon btn-icon-right btn-sm'></a>").html("<i class='fa fa-arrow-right'></i>&nbsp;&nbsp;ìˆ˜ì •&nbsp;&nbsp;");
+
+					$(span1).append(string_se);
+					$(span2).append(string_limit);
+					$(span3).append(string_loc);
+					$(div2).append(a_img, div3, h2,span1, span2, span3, btn_mge, btn_upt);
+					$(div1).append(div2);
+					$("#append_my").append(div1);
+
+					
+							
+				});
+			}
+		});
+
+	});
+</script>
 </head>
-	
-
 <body>
-
-	<div id="preloader">
-		<div id="preloader-inner"></div>
-	</div>
-	<!--/preloader-->
-
-	<!-- Pushy Menu -->
-	<aside class="pushy pushy-right">
-		<div class="cart-content">
-			<div class="clearfix">
-				<a href="javascript:void(0)" class="pushy-link text-white-gray">Close</a>
-			</div>
-			<ul class="list-unstyled">
-				<li class="clearfix"><a href="#" class="float-left"> <img
-						src="images/shop/p1.jpg" class="img-fluid" alt="" width="60">
-				</a>
-					<div class="oHidden">
-						<span class="close"><i class="ti-close"></i></span>
-						<h4>
-							<a href="#">Men's Special Watch</a>
-						</h4>
-						<p class="text-white-gray">
-							<strong>$299.00</strong> x 1
-						</p>
-					</div></li>
-				<!--/cart item-->
-				<li class="clearfix"><a href="#" class="float-left"> <img
-						src="images/shop/p2.jpg" class="img-fluid" alt="" width="60">
-				</a>
-					<div class="oHidden">
-						<span class="close"><i class="ti-close"></i></span>
-						<h4>
-							<a href="#">Men's tour beg</a>
-						</h4>
-						<p class="text-white-gray">
-							<strong>$99.00</strong> x 1
-						</p>
-					</div></li>
-				<!--/cart item-->
-				<li class="clearfix"><a href="#" class="float-left"> <img
-						src="images/shop/p3.jpg" class="img-fluid" alt="" width="60">
-				</a>
-					<div class="oHidden">
-						<span class="close"><i class="ti-close"></i></span>
-						<h4>
-							<a href="#">Women's T-shirts</a>
-						</h4>
-						<p class="text-white-gray">
-							<strong>$199.00</strong> x 1
-						</p>
-					</div></li>
-				<!--/cart item-->
-				<li class="clearfix">
-
-					<div class="float-right">
-						<a href="#" class="btn btn-primary">Checkout</a>
-					</div>
-					<h4 class="text-white">
-						<small>Subtotal - </small> $49.99
-					</h4>
-				</li>
-				<!--/cart item-->
-			</ul>
-		</div>
-	</aside>
 	<!-- Site Overlay -->
 	<div class="site-overlay"></div>
 
-	<nav
-		class="navbar navbar-expand-lg navbar-light navbar-transparent bg-faded nav-sticky">
-		<div class="search-inline">
-			<form>
-				<input type="text" class="form-control"
-					placeholder="Type and hit enter...">
-				<button type="submit">
-					<i class="ti-search"></i>
-				</button>
-				<a href="javascript:void(0)" class="search-close"><i
-					class="ti-close"></i></a>
-			</form>
-		</div>
-		<!--/search form-->
-		<div class="container">
+	
+    <nav class="navbar navbar-expand-lg navbar-light navbar-transparent bg-faded nav-sticky">
+            <div class="search-inline">
+                <form>
+                    <input type="text" class="form-control" placeholder="Type and hit enter...">
+                    <button type="submit"><i class="ti-search"></i></button>
+                    <a href="javascript:void(0)" class="search-close"><i class="ti-close"></i></a>
+                </form>
+            </div><!--/search form-->
+            <div class="container">
 
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarNavDropdown"
-				aria-controls="navbarNavDropdown" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<a class="navbar-brand" href="indextest.html"> <img
-				class='logo logo-dark' style="top:-25px;" src="images/logo.png" alt=""> <!--<img class='logo logo-light hidden-md-down' style="top:-20px;" src="images/logo-light.png" alt=""> ¾Æ·¡ °ËÀº·Î°í·Î ´ëÃ¼ÇÔ-->
-				<img class='logo logo-light hidden-md-down' style="top:-20px;" src="images/logo.png"
-				alt="">
-			</a>
-			<div id="navbarNavDropdown" class="navbar-collapse collapse">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item dropdown dropdown-full-width"><a
-						class="nav-link" data-toggle="dropdown" href="#"
-						aria-haspopup="true" aria-expanded="false"> ½ºÅõ´õÇÈ¼Ò°³ </a></li>
-					<li class="nav-item dropdown dropdown-full-width"><a
-						class="nav-link" data-toggle="dropdown" href="#"
-						aria-haspopup="true" aria-expanded="false"> ½ºÅÍµğÄ«Æä </a></li>
-					<li class="nav-item dropdown dropdown-full-width"><a
-						class="nav-link" data-toggle="dropdown" href="#"
-						aria-haspopup="true" aria-expanded="false"> ½ºÅõ´õ </a></li>
-					<li class="nav-item dropdown"><a class="nav-link"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-						href="#">¸ÀÁıÃ£±â</a></li>
-					<li class="nav-item dropdown"><a class="nav-link"
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-						href="#">SNS</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link  dropdown-toggle" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false" href="#">°í°´Áö¿ø</a>
-						<ul class="dropdown-menu">
-							<li><a tabindex="-1" href="#" class="dropdown-item">°øÁö»çÇ×</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" 
+                data-toggle="collapse" data-target="#navbarNavDropdown" 
+                aria-controls="navbarNavDropdown" aria-expanded="false" 
+                aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="index.do">
+                    <img class='logo logo-dark' style="top:-25px;" src="images/logo.png" alt="">
+                    <img class='logo logo-light hidden-md-down' style="top:-20px;" src="images/logo.png" alt="">
+                </a>
+                <div  id="navbarNavDropdown" class="navbar-collapse collapse">
+                    <ul class="navbar-nav ml-auto">
+                     <!--    <li class="nav-item dropdown active"> -->
+                     
+                    	 <li class="nav-item dropdown dropdown-full-width">
+                            <a class="nav-link" href="intro">ìŠ¤íˆ¬ë”í”½ ì†Œê°œ</a>
+                           
+                        </li>
+                        <li class="nav-item dropdown dropdown-full-width">
+                            <a class="nav-link" href="cafeList1.do" aria-haspopup="true" aria-expanded="false">
+                                ìŠ¤í„°ë””ì¹´í˜
+                            </a>
+                   
+                        </li>
+                        <li class="nav-item dropdown dropdown-full-width">
+                            <a class="nav-link" href="listStd.do" aria-haspopup="true" aria-expanded="false">
+                                ìŠ¤íˆ¬ë”  
+                            </a>
+                       
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" aria-haspopup="true" aria-expanded="false" href="diningSch">ë§›ì§‘ì°¾ê¸°</a>
+                      
+                        </li>
+                        <li class="nav-item dropdown">
+                        <c:if test="${!empty loginVo }">
+                        	<c:choose>
+                        		<c:when test="${loginVo.role eq 'customer' }">
+                        			<a id="SNS" class="nav-link" aria-haspopup="true" aria-expanded="false" href="snsMyPageView.do?cust_no=${loginVo.no }&provider_no=-1" >SNS</a>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<a id="SNS" class="nav-link" aria-haspopup="true" aria-expanded="false" href="snsMyPageView.do?cust_no=-1&provider_no=${loginVo.no }" >SNS</a>	
+                        		</c:otherwise>
+                        	</c:choose>
+                        </c:if>
+                        <c:if test="${empty loginVo }">
+                        	<a class="nav-link" aria-haspopup="true" aria-expanded="false" href="login" >SNS</a>
+                        </c:if>
+                            
+                     
+                        </li>
+                        <li class="nav-item dropdown">
+                         <a class="nav-link  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">ê³ ê°ì§€ì›</a>
+                            <ul class="dropdown-menu" style="background-color: #212121!important">
+                                <li>
+                                    <a tabindex="-1" href="listNotice.do" class="dropdown-item">ê³µì§€ì‚¬í•­</a>
+                                   
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="listQa.do" class="dropdown-item">Q&A</a>
+                                   
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="listEvt.do	" class="dropdown-item">í”„ë¡œëª¨ì…˜</a>
+                                    
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <ul class="nav flex-row order-lg-2 ml-auto nav-icons"  style="margin-left: 50px!important;" >
+                        <c:choose>
+                            <c:when test="${not empty loginVo}">
+                                <li class="nav-item dropdown user-dropdown align-items-center" >
+                                    <a class="nav-link" href="#" id="dropdown-user" role="button"
+                                       data-toggle="dropdown">
+                                <span class="user-states states-online">
+                                    <img src="cust_img/${loginVo.cust_img }" width="35" height="35px!important" alt="" class="rounded-circle">
+                                </span>
+                                        <span class="ml-2 h-lg-down dropdown-toggle">
+                                                ${loginVo.nick_name}
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user" style="background-color: #212121!important" >
+                                        <a class="dropdown-item" href="profile"><i class="icon-User"></i>My Profile</a>
+                                        <c:choose>
+                                        	<c:when test="${loginVo.role eq 'customer' }">
+                                        		 <a class="dropdown-item" href="custMyPage?cust_no=${loginVo.no }"><i class="icon-User"></i>ê³ ê° My Page</a>
+                                        	</c:when>
+                                        	<c:otherwise>
+                                        		<a class="dropdown-item" href="provMyPageView.do?cust_no=${loginVo.no }"><i class="icon-User"></i>ì‚¬ì—…ì My Page</a>
+                                        	</c:otherwise>
+                                        </c:choose>
+                                        <!--ì¶”ê°€í•˜ë©´ ë˜ëŠ” ë¶€ë¶„  -->
+                                        <a class="dropdown-item" href="logout"><i class="icon-Power"></i>
+                                            Log Out</a>
 
-							</li>
-							<li><a tabindex="-1" href="#" class="dropdown-item">Q&A</a>
+                                    </div>
+                                </li>
+                                <li class="h-lg-up nav-item">
+                                    <a href="#" class=" nav-link collapsed" data-toggle="collapse"
+                                       data-target="#navbarToggler" aria-expanded="false">
+                                        <i class="icon-Magnifi-Glass2"></i>
+                                    </a>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                           		<li><a href="login"><font style="color: #F4923D">Join Us</font></a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </ul>
+                </div>
+                <div class="navbar-right-elements" style="margin: 30px">
+               
+                </div><!--right nav icons-->
+            </div>
+</nav>
 
-							</li>
-							<li><a tabindex="-1" href="#" class="dropdown-item">ÇÁ·Î¸ğ¼Ç</a>
 
-							</li>
-						</ul></li>
-				</ul>
-				<ul class="nav flex-row order-lg-2 ml-auto nav-icons">
-					<li class="nav-item dropdown user-dropdown align-items-center">
-						<a class="nav-link" href="#" id="dropdown-user" role="button"
-						data-toggle="dropdown"> <span
-							class="user-states states-online"> <img
-								src="images/avatar6.jpg" width="35" alt=""
-								class=" img-fluid rounded-circle">
-						</span> <span class="ml-2 h-lg-down dropdown-toggle"> Hi, Bob </span>
-					</a>
-						<div class="dropdown-menu dropdown-menu-right"
-							aria-labelledby="dropdown-user">
-							<div class="text-center p-3 pt-0 b-b mb-5">
-								<span class="mb-0 d-block font300 text-title fs-1x">Hi! <span
-									class="font700">Zoe Park</span></span> <span
-									class="fs12 mb-0 text-muted">Administrator</span>
-							</div>
-							<a class="dropdown-item" href="#"><i class="icon-User"></i>My
-								Profile</a> <a class="dropdown-item" href="#"><i
-								class="icon-Newspaper"></i> Tasks</a> <a class="dropdown-item"
-								href="#"><i class="icon-Speach-Bubble4 "></i> Messages <span
-								class="badge badge-text text-primary-active bg-primary-light ml-2">5
-									New</span></a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i class="icon-Gear"></i>
-								Settings<span
-								class="badge badge-text text-danger-active bg-danger-light ml-2">Update</span></a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="page-login.html"><i
-								class="icon-Power"></i> logout</a>
-
-						</div>
-					</li>
-					<li class="h-lg-up nav-item"><a href="#"
-						class=" nav-link collapsed" data-toggle="collapse"
-						data-target="#navbarToggler" aria-expanded="false"> <i
-							class="icon-Magnifi-Glass2"></i>
-					</a></li>
-				</ul>
-			</div>
-			<div class="navbar-right-elements" style="margin: 30px"></div>
-			<!--right nav icons-->
-		</div>
-
-	</nav>
-
-	<!-- »ó´Ü ¸Ş´º¹Ù? ÀÌ¹ÌÁö -->
+	<!-- ìƒë‹¨ ë©”ë‰´ë°”? ì´ë¯¸ì§€ -->
 	<br>
 	<br>
 	<br>
@@ -245,13 +620,13 @@
 			<div class="row">
 				<div class=" col-md-6">
 					<h4>
-						<span>¸¶ÀÌÆäÀÌÁö</span>
+						<span>ë§ˆì´í˜ì´ì§€</span>
 					</h4>
 				</div>
 				<div class=" col-md-6 mb0">
 					<ol class="breadcrumb text-md-right">
-						<li class="breadcrumb-item"><a href="#">È¸¿øÁ¤º¸</a></li>
-						<li class="breadcrumb-item active">¸¶ÀÌÆäÀÌÁö</li>
+						<li class="breadcrumb-item"><a href="#">íšŒì›ì •ë³´</a></li>
+						<li class="breadcrumb-item active">ë§ˆì´í˜ì´ì§€</li>
 					</ol>
 				</div>
 			</div>
@@ -261,824 +636,217 @@
 
 
 	<!-- ###################################################################### -->
-	<!-- ¿ä±â¿¡ ³Ö¾î!!!!!-->
+	<!-- ìš”ê¸°ì— ë„£ì–´!!!!!-->
+		<div class="rounded bg-white"  style="height:190px!important; ;width:62%; margin-left: 20%; background-image: url('images/cbp.jpg');background-repeat: no-repeat!important; background-size: 100%!important;">
+			<div style="width: 400px; display: inline; height: 250px !important;" >
+			<br>
+ 			<div style="position: relative; top: 20px; left: 80px;">
+				<img src="cust_img/${loginVo.cust_img }" width="120" height="120px;!important" alt="" class="rounded-circle" style="display: inline;">
+				<span style="width: 200px;margin: 0px!important;" ><font style="font-size: 25px; font-weight: bold;">ã€€${loginVo.nick_name }ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤!</font></span>
+			</div>
+			<div class="portlet-body" align="right"
+				style="padding-right: 8%; padding-top: 2.5%;padding-bottom: 2.5%; position: relative; top: -100px;">
+				
+				<h5>ìŠ¤í„°ë”” ëª¨ì„ ë¦¬ë”ë¡œ ì‹œì‘í•˜ê¸°</h5>
+				<a href="insertStd" class="btn btn-outline-warning mb5">ìŠ¤íˆ¬ë” ê°œì„¤í•˜ê¸°</a>
+			</div>
+			
+			</div>
+			
+		</div>
 	<div style="margin-left: 5%">
 
-		<div class="portlet-body" align="right"
-			style="padding-right: 26%; padding-top: 1%;">
-			<h5>½ºÅÍµğ ¸ğÀÓ ¸®´õ·Î ½ÃÀÛ</h5>
-			<a href="javascript:void(0)" class="btn btn-secondary mr-1 mb-2"><h5>½ºÅõ´õ
-					°³¼³ÇÏ±â</h5></a>
-		</div>
 		<div class="page-wrapper" id="page-wrapper">
-			<main class="content"> <!--Ä«Æä, ½ºÅõ´õ °³ÀÎ¸¶ÀÌÆäÀÌÁö ±¸ºĞÅÇ-->
-			<div class="col-lg-8 mb-30" style="margin-left: 15%">
-				<div style="margin-top: 25px; margin-bottom: 1450px;">
+			<main class="content"> <!--ì¹´í˜, ìŠ¤íˆ¬ë” ê°œì¸ë§ˆì´í˜ì´ì§€ êµ¬ë¶„íƒ­-->
+			<div class="col-lg-8 mb-30" style="margin-left: 15%; margin-top: 3%">
+			
+			<div class="rounded shadow-sm p-3 bg-white">
+				<div style="margin-top: 25px;">
 					<!-- Nav tabs -->
-					<ul class="nav nav-pills" role="tablist">
+					<ul class="nav nav-pills shadow" role="tablist" style="width:100%">
 						<li role="presentation" class="nav-item"
-							style="text-align: center; width: 45%"><a
+							style="text-align: center; width: 50%;"><a
 							class="nav-link active show" href="#tb1" aria-controls="tb1"
-							role="tab" data-toggle="tab"><h4>½ºÅÍµğÄ«Æä ¿¹¾àº¸±â</h4></a></li>
+							role="tab" data-toggle="tab"><i class="fa fa-home mr-2"></i>ìŠ¤í„°ë””ì¹´í˜ ì˜ˆì•½ë³´ê¸°</a></li>
 						<li role="presentation" class="nav-item"
-							style="text-align: center; width: 45%"><a class="nav-link"
-							href="#tb2" aria-controls="tb2" role="tab" data-toggle="tab"><h4>½ºÅõ´õ
-									º¸±â</h4></a></li>
+							style="text-align: center; width: 50%"><a class="nav-link"
+							href="#tb2" aria-controls="tb2" role="tab" data-toggle="tab"><i class="fa fa-user-circle mr-2"></i>ìŠ¤íˆ¬ë”ë³´ê¸°</a></li>
 					</ul>
 
 					<!-- Tab panes -->
 					<div class="tab-content pt-3">
-						<!-- ½ºÅÍµğÄ«Æä ¿¹¾àº¸±â -->
+						<!-- ìŠ¤í„°ë””ì¹´í˜ ì˜ˆì•½ë³´ê¸° -->
 						<div role="tabpanel" class="tab-pane show active" id="tb1">
 							<p class="mb-0 text-muted">
 
 
-								<!-- Ä«Æä³»¿ëÀº ¿©±â¿¡!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+						<!-- ì¹´í˜ë‚´ìš© íƒ­ -->
+						<input type="hidden" id="cust_no" value="${loginVo.no}">
+						
+				        <div class="col-lg-12 mb-30 in" style="margin-top: 10px;" id="page_cafe">
+				            <div class="cafe_content">
+				                <!--nav tabs-->
+				                <ul id="cafe_tab_nav" class="nav nav-pills" role="tablist">
+				                    <li role="none" class="nav-item" style="width: 20%;">
+				                        <a class="nav-link active show" id="_all" href="#all" aria-controls="all" role="tab" data-toggle="tab">
+				                            	ë£¸ ì „ì²´
+				                        </a>
+				                    </li>
+				                
+				                    <li role="none" class="nav-item" style="width: 20%;">
+				                        <a class="nav-link" id="_reserved" href="#reserved" aria-controls="reserved" role="tab" data-toggle="tab">
+				                            ë£¸ ì˜ˆì•½                         
+				                        </a>
+				                    </li>
+				                    <li role="none" class="nav-item" style="width: 20%;">
+				                        <a class="nav-link" id="_used" href="#used" aria-controls="used" role="tab" data-toggle="tab">
+				                           ë£¸ ì´ìš©ì™„ë£Œ                       
+				                        </a>
+				                    </li>
+				                    <li class="nav-item" role="none" style="width: 20%;"></li>
+				                    <!--ê³µë°±-->
+				                    <li role="none" class="nav-item" style="width: 20%;">
+				                        <a class="nav-link" id="_pass" href="#pass" aria-controls="used" role="tab" data-toggle="tab">
+				                          ê°œì¸ ì´ìš©ê¶Œ                       
+				                        </a>
+				                    </li>                  
+				                </ul>
+				                <!--Tab panes-->
+				                <div class="tab-content pt-3">
+				                    <div role="tabpanel" class="tab-pane show active" id="all">
+					                    <div>
+					                    <div id="cafe_all"></div>
+					                    </div>				                        
+				                    </div>
+				                    <div role="tabpanel" class="tab-pane" id="reserved">                        
+				                        <div>
+				                        <div id="cafe_reserved"></div>
+				                        </div>
+				                    </div>
+				                    <div role="tabpanel" class="tab-pane" id="used">                        
+				                       <div>
+				                        <div id="cafe_used"></div>
+				                        </div>
+				                    </div>
+				                    <div role="tabpanel" class="tab-pane" id="pass">                        
+				                       <div>
+				                        <div id="cafe_pass"></div>
+				                        </div>
+				                    </div>
+				                </div>
+				              </div>
+				        </div>
 
 
 
-
-
-
-
-								Ä«Æä³»¿ë
-
-
-
-
-
-
-
-
-								<!-- Ä«Æä³»¿ëÀº ¿©±â¿¡!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-							</p>
+						<!-- ì¹´í˜ë‚´ìš© íƒ­ -->
 						</div>
 						<div role="tabpanel" class="tab-pane" id="tb2">
 							<p class="mb-0 text-muted">
-								<!--½ºÅõ´õ ÁøÇà»çÇ×ÅÇ-->
-							<div class="col-lg-15 mb-30" style="height: 100px">
+								<!--ìŠ¤íˆ¬ë” ì§„í–‰ì‚¬í•­íƒ­-->
+							<div class="col-lg-15 mb-30">
 								<div>
 									<!-- Nav tabs -->
 									<ul class="nav nav-pills" role="tablist"
-										style="text-align: center; height: 150px; margin-top: 15px; margin-bottom: 7px;">
-										<li role="presentation" class="nav-item" style="width: 18%;"><a
+										style="text-align: center; margin-top: 15px; margin-bottom: 7px;">
+										<li role="presentation" class="nav-item" style="width: 20%;"><a id="all_std" 
 											class="nav-link active show" href="#home"
-											aria-controls="home" role="tab" data-toggle="tab"><h4>ÀüÃ¼</h4></a></li>
-										<li role="presentation" class="nav-item" style="width: 18%;"><a
+											aria-controls="home" role="tab" data-toggle="tab">ì „ì²´ </a></li>
+										<li role="presentation" class="nav-item" style="width: 20%;"><a id="wtg_std" 
 											class="nav-link" href="#profile" aria-controls="profile"
-											role="tab" data-toggle="tab"><h4>½ÂÀÎ´ë±âÁß</h4></a></li>
-										<li role="presentation" class="nav-item" style="width: 18%;"><a
+											role="tab" data-toggle="tab">ìŠ¹ì¸ëŒ€ê¸°ì¤‘ </a></li>
+										<li role="presentation" class="nav-item" style="width: 20%;"><a id="ing_std" 
 											class="nav-link" href="#messages" aria-controls="messages"
-											role="tab" data-toggle="tab"><h4>ÁøÇàÁß</h4></a></li>
-										<li role="presentation" class="nav-item" style="width: 18%;"><a
-											class="nav-link" href="#end_std" aria-controls="end_std"
-											role="tab" data-toggle="tab"><h4>ÀÌ¿ë¿Ï·á</h4></a></li>
-										<li role="presentation" class="nav-item" style="width: 18%;"><a
+											role="tab" data-toggle="tab">ì§„í–‰ì¤‘ </a></li>
+										<li role="presentation" class="nav-item" style="width: 20%;"><a id="end_std"
+											class="nav-link" href="#endstuder" aria-controls="end_std"
+											role="tab" data-toggle="tab">ì´ìš©ì™„ë£Œ </a></li>
+										<li role="presentation" class="nav-item" style="width: 20%;"><a id="my_std" 
 											class="nav-link" href="#mystuder" aria-controls="settings"
-											role="tab" data-toggle="tab"><h4>³ªÀÇ½ºÅõ´õ</h4></a></li>
+											role="tab" data-toggle="tab">ë‚˜ì˜ìŠ¤íˆ¬ë” </a></li>
 									</ul>
-
 									<!-- Tab panes -->
-									<div class="tab-content pt-3" style="margin-left: 4%">
-										<!--ÀüÃ¼ ½ºÅõ´õ-->
+									<div class="tab-content pt-3">
+										<!--ì „ì²´ ìŠ¤íˆ¬ë”-->
 										<div role="tabpanel" class="tab-pane show active" id="home">
 											<p class="mb-0 text-muted">
-											<h5>È¸¿ø´ÔÀÌ ÁøÇàÇÏ°í ÀÖ´Â ½ºÅõ´õÀÇ ÀüÃ¼ ¸ñ·ÏÀÔ´Ï´Ù.</h5>
-											<!--°³ÀÎ¸¶ÀÌÆäÀÌÁö ½ºÅõ´õ ¸ñ·ÏÄÁÅÙÃ÷-->
+											<h5>íšŒì›ë‹˜ì´ ì§„í–‰í•˜ê³  ìˆëŠ” ìŠ¤íˆ¬ë”ì˜ ì „ì²´ ëª©ë¡ì…ë‹ˆë‹¤.</h5>
+											<!--ê°œì¸ë§ˆì´í˜ì´ì§€ ìŠ¤íˆ¬ë” ëª©ë¡ì»¨í…ì¸ -->
 											<div class="flex">
 												<div class="p-3 pt-0 pb-0">
-													<!--ÇÑÁÙ¿¡ 2°³¾¿, row·Î ³ª´µ¾îÁü-->
+													<!--í•œì¤„ì— 2ê°œì”©, rowë¡œ ë‚˜ë‰˜ì–´ì§-->
 													<div class="row">
-														<div>
-															<div class="row">
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="text-right">
-																<a href="#" class="btn btn-gradient-info"> <i
-																	class="fa fa-spinner mr-2"></i> More Projects
-																</a>
-															</div>
-														</div>
+													<div>
+														<div class="row" id="append_all"></div>
+													</div>
 													</div>
 												</div>
 											</div>
 										</div>
-										<!--½ÂÀÎ´ë±âÁßÀÎ ½ºÅõ´õ-->
+										<!--ìŠ¹ì¸ëŒ€ê¸°ì¤‘ì¸ ìŠ¤íˆ¬ë”-->
 										<div role="tabpanel" class="tab-pane" id="profile">
 											<p class="mb-0 text-muted">
-												<!--°³ÀÎ¸¶ÀÌÆäÀÌÁö ½ºÅõ´õ ¸ñ·ÏÄÁÅÙÃ÷-->
-											<h5>È¸¿ø´ÔÀÌ Âü¿©½ÅÃ»ÇÑ ½ºÅõ´õÀÇ ¸ñ·ÏÀÔ´Ï´Ù.</h5>
+												<!--ê°œì¸ë§ˆì´í˜ì´ì§€ ìŠ¤íˆ¬ë” ëª©ë¡ì»¨í…ì¸ -->
+											<h5>ì°¸ì—¬ì‹ ì²­ í›„ ìŠ¹ì¸ëŒ€ê¸°ì¤‘ì¸ ìŠ¤íˆ¬ë”ì˜ ëª©ë¡ì…ë‹ˆë‹¤.</h5>
 											<div class="flex">
 												<div class="p-3 pt-0 pb-0">
-													<!--ÇÑÁÙ¿¡ 2°³¾¿, row·Î ³ª´µ¾îÁü-->
+													<!--í•œì¤„ì— 2ê°œì”©, rowë¡œ ë‚˜ë‰˜ì–´ì§-->
 													<div class="row">
-														<div>
-
-															<div class="row">
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">½ÂÀÎ´ë±âÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">½ÂÀÎ´ë±âÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">½ÂÀÎ´ë±âÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">½ÂÀÎ´ë±âÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> View Details
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="text-right">
-																<a href="#" class="btn btn-gradient-info"> <i
-																	class="fa fa-spinner mr-2"></i> More Projects
-																</a>
-															</div>
-														</div>
+													<div>
+														<div class="row" id="append_wtg"></div>
+													</div>
 													</div>
 												</div>
-											</div>
+											</div>	
 											</p>
 										</div>
 
-										<!--ÁøÇàÁßÀÎ ½ºÅõ´õ-->
+										<!--ì§„í–‰ì¤‘ì¸ ìŠ¤íˆ¬ë”-->
 										<div role="tabpanel" class="tab-pane" id="messages">
-											<h5>ÇöÀç ÁøÇàÁßÀÎ ½ºÅõ´õÀÇ ÀüÃ¼ ¸ñ·ÏÀÔ´Ï´Ù.</h5>
-											<p class="mb-0 text-muted">Established fact that a reader
-												will be distracted by the readable content of a page when
-												looking at its layout. The point of using Lorem Ipsum is
-												that it has a more-or-less normal distribution of letters,
-												as opposed to using 'Content here, content here', making it
-												look like readable English. Many desktop publishing packages
-												and web page editors now use Lorem Ipsum as their default
-												model text, and a search for 'lorem ipsum' will uncover many
-												web sites still in their infancy. Various versions have
-												evolved over the years, sometimes by accident, sometimes on
-												purpose (injected humour and the like).</p>
-										</div>
-
-										<!--ÁøÇàÁßÀÎ ½ºÅõ´õ-->
-										<div role="tabpanel" class="tab-pane" id="end_std">
-											<h5>±â°£ÀÌ ¸¸·áµÈ ½ºÅõÀÇ ¸ñ·ÏÀÔ´Ï´Ù.</h5>
-											<p class="mb-0 text-muted">Long established fact that a
-												reader will be distracted by the readable content of a page
-												when looking at its layout. The point of using Lorem Ipsum
-												is that it has a more-or-less normal distribution of
-												letters, as opposed to using 'Content here, content here',
-												making it look like readable English. Many desktop
-												publishing packages and web page editors now use Lorem Ipsum
-												as their default model text, and a search for 'lorem ipsum'
-												will uncover many web sites still in their infancy. Various
-												versions have evolved over the years, sometimes by accident,
-												sometimes on purpose (injected humour and the like).</p>
-										</div>
-
-										<!--³ªÀÇ ½ºÅõ´õ-->
-										<div role="tabpanel" class="tab-pane" id="mystuder">
-											<h5>È¸¿ø´ÔÀÌ °³¼³ÇÑ ½ºÅõ´õÀÇ ¸ñ·ÏÀÔ´Ï´Ù.</h5>
 											<p class="mb-0 text-muted">
-												<!--°³ÀÎ¸¶ÀÌÆäÀÌÁö ½ºÅõ´õ ¸ñ·ÏÄÁÅÙÃ÷-->
+											<h5>í˜„ì¬ ì§„í–‰ì¤‘ì¸ ìŠ¤íˆ¬ë”ì˜ ì „ì²´ ëª©ë¡ì…ë‹ˆë‹¤.</h5>	
 											<div class="flex">
 												<div class="p-3 pt-0 pb-0">
-													<!--ÇÑÁÙ¿¡ 2°³¾¿, row·Î ³ª´µ¾îÁü-->
+													<!--í•œì¤„ì— 2ê°œì”©, rowë¡œ ë‚˜ë‰˜ì–´ì§-->
 													<div class="row">
-														<div>
-
-															<div class="row">
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> ¼öÁ¤
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> ¼öÁ¤
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> ¼öÁ¤
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!--project item-->
-																<div
-																	class="col-xl-6.5 col-lg-6.5 col-md-6 col-sm-6 mb-30">
-																	<div class="iCard border1 p-2 rounded bg-white">
-																		<a href="#"> <img src="images/img6.jpg" alt=""
-																			class="img-fluid rounded">
-																		</a>
-																		<div class="iCard-content p-1 pt-15 pb-15">
-																			<!--¸ğÀÓÁ¤º¸-->
-																			<h2
-																				class="fs16 text-dark font400 mb-5 text-capitalize">
-																				<strong class="font600">¹Ì±¹ °·¼ºÀÇ ¼ÒÀ¯ÀÚ JennyÀÇ
-																					½ºÅÍµğ¹ßÆÇµó°í È¸È­½Ç·Â up!</strong>
-																			</h2>
-																			<span class="iCard-meta fs14 d-block mb-13">±â°£
-																				<strong class="font630">&nbsp&nbsp
-																					2019.10.09 ~ 2020.04.09</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">ÀÎ¿ø
-																				<strong class="font600">&nbsp&nbsp 6¸í</strong>
-																			</span> <span class="iCard-meta fs14 d-block mb-13">Àå¼Ò
-																				<strong class="font600">&nbsp&nbsp ¼­´ë¹®±¸</strong>
-																			</span>
-																			<div class="thumbnails-group mb-15">
-																				<a href="#" class="translate-thumb"><img
-																					src="images/avatar1.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar2.jpg" alt="" class="img-fluid">
-																				</a> <a href="#" class="translate-thumb"><img
-																					src="images/avatar3.jpg" alt="" class="img-fluid">
-																				</a>
-																				<!--³ªÀÇ ½ºÅõ´õ¿¡¼­´Â »ì¸®±â-->
-																				<!--<a href="#" data-toggle="tooltip" data-placement="top" title="" class="translate-thumb" data-original-title="Add New">
-                                                                        <i class="fa fa-plus"></i></a>-->
-																			</div>
-																			<div class="pt-15 b-t text-right">
-																				<div class="row align-items-center">
-																					<div class="col-5 text-left b-r">
-																						<span class="d-block pb-1 fs15">ÁøÇàÁß</span>
-																						<div class="progress bg-faded" style="height: 6px">
-																							<div class="progress-bar bg-primary"
-																								style="height: 6px; width: 40%"></div>
-																						</div>
-																					</div>
-																					<div class="col-6">
-																						<a href="#"
-																							class="btn btn-gradient-light btn-icon btn-icon-right btn-sm">
-																							<i class="fa fa-arrow-right"></i> ¼öÁ¤
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="text-right">
-																<a href="#" class="btn btn-gradient-info"> <i
-																	class="fa fa-spinner mr-2"></i> More Projects
-																</a>
-															</div>
-														</div>
+													<div>
+														<div class="row" id="append_ing"></div>
 													</div>
-													</p>
+													</div>
+												</div>
+											</div>	
+										</div>
+
+										<!--ì§„í–‰ì¤‘ì¸ ìŠ¤íˆ¬ë”-->
+										<div role="tabpanel" class="tab-pane" id="endstuder">
+											<p class="mb-0 text-muted">
+											<h5>ê¸°ê°„ì´ ë§Œë£Œëœ ìŠ¤íˆ¬ì˜ ëª©ë¡ì…ë‹ˆë‹¤.</h5>
+											<div class="flex">
+												<div class="p-3 pt-0 pb-0">
+													<!--í•œì¤„ì— 2ê°œì”©, rowë¡œ ë‚˜ë‰˜ì–´ì§-->
+													<div class="row">
+													<div>
+														<div class="row" id="append_end"></div>
+													</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+
+										<!--ë‚˜ì˜ ìŠ¤íˆ¬ë”-->
+										<div role="tabpanel" class="tab-pane" id="mystuder">
+											<h5>íšŒì›ë‹˜ì´ ê°œì„¤í•œ ìŠ¤íˆ¬ë”ì˜ ëª©ë¡ì…ë‹ˆë‹¤.</h5>
+											<p class="mb-0 text-muted">
+												<!--ê°œì¸ë§ˆì´í˜ì´ì§€ ìŠ¤íˆ¬ë” ëª©ë¡ì»¨í…ì¸ -->
+											<div class="flex">
+												<div class="p-3 pt-0 pb-0">
+													<!--í•œì¤„ì— 2ê°œì”©, rowë¡œ ë‚˜ë‰˜ì–´ì§-->
+												<div class="row">
+													<div>
+														<div class="row" id="append_my"></div>
+													</div>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -1088,6 +856,9 @@
 							</div>
 						</div>
 
+					</div>
+					</div>
+					</div>
 					</div>
 			</main>
 			<!-- page content end-->
@@ -1099,27 +870,14 @@
 
 
 
-		<!-- -----------------------------------»õ·Î Ãß°¡ÇÑ ÆÄÀÏ ------------------------------------------>
+		<!-- -----------------------------------ìƒˆë¡œ ì¶”ê°€í•œ íŒŒì¼ ------------------------------------------>
 
 		<script type="text/javascript" src="js/plugins/plugins1.js"></script>
 		<!--  <script type="text/javascript" src="js/appUi-custom.js"></script>  -->
-		<script type="text/javascript" src="lib/peity/jquery.peity.min.js"></script>
-		<script>
-			//            $(function () {
-			//                 /**peity**/
-			//                 $(".donut1").peity("donut", {
-			//                 });
-			//             });
-		</script>
-
 	</div>
 
 
 	<!-- ###################################################################### -->
-
-
-
-
 	<!--back to top-->
 	<a href="#" class="back-to-top hidden-xs-down" id="back-to-top"><i
 		class="ti-angle-up"></i></a>
@@ -1130,33 +888,37 @@
 
 
 </body>
-<footer class="footer footer-dark pt50 pb30">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6  ml-auto mr-auto text-center">
-				<ul class="social-icons list-inline">
-					<li class="list-inline-item"><a href="#"> <i
-							class="fa fa-facebook"></i>Facebook
-					</a></li>
-					<li class="list-inline-item"><a href="#"> <i
-							class="fa fa-twitter"></i>twitter
-					</a></li>
-					<li class="list-inline-item"><a href="#"> <i
-							class="fa fa-instagram"></i>instagram
-					</a></li>
-					<li class="list-inline-item"><a href="#"> <i
-							class="fa fa-behance"></i>Behance
-					</a></li>
-				</ul>
-				<h4>
-					<i class="fa fa-phone"></i>  010-4656-0811
-				</h4>
-				<h4>
-					<i class="fa fa-envelope"></i>  zozo.park@kakao.com
-				</h4>
-				<p>&copy; Copyright 2019. Team BoB</p>
-			</div>
-		</div>
-	</div>
-</footer>
+ <footer class="footer footer-dark pt50 pb30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6  ml-auto mr-auto text-center">
+                        <ul class="social-icons list-inline">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-facebook"></i>Facebook
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-twitter"></i>twitter
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-instagram"></i>instagram
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <i class="fa fa-behance"></i>Behance
+                                </a>
+                            </li>
+                        </ul>
+                        <h4><i class="fa fa-phone"></i> 010-4656-0811</h4>
+                        <h4><i class="fa fa-envelope"></i> zozo.park@kakao.com</h4>
+                        <p>&copy; Copyright 2019. Team BoB</p>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/footer-->
 </html>
