@@ -1,0 +1,611 @@
+
+CREATE TABLE CAFE (
+       CAFE_NO              NUMBER NOT NULL,
+       LICENSE_NUM          VARCHAR2(50) NOT NULL,
+       MAIN_IMG             VARCHAR2(200) NULL,
+       CAFE_NAME            VARCHAR2(200) NOT NULL,
+       CAFE_INFO            VARCHAR2(300) NULL,
+       CAFE_LOC             VARCHAR2(300) NULL,
+       CAFE_PHONE           VARCHAR2(50) NULL,
+       CAFE_HRS             VARCHAR2(100) NOT NULL,
+       CAFE_NOTICE          VARCHAR2(2000) NULL,
+       CAFE_CP              VARCHAR2(2000) NOT NULL,
+       CAFE_RP              VARCHAR2(2000) NOT NULL,
+       SEATS                NUMBER NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE
+       ADD  ( PRIMARY KEY (CAFE_NO) ) ;
+
+
+CREATE TABLE CAFE_IMG (
+       CAFE_IMG_NO          NUMBER NOT NULL,
+       CAFE_IMG_NAME        VARCHAR2(200) NOT NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_IMG
+       ADD  ( PRIMARY KEY (CAFE_IMG_NO) ) ;
+
+
+CREATE TABLE CAFE_INQ (
+       INQ_NO               NUMBER NOT NULL,
+       INQ_CONTENT          VARCHAR2(3000) NOT NULL,
+       INQ_REPLY            VARCHAR2(3000) NULL,
+       CAFE_NO              NUMBER NOT NULL,
+       ISSECRET             VARCHAR2(10) NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( PRIMARY KEY (INQ_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW (
+       REVIEW_NO            NUMBER NOT NULL,
+       REVIEW_CONTENT       VARCHAR2(3000) NOT NULL,
+       GRADE                NUMBER NOT NULL,
+       CAFE_NO              NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( PRIMARY KEY (REVIEW_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW_IMAGE (
+       REVIEW_IMG_NO        NUMBER NOT NULL,
+       REVIEW_IMG           VARCHAR2(200) NOT NULL,
+       REVIEW_NO            NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW_IMAGE
+       ADD  ( PRIMARY KEY (REVIEW_IMG_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW_REPLY (
+       REPLY_NO             NUMBER NOT NULL,
+       REPLY                VARCHAR2(3000) NULL,
+       REVIEW_NO            NUMBER NOT NULL,
+       CUST_NO              NUMBER NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( PRIMARY KEY (REPLY_NO) ) ;
+
+
+CREATE TABLE CUSTOMER (
+       CUST_NO              NUMBER NOT NULL,
+       CUST_NAME            VARCHAR2(20) NOT NULL,
+       CUST_NICK            VARCHAR2(20) NOT NULL,
+       CUST_IMG             VARCHAR2(200) NULL,
+       PHONE                VARCHAR2(50) NULL,
+       ADDR                 VARCHAR2(300) NULL,
+       EMAIL                VARCHAR2(100) NOT NULL,
+       ID                   VARCHAR2(20) NOT NULL,
+       PWD                  VARCHAR2(20) NOT NULL,
+       CUST_Q               VARCHAR2(200) NOT NULL,
+       CUST_A               VARCHAR2(200) NOT NULL
+);
+
+
+ALTER TABLE CUSTOMER
+       ADD  ( PRIMARY KEY (CUST_NO) ) ;
+
+
+CREATE TABLE EVT (
+       EVT_NO               NUMBER NOT NULL,
+       EVT_TITLE            VARCHAR2(1000) NOT NULL,
+       EVT_CONTENT          VARCHAR2(4000) NOT NULL,
+       DISCOUNT             NUMBER NULL,
+       EVT_START            DATE NULL,
+       EVT_END              DATE NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE EVT
+       ADD  ( PRIMARY KEY (EVT_NO) ) ;
+
+
+CREATE TABLE EVT_COUPON (
+       COUPON_NO            VARCHAR2(100) NOT NULL,
+       ISUSED               VARCHAR2(10) NOT NULL,
+       EVT_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( PRIMARY KEY (COUPON_NO) ) ;
+
+
+CREATE TABLE GET_PASS (
+       GET_PASS_NO          NUMBER NOT NULL,
+       TOTAL                NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PASS_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE GET_PASS
+       ADD  ( PRIMARY KEY (GET_PASS_NO) ) ;
+
+
+CREATE TABLE HASHTAG (
+       TAG_NO               NUMBER NOT NULL,
+       TAG_CONTENT          VARCHAR2(100) NOT NULL,
+       STD_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE HASHTAG
+       ADD  ( PRIMARY KEY (TAG_NO) ) ;
+
+
+CREATE TABLE KEYWORD_LOC (
+       KEY_LOC              VARCHAR2(100) NOT NULL,
+       KEY_LOC_HIT          NUMBER NULL,
+       CUST_NO              NUMBER NULL
+);
+
+
+ALTER TABLE KEYWORD_LOC
+       ADD  ( PRIMARY KEY (KEY_LOC) ) ;
+
+
+CREATE TABLE KEYWORD_NAME (
+       KEY_NAME             VARCHAR2(500) NOT NULL,
+       KEY_NAME_HIT         NUMBER NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE KEYWORD_NAME
+       ADD  ( PRIMARY KEY (KEY_NAME) ) ;
+
+
+CREATE TABLE MANAGER (
+       MAN_NO               NUMBER NOT NULL,
+       ID                   VARCHAR2(50) NOT NULL,
+       PW                   VARCHAR2(50) NOT NULL
+);
+
+
+ALTER TABLE MANAGER
+       ADD  ( PRIMARY KEY (MAN_NO) ) ;
+
+
+CREATE TABLE NOTICE (
+       NOTICE_NO            NUMBER NOT NULL,
+       NOTICE_TITLE         VARCHAR2(300) NOT NULL,
+       NOTICE_CONTENT       VARCHAR2(4000) NULL,
+       WRITE_DATE           DATE NOT NULL,
+       HITS                 NUMBER NOT NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE NOTICE
+       ADD  ( PRIMARY KEY (NOTICE_NO) ) ;
+
+
+CREATE TABLE PASS (
+       PASS_NO              NUMBER NOT NULL,
+       PASS_CONTENT         VARCHAR2(100) NOT NULL,
+       PRICE                NUMBER NOT NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE PASS
+       ADD  ( PRIMARY KEY (PASS_NO) ) ;
+
+
+CREATE TABLE PAYMENT (
+       PAY_NO               NUMBER NOT NULL,
+       PAY_NAME             VARCHAR2(200) NOT NULL,
+       RESER_NO             NUMBER NULL,
+       GET_PASS_NO          NUMBER NULL,
+       COUPON_NO            VARCHAR2(100) NULL
+);
+
+
+ALTER TABLE PAYMENT
+       ADD  ( PRIMARY KEY (PAY_NO) ) ;
+
+
+CREATE TABLE PROVIDER (
+       PROVIDER_NO          NUMBER NOT NULL,
+       PRO_NAME             VARCHAR2(20) NOT NULL,
+       PRO_NICK             VARCHAR2(20) NOT NULL,
+       PRO_IMG              VARCHAR2(200) NULL,
+       PHONE                VARCHAR2(50) NOT NULL,
+       ADDR                 VARCHAR2(300) NOT NULL,
+       EMAIL                VARCHAR2(100) NOT NULL,
+       ID                   VARCHAR2(20) NOT NULL,
+       PWD                  VARCHAR2(20) NOT NULL,
+       PRO_Q                VARCHAR2(200) NOT NULL,
+       PRO_A                VARCHAR2(200) NOT NULL
+);
+
+
+ALTER TABLE PROVIDER
+       ADD  ( PRIMARY KEY (PROVIDER_NO) ) ;
+
+
+CREATE TABLE QA (
+       QA_NO                NUMBER NOT NULL,
+       QA_TITLE             VARCHAR2(300) NOT NULL,
+       QA_WRITE_DATE        DATE NOT NULL,
+       QA_CONTENT           VARCHAR2(3000) NULL,
+       B_REF                NUMBER NULL,
+       B_LEVEL              NUMBER NULL,
+       B_STEP               NUMBER NULL,
+       CUST_NO              NUMBER NOT NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE QA
+       ADD  ( PRIMARY KEY (QA_NO) ) ;
+
+
+CREATE TABLE RESTAURANT (
+       REST_NO              NUMBER NOT NULL,
+       REST_NAME            VARCHAR2(200) NULL,
+       REST_LOC             VARCHAR2(500) NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE RESTAURANT
+       ADD  ( PRIMARY KEY (REST_NO) ) ;
+
+
+CREATE TABLE ROOM (
+       ROOM_NO              NUMBER NOT NULL,
+       ROOM_NAME            VARCHAR2(300) NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM
+       ADD  ( PRIMARY KEY (ROOM_NO) ) ;
+
+
+CREATE TABLE ROOM_RESER (
+       RESER_NO             NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       RESER_DATE           DATE NOT NULL,
+       RESER_START          NUMBER NOT NULL,
+       RESER_TIME           NUMBER NULL,
+       USER_NUM             NUMBER NOT NULL,
+       TOTAL                NUMBER NOT NULL,
+       ROOM_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( PRIMARY KEY (RESER_NO) ) ;
+
+
+CREATE TABLE ROOM_TIME (
+       TIME_NO              NUMBER NOT NULL,
+       START_TIME           NUMBER NOT NULL,
+       END_TIME             NUMBER NOT NULL,
+       TIME_PRICE           NUMBER NOT NULL,
+       ROOM_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM_TIME
+       ADD  ( PRIMARY KEY (TIME_NO) ) ;
+
+
+CREATE TABLE SNS (
+       SNS_NO               NUMBER NOT NULL,
+       SNS_CONTENT          VARCHAR2(2000) NULL,
+       SNS_LIKE             NUMBER NULL,
+       SNS_WRITE_DATE       DATE NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS
+       ADD  ( PRIMARY KEY (SNS_NO) ) ;
+
+
+CREATE TABLE SNS_IMG (
+       SNS_IMG_NO           NUMBER NOT NULL,
+       SNS_IMG_NAME         VARCHAR(200) NULL,
+       SNS_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS_IMG
+       ADD  ( PRIMARY KEY (SNS_IMG_NO) ) ;
+
+
+CREATE TABLE SNS_REPLY (
+       REPLY_NO             NUMBER NOT NULL,
+       REPLY_CONTENT        VARCHAR2(500) NULL,
+       SNS_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( PRIMARY KEY (REPLY_NO) ) ;
+
+
+CREATE TABLE STD (
+       STD_NO               NUMBER NOT NULL,
+       STD_IMAGE            VARCHAR2(200) NULL,
+       STD_NAME             VARCHAR2(500) NOT NULL,
+       STD_INTRO            VARCHAR2(1000) NOT NULL,
+       STD_START            DATE NOT NULL,
+       STD_END              DATE NULL,
+       STD_TIME             VARCHAR2(50) NOT NULL,
+       STD_LOC              VARCHAR2(50) NOT NULL,
+       STD_CLOSE            DATE NOT NULL,
+       STD_LIMIT            NUMBER NOT NULL,
+       STD_CONTENT          VARCHAR2(3000) NOT NULL,
+       STD_HITS             NUMBER NULL,
+       FOUNDER_INFO         VARCHAR2(3000) NOT NULL,
+       FOUNDER_NO           NUMBER NOT NULL
+);
+
+
+ALTER TABLE STD
+       ADD  ( PRIMARY KEY (STD_NO) ) ;
+
+
+CREATE TABLE STD_APPLY (
+       APPLY_NO             NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       STD_NO               NUMBER NOT NULL,
+       APPLY_CONTENT        VARCHAR2(3000) NOT NULL
+);
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( PRIMARY KEY (APPLY_NO) ) ;
+
+
+CREATE TABLE STD_PICKERS (
+       PICKERS_NO           NUMBER NOT NULL,
+       STD_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( PRIMARY KEY (PICKERS_NO) ) ;
+
+
+ALTER TABLE CAFE
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE CAFE_IMG
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_REVIEW_IMAGE
+       ADD  ( FOREIGN KEY (REVIEW_NO)
+                             REFERENCES CAFE_REVIEW ) ;
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( FOREIGN KEY (REVIEW_NO)
+                             REFERENCES CAFE_REVIEW ) ;
+
+
+ALTER TABLE EVT
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER ) ;
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( FOREIGN KEY (EVT_NO)
+                             REFERENCES EVT ) ;
+
+
+ALTER TABLE GET_PASS
+       ADD  ( FOREIGN KEY (PASS_NO)
+                             REFERENCES PASS ) ;
+
+
+ALTER TABLE GET_PASS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE HASHTAG
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+ALTER TABLE KEYWORD_LOC
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE KEYWORD_NAME
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE NOTICE
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER ) ;
+
+
+ALTER TABLE PASS
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (COUPON_NO)
+                             REFERENCES EVT_COUPON
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (GET_PASS_NO)
+                             REFERENCES GET_PASS
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (RESER_NO)
+                             REFERENCES ROOM_RESER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE QA
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE QA
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE RESTAURANT
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE ROOM
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( FOREIGN KEY (ROOM_NO)
+                             REFERENCES ROOM ) ;
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE ROOM_TIME
+       ADD  ( FOREIGN KEY (ROOM_NO)
+                             REFERENCES ROOM ) ;
+
+
+ALTER TABLE SNS
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE SNS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE SNS_IMG
+       ADD  ( FOREIGN KEY (SNS_NO)
+                             REFERENCES SNS ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (SNS_NO)
+                             REFERENCES SNS
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE STD
+       ADD  ( FOREIGN KEY (FOUNDER_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+

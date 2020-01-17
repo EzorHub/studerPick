@@ -1,0 +1,594 @@
+﻿insert into admin values (1, 'MSB9876', 1234);
+
+insert into provider values(
+	1, 
+	'홍길동', 
+	'nickabc123', 
+	'010-1234-5678', 
+	'서울시 서대문구 북가좌동', 
+	'abc123@bit.com', 
+	'abc123', 
+	'1357', 
+	'초등학교이름은?', 
+	'초딩초딩'
+);
+
+insert into provider values(
+	2, 
+	'유관순', 
+	'nickdef123', 
+	'010-2345-6789', 
+	'서울시 성북구 성북동', 
+	'def123@bit.com', 
+	'def123', 
+	'2468', 
+	'어머님 성함은?', 
+	'엄마마'
+);
+
+insert into provider values(
+	3, 
+	'이순신', 
+	'nickghi123', 
+	'010-3456-7890', 
+	'경기도 화성시 남양읍', 
+	'ghi123@bit.com', 
+	'ghi123', 
+	'3579', 
+	'처음한게임은?', 
+	'메이플스토리'
+);
+
+
+insert into  customer values(
+		1,
+		'문성빈',
+		'성빈짱',
+		'010-1234-5678',
+		'서울시 강서구 염창동',
+		'msb9876@naver.com',
+		'msb9876',
+		'msb9876111',
+		'초등학교이름은?',
+		'은로초등학교'
+		);
+
+insert into  customer values(
+		2,
+		'김선겸',
+		'선겸짱',
+		'010-2345-6789',
+		'경기도 일산시 일산동',
+		'ksk9876@bit.com',
+		'ksk1234',
+		'ksk1234111',
+		'어머님 성함은?',
+		'우리엄마'
+		);
+
+insert into  customer values(
+		3,
+		'박선영',
+		'선영짱',
+		'010-4321-8765',
+		'경기도 김포시 김포동',
+		'psy9876@bit.com',
+		'psy1234',
+		'psy1234111',
+		'처음한게임은?',
+		'크레이지아케이드'
+		);
+
+insert into  customer values(
+		4,
+		'최영인',
+		'영인짱',
+		'010-3322-1244',
+		'서울시 강북구 강북동',
+		'cyi9876@bit.com',
+		'cyi1234',
+		'cyi1234111',
+		'취미생활은?',
+		'맛있는거먹기'
+		);
+
+
+insert into  customer values(
+		5,
+		'최희진',
+		'희진짱',
+		'010-2314-2512',
+		'서울시 강서구 등촌동',
+		'chj9876@bit.com',
+		'chj9876',
+		'chj9876111',
+		'어렸을 때 살던 곳은?',
+		'강서구 등촌동'
+		);
+
+insert into  customer values(
+		6,
+		'김소연',
+		'소연짱',
+		'010-2341-2222',
+		'서울시 마포구 신총동',
+		'ksy9876@bit.com',
+		'ksy9876',
+		'ksy98761111',
+		'기억에남는 여행지?',
+		'부다페스트'
+		);
+
+
+insert into  customer values(
+		7,
+		'고한별',
+		'한별짱',
+		'010-3333-1111',
+		'서울시 강서구 목동',
+		'khb9876@bit.com',
+		'khb9876',
+		'khb9876111',
+		'좋아하는 음식은?',
+		'푸아그라'
+		);
+
+
+insert into std values(
+	1, 
+	'cafe_img01.jpg', 
+	'미국 갬성의 소유자 Jenny의 스터디발판딛고 회화실력 up',
+	'영어를 체득하는 것이 목표인 스터디입니다!', 
+	'2019-07-20', 
+	'2019-11-20', 
+	'(토) 13:00-15:00', 
+	'대구-동성로', 
+	'2019-07-17',
+	6, 
+	'평상시에는 정확히 알기 힘들었던 비슷한 단어들의 다른 뉘앙스, 재미있는 생활 표현들기호 등에 대해 우리 함께 배워봐요!',
+	NULL,
+	'안녕하세요! 저는 문성빈 입니다. 저는 impatient 한 사람이에요', 
+	1
+);
+
+insert into std values(
+	2, 
+	'cafe_img02.jpg', 
+	'폰카로 배우는 초기초 사진반 : 근대갬성 편',
+	'조선 말 근대 갬성이 남아 있는 개항로를 거닐며 나만의 사진을 찍고, 메시지를 담는 방법을 배웁니다.', 
+	'2019-08-20', 
+	'2019-12-20', 
+	'(월, 수) 13:00-15:00', 
+	'강원도-원주', 
+	'2019-08-17',
+	5, 
+	'1. 이런분이 들으면 좋아요 사진을 1도 모르지만, 이론 공부는 싫고, 나만의 사진은 찍고 싶은 사람 2. 프로그램- 완전 초보 수준의 사진술 입문!',
+	NULL,
+	'개설자 경력1) 2017년 단체전 출전 : 나이트스캐이프 야경사진전시회 2) 2019년 단체전 출전 : 인천주민 : 인천을 줌인하다 展 3) 프리랜서 웨딩스냅 작가로 활동중', 
+	2
+);
+
+insert into std values(
+	3, 
+	'cafe_img03.jpg', 
+	'영상 편집 1도 모르는 사람도 유튜브 시작할 수 있어요!',
+	'스마트폰 하나로 브이로그 촬영, 편집 노하우 & 팁 ', 
+	'2019-09-18', 
+	'2020-01-18', 
+	'(화) 17:00-19:00', 
+	'신촌', 
+	'2019-09-17',
+	8, 
+	'어디서부터 뭘 어떻게 시작해야할지 몰라서 답답하신 분들을 위해 다른 장비나 노트북, 컴퓨터 필요없이 스마트폰 하나로 브이로그 촬영, 편집 할 수 있는 팁과 노하우를 공유 드리려고 해요!',
+	NULL,
+	'조고든  - 더모임 [사이드 프로젝트 - 유튜브] 진행 예정  - 현) 유튜버 & 프리랜서 마케터 & N잡러널:https://www.youtube.com/channel/UCwoNPCLJR4wtr9u2cnNa2Zg', 
+	3
+);
+
+insert into cafe values(
+1, 
+'368-99-00443',
+'cafe_img01.jpg',
+'영스스터디카페',
+'영어랑 스페인어 질문 가능한
+Q&A 지식파트너 제휴',
+'서울 서대문구 신촌로 59 3층',
+'02-1234-5678',
+'09:00~24:00',
+'7월 이벤트',
+'취소규정내용',
+'환불규정내용',
+'seats_img01.jpg',
+18,
+3,
+1
+);
+
+insert into cafe values(
+2, 
+'105-16-48732',
+'café_img02.jpg',
+'채움',
+'마포 회의실 대여 가능한 
+신촌 이대 대표 모임공간',
+'서울 마포구 신촌로 150',
+'02-9876-5432',
+'08:00~24:00',
+'방학 할인',
+'취소규정내용',
+'환불규정내용',
+'seats_img02.jpg',
+null,
+3,
+2
+);
+
+insert into cafe values(
+3, 
+'211-88-10260',
+'café_img03.jpg',
+'플랜에이',
+'여성전용',
+'서울 서대문구 이화여대길 75 5층',
+'02-1111-2222',
+'09:00~02:00',
+'7월 휴가공지',
+'취소규정내용',
+'환불규정내용',
+'seats_img03.jpg',
+64,
+1,
+3
+);
+
+
+insert into std_apply values(
+1001,
+1,
+1,
+'흥미로운 주제라 관심이 생겨 
+신청하게되었습니다. '
+);
+insert into std_apply values(
+1002,
+2,
+2,
+'전부터 배워보고 싶던 
+자바 모임이 생겨서 신청합니다. '
+);
+insert into std_apply values(
+1003,
+3,
+3,
+'같이 공부해요~'
+);
+
+insert into std_pickers values(
+1,
+1,
+1);
+insert into std_pickers values(
+2,
+1,
+7);
+
+insert into hashtag values(
+1,
+'소방직공무원',
+1);
+insert into hashtag values(
+2,
+'공무원',
+1);
+insert into hashtag values(
+3,
+'토익',
+1);
+insert into hashtag values(
+4,
+'영어',
+1);
+
+insert into keyword values(
+1,
+'자바',
+1);
+insert into keyword values(
+2,
+'영어',
+1);
+insert into keyword values(
+3,
+'빅데이터',
+2);
+
+insert into cafe_img values(1, 'cafe_img01.jpg', 1);
+insert into cafe_img values(2, 'cafe_img012.jpg', 1);
+insert into cafe_img values(3, 'cafe_img03.jpg', 2);
+
+
+insert into café_review values (1, '저렴하고 가성비 좋아요~', 4, 1.1);
+insert into café_review values (2, '청소가 안되어 있어서 지저분하고 어린이들이 시끄러워요!', 2, 2,2);
+insert into café_review values (3, '의자가 편안해서 오래 공부하기 좋네용', 5, 3,3);
+
+insert into café_review_image values (1, 'img_k0001', 1);
+insert into café_review_image values (2, 'img_s0001', 1);
+insert into café_review_image values (3, 'img_m0003', 2);
+insert into café_review_image values (4, 'img_f0004', 3);
+
+insert into cafe_review_reply values(1,'감사합니다 고객님',1);
+insert into cafe_review_reply values(2,'노키즈존으로 변경하겠습니다 걱정없이와주세요',2);
+insert into cafe_review_reply values(3,'의자가 100만원짜리에요! 좋으셨다니 저도 좋네요',3);
+
+insert into café_review_image values (1, 'img_k0001', 1);
+insert into café_review_image values (2, 'img_s0001', 1);
+insert into café_review_image values (3, 'img_m0003', 2);
+insert into café_review_image values (4, 'img_f0004', 3);
+
+
+insert into café_inq values (1, 1, '강아지나 고양이 데려가도 되나요?', '안됩니다.' ,'true',1);
+insert into café_inq values (2, 2, '도시락 가져가서 먹을 수 있나요?', '네 가능합니다.','false'. 2);
+insert into café_inq values (3, 3, '노래방 기계가 있는 스터디 룸이 있나요?', '없습니다. 건물 3층에 코노가 있으니 그걸 이용하세요','true', 3);
+
+insert into evt values(
+1,
+'스투더픽 홈페이지 오픈이벤트',
+'페이지 오픈기념 
+이용카페의 이용권 1000원 쿠폰',
+1);
+insert into evt values(
+2,
+'이 구역 리뷰왕 이벤트',
+'카페 이용후기를 남긴 피커중 추첨을 통해
+이용권 1000원 쿠폰',
+1);
+
+insert into evt_coupon values(
+		'OK001',
+		1000,
+		'TRUE',
+		1,
+		1
+		);
+
+insert into evt_coupon values(
+		'TK001',
+		2000,
+		'TRUE',
+		2,
+		2
+		);
+
+insert into evt_coupon values(
+		'THK001',
+		3000,
+		'TRUE',
+		3,
+		3
+		);
+insert into evt_coupon values(
+		'FK001',
+		4000,
+		'FALSE',
+		4,
+		4
+		);
+
+insert into pass values(
+201907153214,
+6,
+5000,
+1);
+insert into pass values(
+201907151566,
+3,
+3000,
+2);
+insert into pass values(
+201907155211,
+12,
+10000,
+3);
+
+insert into get_pass values(
+1,
+5000,
+1,
+201907153214);
+insert into get_pass values(
+2,
+3000,
+2,
+201907151566);
+insert into get_pass values(
+3,
+10000,
+3,
+201907155211);
+
+
+insert into room values(
+1,
+'룸1',
+1);
+insert into room values(
+2,
+'펭귄',
+2);
+insert into room values(
+3,
+'북극곰',
+2);
+
+insert into room_reser values(
+379220190715,
+1,
+1,
+'2019-07-15',
+11,
+4,
+4,
+6000
+);
+
+insert into room_reser values(
+921220190714,
+2,
+1,
+'2019-07-14',
+18,
+3,
+1,
+6000
+);
+insert into room_reser values(
+182520190714,
+3,
+2,
+'2019-07-14',
+18,
+6,
+1,
+12000
+);
+
+insert into room_time values(
+1,
+9,
+18,
+1500,
+1);
+insert into room_time values(
+2,
+18,
+24,
+2000,
+1);
+
+insert into notice values (1,'웹사이트 점검안내', '해당일시에 사이트 점검이 시행됩니다. 이용에 참고바랍니다.','2019-07-10', 20, 1);
+insert into notice values (2,'웹사이트 이용안내',NULL, '2019-07-11', 30, 1);
+insert into notice values (3,'웹사이트 문의처 안내', NULL,'2019-07-13', 40, 1);
+
+
+
+insert into QA values(
+		1,
+		'결제관련문의',
+		'2019-07-04',
+		'TRUE',
+		'결제 취소어떻게하나요?',
+		'2019-07-05',
+		'개인마이페이지에서 가능합니다',
+		1,
+		1
+		);
+
+insert into QA values(
+		2,
+		'카페이용관련문의',
+		'2019-07-06',
+		'TRUE',
+		'카페예약방법좀알려주세요',
+		'2019-07-07',
+		'카페예약페이지에서 결제하시면 예약됩니다',
+		1,
+		1
+		);
+
+insert into QA values(
+		3,
+		'카페예약관련문의',
+		'2019-07-07',
+		'TRUE',
+		'예약확인은 어디서하나요?',
+		'2019-07-07',
+		'문자메시지 또는 개인마이페이지에서 확인가능합니다',
+		2,
+		1
+		);
+
+insert into QA values(
+		4,
+		'스투더개설번호',
+		'2019-07-07',
+		'TRUE',
+		'스투더 개설은 자유롭게할수있나요?',
+		'2019-07-08',
+		'네 그렇습니다',
+		5,
+		1
+		);
+
+insert into QA values(
+		5,
+		'스투더참가문의',
+		'2019-07-08',
+		'TRUE',
+		'스투더 참가 승인은언제되나요?',
+		'2019-07-08',
+		'해당 개설자의 승인여부에따라 달라질수 있습니다',
+		3,
+		1
+		);
+
+insert into QA values(
+		6,
+		'카페등록문의',
+		'2019-07-08',
+		'TRUE',
+		'카페등록하는법좀 자세히알려주세요',
+		'2019-07-09',
+		'메일로 발송하였습니다 또는전화주세요!',
+		4,
+		1
+		);
+
+
+insert into QA values(
+		7,
+		'카페등록취소',
+		'2019-07-09',
+		'FALSE',
+		'등록한 카페를 삭제하고싶습니다',
+		NULL,
+		NULL,
+		3,
+		1
+		);
+
+insert into QA values(
+		8,
+		'이벤트쿠폰',
+		'2019-07-10',
+		'FALSE',
+		'이벤트쿠폰번호 확인하는곳이..?',
+		NULL,
+		NULL,
+		7,
+		1
+		);
+
+insert into QA values(
+		9,
+		'이벤트미지급',
+		'2019-07-11',
+		'FALSE',
+		'이벤트 쿠폰이 지급이 안된거같아요!',
+		NULL,
+		NULL,
+		6,
+		1
+		);
+insert into QA values(
+		10,
+		'개인정보변경',
+		'2019-07-11',
+		'FALSE',
+		'개인정보변경은 어디서하나요?',
+		NULL,
+		NULL,
+		4,
+		1
+		);
+
+
