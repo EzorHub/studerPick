@@ -1,0 +1,11 @@
+<div class="card">
+  <h5 class="card-header h5">Featured</h5>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#!" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+<button class="btn-copy-code btn btn-outline-grey btn-sm px-2 waves-effect">예약취소</button>

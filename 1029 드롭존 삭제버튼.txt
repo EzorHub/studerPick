@@ -1,0 +1,54 @@
+        
+/css----------------------------------------------------------------------------------------	1028 dropzone 삭제버튼*/      
+        
+        
+        /*  삭제*/
+.dropzone .dz-delete-btn { position : absolute; bottom: 0; left : 0; margin : 0 !important; width: 100%; }
+/*  삭데버튼때문에 드롭존 프리뷰 각도 0으로 변경 ---1027*/
+.dropzone .dz-preview .dz-image { border-radius: 0 !important; }
+
+
+
+------------------------------js
+
+  //----------------------------------------------
+      var dz_delete_button ='<button type="button" style="color : red;" class="btn btn-danger btn-xs dz-delete-btn"><span class="glyphicon glyphicon-trash" ></span> 삭제 </button>';
+
+  	/*  드롭존 프리뷰 - 사진 삭제*/
+  	/* $("#dropzoneForm"). */
+      
+      file_dropzone.on('addedfile', function(file) { 
+    	  var remove_button = Dropzone.createElement(dz_delete_button);
+    	  var _this = this; 
+    	  remove_button.addEventListener('click', function(e) { 
+    		  e.preventDefault(); // click이벤트 외의 이벤트 막기위해 
+    		  e.stopPropagation(); // 부모태그로의 이벤트 전파를 중지 
+    		  // 파일 업로드시 장애가 발생한 경우
+    		  if (file['status'] != 'error') { 
+    			  // Send Client Event Delete 
+    			  } 
+    		  _this.removeFile(file);
+    	  		}); 
+    	  file.previewElement.appendChild(remove_button); 
+    	  });
+    		  
+
+      
+      
+  	/*file_dropzone.on('addedfile',function(file){
+  		var remove_button = Dropzone.createElement(dz_delete_button);
+  		var _this = this;
+  		remove_button.addEventListener('click', function(e){
+  			e.preventDefault(); //클릭이벤트 이외 이벤트 xx
+  			e.stopPropagation(); //부모태그로의 이벤트 전파중지
+  			
+  			//파일업로드시 에러발생
+  			if(file['status'] != 'error'){
+  				//send client event delete
+  				
+  			}
+  			_this.removeFile(file);
+  		});
+  		file.previewElement.appendChild(remove_button);
+  	});*/
+  	//------------------------------------------------

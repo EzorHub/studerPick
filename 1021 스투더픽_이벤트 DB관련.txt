@@ -1,0 +1,1 @@
+select evt_title, evt_content from evt where evt_title = '소심 이벤트';
