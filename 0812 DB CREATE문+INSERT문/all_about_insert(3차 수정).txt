@@ -1,0 +1,1705 @@
+﻿
+insert into customer values (
+1,
+'홍길동',
+'동동',
+'010-0000-0000',
+'서울시 강남구 역삼동',
+'ghdrlfehd@naver.com',
+'hkd0000',
+'rlfehd0123',
+'초등학교 이름은?',
+'도성초등학교' ); 
+
+insert into customer values ( 
+2, 
+'강감찬',
+'찬찬',
+'010-1111-1111',
+'서울시 동작구 사당동',
+'rkdrkacks@daum.net',
+'kkc1111',
+'rkacks1234',
+'어머님 성함은?',
+'천추태후' ); 
+
+insert into customer values ( 
+3, 
+'이순신',
+'신신',
+'010-2222-2222',
+'서울시 마포구 서교동',
+'dltnstls@nate.com',
+'lss2222',
+'tnstls2345',
+'취미 생활은?',
+'낚시' );
+
+insert into customer values ( 
+4, 
+'권율',
+'율율',
+'010-3333-3333',
+'서울시 은평구 응암동',
+'rnjsdbf@gmail.com',
+'ky3333',
+'dbf3456',
+'어렸을 때 살던 곳은?',
+'안동' ); 
+
+insert into customer values ( 
+5, 
+'안창호',
+'호호',
+'010-4444-4444',
+'고양시 일산구 탄현동',
+'dksckdgh@naver.com',
+'ach4444',
+'ckdgh4567',
+'기억에 남는 여행지는?',
+'상하이' ); 
+
+insert into customer values ( 
+6,
+'김구',
+'구구',
+'010-5555-5555',
+'강원도 속초시 동명동',
+'rlarn@daum.net',
+'kk5555',
+'rn5678',
+'좋아하는 음식은?',
+'쫑즈' ); 
+
+
+insert into customer values ( 
+7,
+'유관순',
+'순순',
+'010-6666-6666',
+'충청남도 천안시 병천면',
+'dbrhkstns@nate.com',
+'yks6666',
+'rhkstns6789',
+'나의 보물 1호는?',
+'건국훈장 대한민국장' ); 
+
+insert into customer values ( 
+8,
+'정정화',
+'화화',
+'010-7777-7777',
+'서울시 용남구 한남동',
+'wjdwjdghk@gmail.com',
+'jjh7777',
+'wjdghk7890',
+'남편/아내의 이름은?',
+'김의한' ); 
+
+insert into customer values ( 
+9,
+'김마리아',
+'리아',
+'010-8888-8888',
+'인천시 계양구 효성동',
+'rlaakfldk@naver.com',
+'kmra8888',
+'akfldk8901',
+'좋아하는 음식은?',
+'화전' );
+
+insert into customer values ( 
+10, 
+'이신애',
+'신애',
+'010-1234-5678',
+'전주시 덕진구 금암동',
+'dltlsdo@daum.net',
+'lsa9999',
+'tlsdo9012',
+'아버지 성함은?',
+'이건세' ); 
+
+insert into provider values(1, '김미미', 'mimi', '010-1111-1111', '경기도 고양시 일산', 'mimi@naver.com', 'mimi123', '1234', '초등학교 이름은?', '일산초'  );
+insert into provider values(2, '김모모', 'momo', '010-2222-2222', '경기도 파주시 운정', 'momo@naver.com', 'momo123', '2345', '어머님 성함은?', '마더'  );
+insert into provider values(3, '김무무', 'mumu', '010-3333-3333', '서울시 종로구', 'mumu@naver.com', 'mumu123', '3456', '어렸을 때 살던 곳은?', '제주'  );
+insert into provider values(4, '최시원', 'siwon', '010-4444-4444', '제주도 서귀포시 감귤동', 'siwon@naver.com', 'siwon123', '4567', '취미 생활은?', '여행'  );
+insert into provider values(5, '이하영', 'hayong', '010-5555-5555', '부산시 해운대구', 'hayong@naver.com', 'hayong123', '1234', '기억에 남는 여행지는?', '태국'  );
+insert into provider values(6, '김리보', 'ribo', '010-6666-6666', '강원도 속초시', 'ribo@naver.com', 'ribo123', '1234', '나의 보물 1호는?', '개껌'  );
+insert into provider values(7, '이까모', 'kamo', '010-7777-7777', '경기도 고양시 산황동', 'kamo@naver.com', 'kamo123', '1234', '취미 생활은?', '사냥'  );
+insert into provider values(8, '이포모', 'pomo', '010-8888-9999', '충남 예산군 신예면 중예리', 'pomo@naver.com', 'pomo123', '1234', '초등학교 이름은?', '예산초'  );
+insert into provider values(9, '최막모', 'macmo', '010-9999-9999', '경기도 김포시 공항동', 'macmo@naver.com', 'macmo123', '1234', '어렸을 때 살던 곳은?', '부산'  );
+insert into provider values(10, '최리모', 'rimo', '010-1010-1010', '서울시 흑석동', 'rimo@naver.com', 'rimo123', '1234', '나의 보물 1호는?', '닭다리'  );
+
+insert into cafe values( 
+1, 
+'368-99-00443',
+'cafe_img01.jpg',
+'서울시청년일자리센터',
+'청년 특화공간, 서울시 청년일자리센터입니다.',
+'서울특별시 중구 삼일대로 363 서울고용노동청 1층 서울시 청년일자리센터',
+'02-1234-5678',
+'월~금 09:00~21:00, 토 09:00~18:00',
+'취업관련 청년활동(취업스터디,면접준비,해당주제관련모임)에 한해서만 이용이 가능합니다',
+'취소규정내용',
+'환불규정내용',
+'seats_img01.jpg',
+18,
+1
+);
+
+insert into cafe values(
+2,
+'105-16-48732',
+'cafe_img02.jpg',
+'더웍스코리아',
+'창업가들과 소통하는 곳, 더웍스에서 취창업!',
+'서울특별시 강남구 테헤란로 410 ( 금강타워) 1502호',
+'02-9876-5432',
+'매일 09:30~18:30',
+'음식물은 반입불가합니다.',
+'취소규정내용',
+'환불규정내용',
+'seats_img02.jpg',
+0,
+1
+);
+
+insert into cafe values(
+3,
+'211-88-10260',
+'cafe_img03.jpg',
+'슈퍼스타트 이대점',
+'슈퍼스타트는 모두의 시작을 응원하는 장소입니다^^',
+'서울특별시 서대문구 이화여대8길 3	연화프라자 지하1층',
+'02-1111-2222',
+'매일 9~24시',
+'음식물반입 금지',
+'취소규정내용',
+'환불규정내용',
+'seats_img03.jpg',
+64,
+2
+);
+
+insert into cafe values(
+4,
+'211-88-10261',
+'cafe_img04.jpg',
+'피치스터디카페',
+'서울시일자리카페입니다.',
+'서울특별시 양천구 목동서로 250',
+'02-2222-1111',
+'평일 10시~22시',
+'만 18세 ~ 만 39세 청년을 위한 공간입니다.',
+'취소규정내용',
+'환불규정내용',
+'seats_img04.jpg',
+80,
+2
+);
+insert into cafe values(
+5,
+'211-20-10262',
+'cafe_img05.jpg',
+'루아흐코워킹스페이스',
+'시작하는 다양한 사람들이 모여 공존을 통해 시너지 효과를 발휘할 수 있는 - 강북 최대의 코워킹 스페이스',	
+'서울특별시 마포구 큰우물로 76 고려빌딩 4층 403호 RUACH',
+'02-2524-2455',
+'365일 24시간 연중무휴',
+'예약을 통해서 이용 가능합니다.',
+'취소규정내용',
+'환불규정내용',
+'seats_img05.jpg',
+70,
+3
+);
+
+insert into cafe values(
+6,
+'211-88-10263',
+'cafe_img06.jpg',
+'카페머그',
+'취업준비생들을 위한 청년 지원거점공간입니다.',
+'서울특별시 성북구 동소문로20가길 34',
+'02-7575-2456',
+'11시~23시',
+'취업 클래스를 예약하고 오시는 분들께서는 카페 내에서 대기해주시고, 궁금하신 점은 카운터에 문의하시면 됩니다.',
+'취소규정내용',
+'환불규정내용',
+'seats_img06.jpg',
+100,
+4
+);
+
+
+
+insert into cafe values(
+7,
+'211-88-10264',
+'cafe_img07.jpg',
+'더빅스터디',
+'청춘들이 모여 꿈을 실현해나가는 공간입니다.',
+'서울특별시 종로구 삼일대로15길 6',
+'02-2644-2212',
+'매일 9~22시',
+'예약하신 시간이나 인원 변경 시 최소 하루 전까지 알려주세요.',
+'취소규정내용',
+'환불규정내용',
+'seats_img07.jpg',
+120,
+5
+);
+insert into cafe values(
+8,
+'211-88-10265',
+'cafe_img08.jpg',
+'꿈꾸는 반지하',
+'청년들이 꿈을 키우는 공간입니다.',
+'서울특별시 서대문구 연세로5나길 10',
+'02-2675-2166',
+'매일 10~22시',
+'예약 시 일자리카페로 지원한다고 하시고 예약 가능여부를 확인해주세요.',
+'취소규정내용',
+'환불규정내용',
+'seats_img08.jpg',
+70,
+6
+);
+
+insert into cafe values(
+9,
+'211-88-10266',
+'cafe_img09.jpg',
+'영풍문고 김포공항점',
+'취업을 준비하는 청년들에게 도움을 주기 위한 공간',
+'서울특별시 강서구 하늘길 38',
+'02-7544-4321',
+'매일 오전10시 30분 ~ 오후10시',
+'',
+'취소규정내용',
+'환불규정내용',
+'seats_img09.jpg',
+76,
+2
+);
+
+insert into cafe values(
+10,
+'211-88-10267',
+'cafe_img10.jpg',
+'마이크임팩트스튜디오 역삼',
+'카페형 코워킹스페이스, 도전하는 청춘들의 소통공간',
+'서울특별시 강남구 역삼로 180 마루180 1층 마이크임팩트 스튜디오',
+'02-6732-2245',
+'매일 9시~21시',
+'공지내용',
+'취소규정내용',
+'환불규정내용',
+'seats_img10.jpg',
+50,
+3
+);
+
+
+insert into std values(
+1,
+'café_img01.jpg',
+'미국 갬성의 소유자 Jenny의 스터디발판딛고 회화실력 up!',
+'영어를 체득하는 것이 목표인 스터디입니다!',
+'2019-07-20',
+'2019-11-20',
+'(토) 13:00-15:00',
+'대구-동성로',
+'2019-07-17',
+6,
+'평상시에는 정확히 알기 힘들었던 비슷한 단어들의 다른 뉘앙스, 
+재미있는 생활 표현들기호 등에 대해 우리 함께 배워봐요! 
+시험공부같은 영어가 아니라 영어와 관련된 재미있는 
+배경 지식들과 유쾌한 주제들을 가지고 
+자유롭고 즐거운 이야기를 나눠볼 거에요!',
+null,
+'안녕하세요!
+저는 impatient 한 사람이에요 
+but, in the good way :)',
+1
+);
+
+insert into std values(
+2,
+'café_img02.jpg',
+'폰카로 배우는 초기초 사진반 : 
+근대갬성 편',
+'조선 말 근대 갬성이 남아 있는 개항로를 거닐며 나만의 
+사진을 찍고, 메시지를 담는 
+방법을 배웁니다.',
+'2019-08-20',
+'2019-12-20',
+'(토) 13:00-15:00',
+'대구-동성로',
+'2019-07-17',
+6,
+'영상 촬영, 편집은 정말 아무것도 할 줄 모르고
+뭐 어디서 듣기로는 스마트폰 하나로 시작할 수 있다는데
+어디서부터 뭘 어떻게 시작해야할지 몰라서 답답하신 분들을 위해
+다른 장비나 노트북, 컴퓨터 필요없이
+스마트폰 하나로 브이로그 촬영, 편집 할 수 있는 팁과 노하우를 공유 드리려고 해요!',
+null,
+'개설자 경력
+1) 2017년 단체전 출전 : 나이트스캐이프 야경사진전시회
+2) 2019년 단체전 출전 : 인천주민 : 인천을 줌인하다 展
+3) 프리랜서 웨딩스냅 작가로 활동중',
+2
+);
+
+insert into std values(
+3,
+'café_img03.jpg',
+'영상 편집 1도 모르는 사람도 유튜브 시작할 수 있어요!!',
+'스마트폰 하나로 브이로그 촬영, 편집 노하우 및 팁 ',
+'2019-09-18',
+'2020-01-18',
+'(월, 수) 13:00-15:00',
+'강원도-원주',
+'2019-08-17',
+5,
+'조고든
+  - 더모임 [사이드 프로젝트 - 유튜브] 진행 예정
+  - 현) 유튜버 & 프리랜서 마케터 & N잡러널',
+null,
+'안녕하세요!
+저는 impatient 한 사람이에요 
+but, in the good way :)',
+3
+);
+
+insert into std values(
+4,
+'café_img04.jpg',
+'세계사독서모임',
+'한 달에 두 번 세계사를 위주로 읽는 역사 독서 동아리에서 회원을 모집합니다.',
+'2019-03-24',
+'2019-12-30',
+'(화) 14:00-16:30',
+'서울 안국',
+'2019-04-17',
+12,
+'책만이 아니라 지도와 동영상, 영화 등의 자료와 병행해 나갑니다.',
+null,
+'역사를 잊은 민족에게 미래란 없습니다 여러분~ 공부합시다',
+4
+);
+
+insert into std values(
+5,
+'café_img05.jpg',
+'기술세미나 :: Git을 활용한 오픈소스 개발',
+'이번 기술세미나에서는 ‘Git을 활용한 오픈소스 개발의 이해와 실습’ 입니다.',
+'2019-08-07',
+'2019-09-09',
+'(수) 13:00-15:00',
+'서울 송파',
+'2019-07-27',
+35,
+'GIT의 기본적인 사용방법은 명령어를 이용하는 것입니다.
+그래서 이 수업에서는 GUI기반으로 GIT을 사용할 수 있는
+sourceTree를 이용해 GIT의 사용법을 알려드릴게요.
+부가적으로 명령어로 GIT을 제어하는 방법을 소개합니다.',
+null,
+'저 생활코딩 이고잉이에요, 저와 함께라면
+당신은 이미 개발자:)',
+5
+);
+
+
+insert into std values(
+6,
+'café_img06.jpg',
+'젊은 사업가들의 저녁 (썸머 비어파티)',
+'젊은 사업가 모임 모티브소사이어티가
+43번째 모임에 당신을 초대합니다.',
+'2019-08-28',
+'2019-08-28',
+'(수) 19:00-22:00',
+'서울 역삼',
+'2019-08-22',
+86,
+'[Motive Society] 는
+서로 긍정적인 모티브를 주고 받자는 취지하에
+다양한 분야의 사람들이 열정으로 뭉친 젊은 사업가 모임 단체입니다.
+간단하게 식사하며, 다양한 분야 젊은 사업가분들과 함께  
+긍정적인 에너지 나누는 시간 가져보아요:) 
+열정있는 분들의 신청 기다리겠습니다^^',
+null,
+'안녕하세요!
+저는 사업가 모임 단체의 장이에요 :)',
+6
+);
+
+
+insert into std values(
+7,
+'café_img07.jpg',
+'파이썬 기초부터 웹크롤러까지 up!',
+'재미없는 문법책에서 벗어나
+실적 데이터분석 프로젝트 제작으로
+재밌게 배워보세요!',
+'2019-08-11',
+'2019-11-29',
+'(토) 13:00-16:00',
+'서울 서초',
+'2019-08-11',
+22,
+'- 쇼핑몰의 상품목록을 전부 가져오는 크롤러 
+- 포털 뉴스 목록 가져오는 크롤러
+- 크롤링 봇 방지장치해놓은 웹사이트 뚫는 법
+- 60분 걸릴 작업 멀티쓰레딩으로 60초만에 하는 법
+- 크롤러 멀티 쓰레딩으로 본의아니게 DDOS 공격하는법',
+null,
+'안녕하세요!
+파이썬으로 배우는 웹크롤러 저자입니다^^',
+7
+);
+
+
+insert into std values(
+8,
+'café_img08.jpg',
+'미국 갬성의 소유자 Jenny의 스터디발판딛고 회화실력 up!',
+'영어를 체득하는 것이 목표인 스터디입니다!',
+'2019-07-20',
+'2019-11-20',
+'(토) 13:00-15:00',
+'대구-동성로',
+'2019-07-17',
+6,
+'평상시에는 정확히 알기 힘들었던 비슷한 단어들의 다른 뉘앙스, 
+재미있는 생활 표현들기호 등에 대해 우리 함께 배워봐요! 
+시험공부같은 영어가 아니라 영어와 관련된 재미있는 
+배경 지식들과 유쾌한 주제들을 가지고 
+자유롭고 즐거운 이야기를 나눠볼 거에요!',
+null,
+'안녕하세요!
+저는 impatient 한 사람이에요 
+but, in the good way :)',
+8
+);
+
+
+insert into std values(
+9,
+'café_img09.jpg',
+'꿀잠 트레이닝 : 아직도 불면증때문에 고민이신가요? ',
+'숙면을 취할 수 있도록 도움을 드리겠습니다.!',
+'2019-07-08',
+'2019-08-09',
+'(토) 15:30-17:30',
+'서울 강남',
+'2019-07-07',
+6,
+'양질의 수면을 얻으려면 어떻게 해야 하는지
+불면증 약으로 해결되지 않는 수면장애는 어떻게 다뤄야 하는지
+숙면을 시작으로 질적으로 다른 하루를 시작하려면 어떻게 해야 할지
+나의 수면상태는 어떤지
+그리고 아무도 알려주지 않는 근본적인 해결책은 어떤 것인지
+오늘 하루도 누군가에게는 희망이 되는 하루를 만들기 위해 노력해봅니다.',
+null,
+'안녕하세요!
+꿀잠연구소입니다.
+꿀잠잘수있게 제가 꿀팁을 드릴게요:)',
+9
+);
+
+
+insert into std values(
+10,
+'café_img10.jpg',
+'코딩으로 배우는 암호화폐결제',
+'암호화폐 결제도입하고자 하는데 기술력이 없거나 
+암호화폐결제에 대해 알고 싶거나 개발하고자 하는 개발자 대상교육!',
+'2019-07-23',
+'2019-08-17',
+'(화) 14:00-17:00',
+'서울 강남',
+'2019-07-17',
+40,
+'비트코인 시세가 다시 상승하면서 비트코인, 이더리움, EOS 등 
+많은 암호화폐에 대한 실제 활용에 대한 요구가 증가하고 있습니다.
+신용카드, 계좌이체 등 다른 결제수단와 어떤 차이점이 있는지를 이해하고
+어떻게 도입하고, 어느 부분을 고려해야할지 대한 가장 구체적인
+해법을 제안하고자 교육을 실시',
+null,
+'
+- 정보관리기술사
+- 하이브랩 대표, 암호화폐결제시스템 paycrypto 서비스운영(50개암호화폐)
+- 핀테크 경력 15년 ',
+10
+);
+
+insert into admin values(1,'std',1234);	
+insert into admin values(2,'msb',1234);
+insert into admin values(3,'chj',1234);
+insert into admin values(4,'psy',1234);
+insert into admin values(5,'ksy',1234);
+insert into admin values(6,'khj',1234);
+insert into admin values(7,'khb',1234);
+insert into admin values(8,'cyi',1234);
+
+insert into qa values(1,'이용권구매 질문!','2019-08-03','true','이용권구매 계좌이체도가능한가요?',sysdate,'죄송합니다 모든결제는 카드결제만 가능합니다',1,1);
+insert into qa values(2,'카페예약확인하고싶어요','2019-08-03','true','예약정보확인은어디서하죠?',sysdate,'개인마이페이지에서 가능하십니다',2,1);
+insert into qa values(3,'모임개설문의','2019-08-04','true','모임을개설하고싶어요',sysdate,'개인마이페이지의 스투더개설하기버튼을 눌러보세요!',3,1);
+insert into qa values(4,'모임원관리','2019-08-04','true','모임원들 관리는 어디서 할수있나요?',sysdate,'개인마이페이지의 나의 스투더관리 탭에서 가능합니다',4,1);
+insert into qa values(5,'환불문의','2019-08-05','true','스터디카페 예약환불은 언제까지 가능한가요?',sysdate,'해당카페이 직접문의바랍니다',5,1);
+insert into qa values(6,'카드등록하고싶어요!',sysdate,'false','카드등록은 어떻게하나요?',null,null,6,1);
+insert into qa values(7,'쿠폰미지급',sysdate,'false','이벤트참여했는데 쿠폰이안들어와요',null,null,7,1);
+insert into qa values(8,'개인정보수정',sysdate,'false','비밀번호를 바꾸고싶습니다',null,null,8,1);
+insert into qa values(9,'카페검색',sysdate,'false','해시태그검색은 어떻게하나요?',null,null,9,1);
+insert into qa values(10,'비밀번호찾고싶어요',sysdate,'false','비밀번호를 까먹었어요..이거친구아이디에요 ㅠㅠ',null,null,10,1);
+
+insert into notice values(1,'스투더이용수칙입니다','피커들 모집시 상호간의 예의를 꼭지켜주세요',sysdate,0, 1);
+insert into notice values(2,'카페이용수칙입니다','결제이후 환불은 해당카페와 상의하셔야하므로 신중히 결정해주세요',sysdate,0, 1);
+insert into notice values(3,'카페이용수칙2입니다','룸예약시 예약날짜를 꼭확인해주세요',sysdate,0, 1);
+insert into notice values(4,'스투더픽 향후방향성입니다','앞으로도 고객님들의 편의를 위해 다양한 기능이 추가될 예정이오니 많은 사랑부탁드립니다',sysdate,0, 1);
+insert into notice values(5,'웹사이트 점검안내드립니다','2019/08/10일 03:00~04:00동안 결제진행이 어려울수있으니 참고바랍니다',sysdate,0, 1);
+insert into notice values(6,'중요한 질문은 메일로 문의주시기바랍니다','메일주소는 msb9876@bit.com입니다',sysdate,0, 1);
+insert into notice values(7,'사업자분들의 운영을 돕기위하여 사업자마이페이지를 개선하였습니다','이제 한눈에 매출현황을 확인할수 있는 기능이 추가되었습니다',sysdate,0, 1);
+insert into notice values(8,'카페예약개선사항입니다','카페예약을 수월하게 하기위하여 개인카드등록을 추가하였습니다',sysdate,0, 1);
+insert into notice values(9,'곧 네이버,카카오 간편로그인 기능이 추가됩니다','회원가입을 조금더 편하게 할수있도록 발전하는 스투더픽이 되겠습니다',sysdate,0, 1);
+insert into notice values(10,'고객님의 개인정보는 소중하게 보호중입니다','저희 스투더픽에서는 고객님들의 개인정보유출을 최소하하는데 항상힘쓰고있습니다',sysdate,0, 1);
+
+insert into cafe_review values(1, '저렴하고 가성비 좋아요~', 4, 1, 1);
+insert into cafe_review values(2, '에어컨이 시원해요', 5, 1, 1);
+insert into cafe_review values(3, '깨끗합니다', 3, 2, 2);
+insert into cafe_review values(4,'매우 넓어요', 3, 3, 4);
+insert into cafe_review values(5, '의자가 푹신합니다', 4, 2, 3);
+insert into cafe_review values(6, '와이파이가 느려요', 2, 3, 6);
+insert into cafe_review values(7, '피씨방이 옆이라 시끄러워요', 1, 3, 7);
+insert into cafe_review values(8, '화징실에 휴지가 없어요', 1, 3, 8);
+insert into cafe_review values(9, '가성비 좋습니다', 4, 7, 4);
+insert into cafe_review values(10, '그냥 다닐만 합니다.', 3, 9, 10);
+
+insert into cafe_review_reply values(1, '네 저희 카페는 가성비가 좋습니다', 1, 1);
+insert into cafe_review_reply values(2, '새 에어컨 입니다.', 2, 1);
+insert into cafe_review_reply values(3, '매일 청소를 합니다', 3, 2);
+insert into cafe_review_reply values(4, '임대료가 많이 나갑니다', 4, 4);
+insert into cafe_review_reply values(5, '천연 가죽 의자에요', 5, 3);
+insert into cafe_review_reply values(6, '기가 인터넷으로 곧 바꿀게요', 6, 6);
+insert into cafe_review_reply values(7, '피씨방 자주 이용해 주세요', 7, 7);
+insert into cafe_review_reply values(8, '휴지는 제공해 드리지 않습니다.', 8, 8);
+insert into cafe_review_reply values(9, '가성비가 최고입니다.', 9, 4);
+insert into cafe_review_reply values(10, '그냥 자주 와주세요', 10, 10);
+
+
+insert into cafe_review_image values(1, 'review_image_k0001.jpg', 1);
+insert into cafe_review_image values(2, 'review_image_k0002.jpg', 2);
+insert into cafe_review_image values(3, 'review_image_k0003.jpg', 3);
+insert into cafe_review_image values(4, 'review_image_k0004.jpg', 4);
+insert into cafe_review_image values(5, 'review_image_k0005.jpg', 5);
+insert into cafe_review_image values(6, 'review_image_k0006.jpg', 6);
+insert into cafe_review_image values(7, 'review_image_k0007.jpg', 7);
+insert into cafe_review_image values(8, 'review_image_k0008.jpg', 8);
+insert into cafe_review_image values(9, 'review_image_k0009.jpg', 9);
+insert into cafe_review_image values(10, 'review_image_k00010.jpg', 10);
+
+insert into cafe_img values(
+1,
+'cafe_detail_img1.jpg',
+1
+);
+
+insert into cafe_img values(
+2,
+'cafe_detail_img2.jpg',
+1
+);
+
+insert into cafe_img values(
+3,
+'cafe_detail_img3.jpg',
+1
+);
+
+insert into cafe_img values(
+4,
+'cafe_detail_img4.jpg',
+1
+);
+
+insert into cafe_img values(
+5,
+'cafe_detail_img5.jpg',
+2
+);
+
+insert into cafe_img values(
+6,
+'cafe_detail_img6.jpg',
+2
+);
+
+insert into cafe_img values(
+7,
+'cafe_detail_img7.jpg',
+2
+);
+
+insert into cafe_img values(
+8,
+'cafe_detail_img8.jpg',
+3
+);
+
+insert into cafe_img values(
+9,
+'cafe_detail_img9.jpg',
+3
+);
+
+insert into cafe_img values(
+10,
+'cafe_detail_img10.jpg',
+4
+);
+
+
+insert into cafe_img values(
+11,
+'cafe_detail_img11.jpg',
+5
+);
+insert into cafe_img values(
+12,
+'cafe_detail_img12.jpg',
+5
+);
+insert into cafe_img values(
+13,
+'cafe_detail_img13.jpg',
+5
+);
+insert into cafe_img values(
+14,
+'cafe_detail_img14.jpg',
+6
+);
+insert into cafe_img values(
+15,
+'cafe_detail_img15.jpg',
+7
+);
+insert into cafe_img values(
+16,
+'cafe_detail_img16.jpg',
+8
+);
+
+insert into cafe_inq values(
+1,
+1,
+'강아지나 고양이 데려가도 되나요?',
+'안됩니다.',
+'FALSE',
+1
+);
+
+insert into cafe_inq values(
+2,
+1,
+'도시락 가져가서 먹을 수 있나요?',
+'네 가능합니다.',
+'FALSE',
+2
+);
+
+insert into cafe_inq values(
+3,
+1,
+'노래방 기계가 있는 스터디 룸이 있나요?',
+'없습니다. 건물 3층에 코노가 있으니 그걸 이용하세요',
+'TRUE',
+3
+);
+
+insert into cafe_inq values(
+4,
+1,
+'추석에 영업하나요?',
+null,
+'TRUE',
+4
+);
+
+insert into cafe_inq values(
+5,
+1,
+'외부 음식 반입가능한가요?',
+null,
+'FALSE',
+5
+);
+
+insert into cafe_inq values(
+6,
+2,
+'콘센트 많나요?',
+'자리마다 구비되어 있습니다.',
+'FALSE',
+1
+);
+
+insert into cafe_inq values(
+7,
+2,
+'커피 무료 제공인가요?',
+null,
+'TRUE',
+2
+);
+
+
+insert into cafe_inq values(
+8,
+3,
+'담요 있나요?',
+'네, 준비되어있습니다 ^-^',
+'TRUE',
+3
+);
+
+insert into cafe_inq values(
+9,
+4,
+'할인쿠폰 적용 되나요?',
+'죄송합니다. 저희 카페는 적용되지 않습니다.',
+'FALSE',
+4
+);
+
+
+insert into cafe_inq values(
+10,
+5,
+'에어컨 빵빵한가요?',
+null,
+'FALSE',
+5
+);
+
+insert into keyword values(1,'프로그래밍','서울',1);
+insert into keyword values(2,'자바','신촌',2);
+insert into keyword values(3,'자바','마포',3);
+insert into keyword values(4,'자바','홍대',4);
+insert into keyword values(5,'자바','강남',5);
+insert into keyword values(6,'자바','성북',6);
+insert into keyword values(7,'자바','강서',7);
+insert into keyword values(8,'자바','화곡',8);
+insert into keyword values(9,'자바','논현',9);
+insert into keyword values(10,'자바','반포',10);
+
+insert into hashtag values(
+1,
+'자바',
+1
+);
+insert into hashtag values(
+2,
+'JSP',
+1
+);
+insert into hashtag values(
+3,
+'파이썬',
+2
+);
+insert into hashtag values(
+4,
+'토익',
+3
+);
+insert into hashtag values(
+5,
+'오픽',
+3
+);
+insert into hashtag values(
+6,
+'토익스피킹',
+3
+);
+insert into hashtag values(
+7,
+'자기개발',
+2
+);
+insert into hashtag values(
+8,
+'취미',
+3
+);
+insert into hashtag values(
+9,
+'성인스터디',
+5
+);
+insert into hashtag values(
+10,
+'부자',
+6
+);
+
+insert into std_apply values(
+1,
+1,
+1,
+'흥미로운 주제라 관심이 생겨 신청하게되었습니다. '
+);
+insert into std_apply values(
+2,
+1,
+2,
+'전부터 배워보고 싶던 자바 모임이 생겨서 신청합니다. '
+);
+insert into std_apply values(
+3,
+2,
+3,
+'같이 공부해요~'
+);
+insert into std_apply values(
+4,
+3,
+4,
+'질문 많이 해도되나요? 하루에 10번 넘게 해도 되나요? 간식주나요?'
+);
+insert into std_apply values(
+5,
+4,
+5,
+'벌칙에 대한 언급이 따로 없는데  이 부분에 대해서는 어떻게 하실지 먼저 의견 듣고싶네요.'
+);
+insert into std_apply values(
+6,
+5,
+6,
+'신박한 소재로 모임을 만드신 것같아서 냉큼 신청합니다.'
+);
+insert into std_apply values(
+7,
+6,
+7,
+'피커님~~저 기억하시죠? 3차 스투더 참가했던 불주먹이에요! ^^이번에도 믿고 신청합니다. 충성충성'
+);
+insert into std_apply values(
+8,
+7,
+8,
+'급식이 시절에 펜을 제대로 못잡아 본게 아쉬웠는데 한번 신청해봅니다..!'
+);
+insert into std_apply values(
+9,
+8,
+9,
+'소문듣고 왔습니다^^ 열심히 참여하겠습니다~'
+);
+insert into std_apply values(
+10,
+9,
+10,
+'혼자 공부하는게 힘들었는데 모임이 있어서 너무 좋아요~'
+);
+
+insert into std_pickers values(1,1,1);
+insert into std_pickers values(2,2,2);
+insert into std_pickers values(3,3,3);
+insert into std_pickers values(4,4,4);
+insert into std_pickers values(5,5,5);
+insert into std_pickers values(6,6,6);
+insert into std_pickers values(7,7,7);
+insert into std_pickers values(8,8,8);
+insert into std_pickers values(9,9,9);
+insert into std_pickers values(10,10,10);
+
+insert into evt values(
+1,
+'스투더픽 홈페이지 오픈이벤트',
+'페이지 오픈기념 
+이용카페의 이용권 1000원 쿠폰',
+'2019-07-14',
+'2019-08-14',
+1);
+
+insert into evt values(
+2,
+'이 구역 리뷰왕 이벤트',
+'카페 이용후기를 남긴 피커중 추첨을 통해
+이용권 1000원 쿠폰',
+'2019-07-04',
+'2019-08-04',
+1);
+
+insert into evt values(
+3,
+'줄서서 먹던 맛집후기 이벤트',
+'맛집 이용후기를 남긴 피커중 선착순
+음식점 할인권 1000원 쿠폰',
+'2019-07-31',
+'2019-08-31',
+1);
+
+insert into evt values(
+4,
+'카페찾고 결제까지 10초면끗',
+'스투더페이를 이용한 피커에게
+1500원 할인 쿠폰',
+'2019-07-02',
+'2019-09-02',
+1);
+
+insert into evt values(
+5,
+'스투더모임 작명 이벤트',
+'신박한 스투더 모임이름을 짓는 튜터에게 추첨을 통해
+카페 예약 할인 15000원 쿠폰',
+'2019-06-14',
+'2019-09-14',
+2);
+
+insert into evt values(
+6,
+'너가찾는 바로그거 스투더에 다~있다',
+'sns에 스투더 홍보용 댓글 및 영상을 올린 고객에게
+추첨을 통해 15000원 쿠폰지급',
+'2019-07-24',
+'2019-08-24',
+2);
+
+insert into evt values(
+7,
+'카페찾아찾아 이벤트',
+'스터디카페 사장님과 스투더를 연결해준 고객에게
+카페 예약 할인권 20000원 쿠폰',
+'2019-05-30',
+'2019-07-28',
+2);
+
+insert into evt values(
+8,
+'스투더 성실모임 이벤트',
+'스투더 모임에 대한 인증 및 재미있는 스토리를 남긴
+고객에게 추첨을 통해 이용권 1500원 쿠폰',
+'2019-07-02',
+'2019-08-12',
+2);
+
+insert into evt values(
+9,
+'스투더 목표달성 이벤트',
+'스투더를 통해 목표달성하여 후기를 남긴 피커중 
+추첨을 통해 이용권 20000원 쿠폰',
+'2019-07-01',
+'2019-09-01',
+1);
+
+insert into evt values(
+10,
+'처음이용 이벤트',
+'스투더 사이트를 처음이용한 고객에게
+이용권 1000원 할인 쿠폰',
+'2019-07-14',
+'2019-11-14',
+1);
+--------------추가--------------------
+
+insert into evt values(
+(select nvl(max(evt_no),0)+1 from evt),
+'소심 이벤트',
+'날마다 오는 이벤트가 아닙니다. 관리자가 휴가가서 만든 이벤트. 100원 할인',
+'2019-08-01',
+'2019-08-14',
+1);
+insert into evt values(
+(select nvl(max(evt_no),0)+1 from evt),
+'소심 이벤트2',
+'날마다 오는 이벤트가 아닙니다. 관리자가 휴가가서 만든 이벤트. 200원 할인',
+'2019-08-02',
+'2019-08-15',
+1);
+
+insert into evt values(
+(select nvl(max(evt_no),0)+1 from evt),
+'소심 이벤트3',
+'날마다 오는 이벤트가 아닙니다. 관리자가 휴가가서 만든 이벤트. 300원 할인',
+'2019-08-03',
+'2019-08-16',
+1);
+insert into evt values(
+(select nvl(max(evt_no),0)+1 from evt),
+'소심 이벤트4',
+'날마다 오는 이벤트가 아닙니다. 관리자가 휴가가서 만든 이벤트. 400원 할인',
+'2019-08-04',
+'2019-08-17',
+1);
+insert into evt values(
+(select nvl(max(evt_no),0)+1 from evt),
+'소심 이벤트5',
+'날마다 오는 이벤트가 아닙니다. 관리자가 휴가가서 만든 이벤트. 500원 할인',
+'2019-08-05',
+'2019-08-18',
+1);
+
+--------------추가끝--------------------
+
+insert into evt_coupon values ( 
+'ZY001',
+1000,
+'false',
+1,
+1 ); 
+
+insert into evt_coupon values ( 
+'ZY002',
+1000,
+'true',
+1,
+2 ); 
+
+insert into evt_coupon values ( 
+'YX001',
+1000,
+'false',
+2,
+3 );
+
+insert into evt_coupon values ( 
+'YX002',
+1000,
+'true',
+2,
+4 ); 
+
+insert into evt_coupon values ( 
+'XW001',
+1000,
+'false',
+3,
+5 ); 
+
+insert into evt_coupon values ( 
+'XW002',
+1000,
+'true',
+3,
+6 ); 
+
+insert into evt_coupon values ( 
+'WV001',
+1500,
+'false',
+4,
+7 ); 
+
+insert into evt_coupon values ( 
+'WV002',
+1500,
+'true',
+4,
+8 ); 
+
+insert into evt_coupon values ( 
+'VU001',
+15000,
+'false',
+5,
+9 );
+
+insert into evt_coupon values ( 
+'VU002',
+15000,
+'true',
+5,
+10 );
+
+insert into evt_coupon values ( 
+'UT001',
+15000,
+'true',
+6,
+1 ); 
+
+insert into evt_coupon values ( 
+'TS001',
+20000,
+'true',
+7,
+3 ); 
+
+insert into evt_coupon values (
+'SR001',
+1500,
+'true',
+8,
+5 ); 
+
+insert into evt_coupon values ( 
+'RQ001',
+20000,
+'ture',
+9,
+7 );
+
+insert into evt_coupon values ( 
+'QP001',
+1000,
+'true',
+10,
+9 ); 
+
+--------------추가--------------------
+insert into evt_coupon values ( 
+'QP010',
+100, 
+'false',
+11,
+1 ); 
+insert into evt_coupon values ( 
+'QP011',
+200,
+'false',
+12,
+2 ); 
+insert into evt_coupon values ( 
+'QP012',
+300,
+'false',
+13,
+3 ); 
+insert into evt_coupon values ( 
+'QP013',
+400,
+'true',
+14,
+4 ); 
+insert into evt_coupon values ( 
+'QP014',
+500,
+'true',
+15,
+5 ); 
+
+--------------추가끝--------------------
+insert into room values(1,'룸1',1);
+insert into room values(2,'룸2',1);
+insert into room values(3,'룸3',1);
+insert into room values(4,'펭귄',2);
+insert into room values(5,'북극곰',2);
+insert into room values(6,'호랑이',2);
+insert into room values(7,'사자',2);
+insert into room values(8,'토끼',2);
+insert into room values(9,'해바라기',3);
+insert into room values(10,'장미',3);
+insert into room values(11,'수국',3);
+insert into room values(12,'1번방',4);
+insert into room values(13,'2번방',4);
+insert into room values(14,'왕꿈틀이방',5);
+insert into room values(15,'마이구미방',5);
+insert into room values(16,'물고기자리방',6);
+insert into room values(17,'물병자리방',6);
+insert into room values(18,'피아노방',7);
+insert into room values(19,'바이올린방',7);
+insert into room values(20,'도레미방',8);
+insert into room values(21,'파솔라방',8);
+insert into room values(22,'아이폰방',9);
+insert into room values(23,'갤럭시방',9);
+insert into room values(24,'계곡방',10);
+insert into room values(25,'바다방',10);
+
+insert into room_reser values(
+190715379,
+1,
+1,
+'2019-07-14',
+7,
+3,
+4,
+20000
+);
+
+insert into room_reser values(
+190714921,
+2,
+2,
+'2019-07-14',
+18,
+3,
+5,
+10000
+);
+
+insert into room_reser values(
+190714182,
+3,
+3,
+'2019-07-14',
+18,
+6,
+4,
+15000
+);
+
+insert into room_reser values(
+190714931,
+4,
+3,
+'2019-07-14',
+14,
+2,
+3,
+7000
+);
+
+insert into room_reser values(
+190714779,
+5,
+3,
+'2019-07-14',
+10,
+2,
+3,
+5000
+);
+
+insert into room_reser values(
+190804123,
+6,
+4,
+'2019-08-04',
+14,
+2,
+3,
+12000
+);
+
+insert into room_reser values(
+190804695,
+7,
+5,
+'2019-08-04',
+17,
+3,
+4,
+20000
+);
+
+insert into room_reser values(
+190804579,
+8,
+6,
+'2019-08-04',
+14,
+6,
+5,
+5000
+);
+
+insert into room_reser values(
+190804778,
+9,
+7,
+'2019-08-04',
+16,
+5,
+2,
+13000
+);
+
+insert into room_reser values(
+190804198,
+10,
+7,
+'2019-08-04',
+10,
+4,
+3,
+14000
+);
+--------------추가--------------------
+insert into room_reser values(
+190812200,
+4,
+1,
+'2019-08-12',
+10,
+3,
+4,
+10000
+);
+insert into room_reser values(
+190812201,
+5,
+2,
+'2019-08-13',
+19,
+4,
+2,
+7000
+);
+--------------추가끝--------------------
+insert into room_time values(1,0,13,1000,1);
+insert into room_time values(2,13,24,1800,1);
+
+insert into room_time values(3,0,13,1000,2);
+insert into room_time values(4,13,18,1800,2);
+
+insert into room_time values(5,0,13,1000,3);
+insert into room_time values(6,13,18,1800,3);
+
+
+insert into room_time values(7,0,9,1500,4);
+insert into room_time values(8,9,18,2000,4);
+insert into room_time values(9,18,24,2500,4);
+
+insert into room_time values(10,0,9,1500,5);
+insert into room_time values(11,9,18,2000,5);
+insert into room_time values(12,18,24,2500,5);
+
+insert into room_time values(13,0,9,2000,6);
+insert into room_time values(14,9,18,2500,6);
+insert into room_time values(15,18,24,3000,6);
+
+insert into room_time values(16,0,9,3000,7);
+insert into room_time values(17,9,18,3500,7);
+insert into room_time values(18,18,24,4000,7);
+
+insert into room_time values(19,0,9,4000,8);
+insert into room_time values(20,9,18,4500,8);
+insert into room_time values(21,18,24,5000,8);
+
+
+insert into room_time values(22,0,13,1000,9);
+insert into room_time values(23,13,18,1800,9);
+
+insert into room_time values(24,0,13,1000,10);
+insert into room_time values(25,13,18,1800,10);
+
+insert into room_time values(26,0,13,1000,11);
+insert into room_time values(27,13,18,1800,11);
+
+--------------추가--------------------
+insert into room_time values(28,0,13,1400,12);
+insert into room_time values(29,13,24,1800,12);
+
+insert into room_time values(30,0,13,1400,13);
+insert into room_time values(31,13,18,1800,13);
+
+insert into room_time values(32,0,13,1500,14);
+insert into room_time values(33,13,24,1800,14);
+
+insert into room_time values(34,0,13,1500,15);
+insert into room_time values(35,13,24,1800,15);
+
+insert into room_time values(36,0,13,1600,16);
+insert into room_time values(37,13,24,1800,16);
+
+insert into room_time values(38,0,13,1600,17);
+insert into room_time values(39,13,24,1800,17);
+
+insert into room_time values(40,0,13,1200,18);
+insert into room_time values(41,13,24,1800,18);
+
+insert into room_time values(42,0,13,1200,19);
+insert into room_time values(43,13,24,1800,19);
+
+insert into room_time values(44,0,13,1200,20);
+insert into room_time values(45,13,18,1800,20);
+
+insert into room_time values(46,0,13,1200,21);
+insert into room_time values(47,13,18,1800,21);
+
+insert into room_time values(48,0,13,1200,22);
+insert into room_time values(49,13,18,1800,22);
+
+insert into room_time values(50,0,13,1200,23);
+insert into room_time values(51,13,24,1800,23);
+
+insert into room_time values(52,0,13,1100,24);
+insert into room_time values(53,13,24,1800,24);
+
+insert into room_time values(54,0,13,1100,25);
+insert into room_time values(55,13,18,1800,25);
+--------------추가끝--------------------
+insert into pass values(
+1001,
+6,
+5000,
+1);
+
+insert into pass values(
+1002,
+3,
+3000,
+2);
+
+insert into pass values(
+1003,
+12,
+10000,
+3);
+
+insert into pass values(
+1004,
+24,
+22000,
+4);
+
+insert into pass values(
+1005,
+5,
+4000,
+5);
+
+insert into pass values(
+1006,
+8,
+7700,
+6);
+
+insert into pass values(
+1007,
+3,
+2500,
+7);
+
+insert into pass values(
+1008,
+10,
+9000,
+8);
+
+insert into pass values(
+1009,
+12,
+11000,
+9);
+
+insert into pass values(
+1010,
+9,
+8500,
+10);
+
+
+insert into pass values(
+1011,
+23,
+7000,
+11);
+--------------추가--------------------
+insert into pass values(
+1012,
+4,
+5000,
+8);
+
+insert into pass values(
+1013,
+5,
+6000,
+9);
+
+insert into pass values(
+1014,
+6,
+7000,
+10);
+--------------추가끝--------------------
+
+insert into get_pass values ( 
+190714001,
+6000,
+1,
+1001 );
+
+
+insert into get_pass values ( 
+190715214,
+6000,
+1,
+1001 );
+
+
+insert into get_pass values ( 
+190715211,
+7000,
+2,
+1002 );
+
+insert into get_pass values ( 
+190715521,
+8000,
+3,
+1003 );
+
+insert into get_pass values ( 
+190715890,
+9000,
+4,
+1004 );
+
+insert into get_pass values ( 
+190715698,
+10000,
+5,
+1005 );
+
+insert into get_pass values (
+190715423,
+11000,
+6,
+1006);
+
+insert into get_pass values ( 
+190804977,
+12000,
+7,
+1007);
+
+insert into get_pass values ( 
+190804144,
+13000,
+8,
+1008); 
+
+insert into get_pass values ( 
+190804807,
+14000,
+9,
+1009); 
+
+insert into get_pass values ( 
+190804920,
+15000,
+10,
+1010); 
+
+
+insert into payment values (
+1,
+'룸',
+190715379,
+null,
+'ZY001' ); 
+
+--------------추가--------------------
+
+insert into get_pass values ( 
+190812930,
+5000,
+1,
+1012); 
+insert into get_pass values ( 
+190812931,
+6000,
+2,
+1013); 
+insert into get_pass values ( 
+190812932,
+7000,
+3,
+1014); 
+--------------추가끝--------------------
+
+insert into payment values (
+2,
+'이용권',
+null,
+190715423,
+'YX001' ); 
+
+insert into payment values (
+3,
+'룸',
+190714921,
+null,
+'XW001' ); 
+
+insert into payment values (
+4,
+'이용권',
+null,
+190804977,
+'WV001'); 
+
+insert into payment values (
+5,
+'룸',
+190714182,
+null,
+'VU001' ); 
+
+insert into payment values (
+6, 
+'이용권',
+null,
+190804144,
+'UT001' );  
+
+insert into payment values (
+7,
+'룸',
+190714931,
+null,
+'TS001' ); 
+
+insert into payment values ( 
+8,
+'이용권',
+null,
+190804807,
+'SR001' ); 
+
+insert into payment values (
+9,
+'룸',
+190714779,
+null,
+'RQ001' );
+
+insert into payment values ( 
+10,
+'이용권',
+null,
+190804920,
+'QP001' ); 
+
+--------------추가--------------------
+insert into payment values ( 
+11,
+'이용권',
+null,
+190812930,
+'QP010' ); 
+insert into payment values ( 
+12,
+'이용권',
+null,
+190812931,
+'QP011' ); 
+insert into payment values( 
+13,
+'이용권',
+null,
+190812932,
+'QP012' ); 
+insert into payment values ( 
+14,
+'룸',
+190812200,
+null,
+'QP013' ); 
+insert into payment values ( 
+15,
+'룸',
+190812201,
+null,
+'QP014' ); 
+--------------추가끝--------------------

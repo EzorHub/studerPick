@@ -1,0 +1,4771 @@
+
+CREATE TABLE CAFE (
+       CAFE_NO              NUMBER NOT NULL,
+       LICENSE_NUM          VARCHAR2(50) NOT NULL,
+       MAIN_IMG             VARCHAR2(200) NULL,
+       CAFE_NAME            VARCHAR2(200) NOT NULL,
+       CAFE_INFO            VARCHAR2(300) NULL,
+       CAFE_LOC             VARCHAR2(300) NULL,
+       CAFE_PHONE           VARCHAR2(50) NULL,
+       CAFE_HRS             VARCHAR2(100) NOT NULL,
+       CAFE_NOTICE          VARCHAR2(2000) NULL,
+       CAFE_CP              VARCHAR2(2000) NOT NULL,
+       CAFE_RP              VARCHAR2(2000) NOT NULL,
+       SEATS                NUMBER NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE
+       ADD  ( PRIMARY KEY (CAFE_NO) ) ;
+
+
+CREATE TABLE CAFE_IMG (
+       CAFE_IMG_NO          NUMBER NOT NULL,
+       CAFE_IMG_NAME        VARCHAR2(200) NOT NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_IMG
+       ADD  ( PRIMARY KEY (CAFE_IMG_NO) ) ;
+
+
+CREATE TABLE CAFE_INQ (
+       INQ_NO               NUMBER NOT NULL,
+       INQ_CONTENT          VARCHAR2(3000) NOT NULL,
+       INQ_REPLY            VARCHAR2(3000) NULL,
+       CAFE_NO              NUMBER NOT NULL,
+       ISSECRET             VARCHAR2(10) NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( PRIMARY KEY (INQ_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW (
+       REVIEW_NO            NUMBER NOT NULL,
+       REVIEW_CONTENT       VARCHAR2(3000) NOT NULL,
+       GRADE                NUMBER NOT NULL,
+       CAFE_NO              NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( PRIMARY KEY (REVIEW_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW_IMAGE (
+       REVIEW_IMG_NO        NUMBER NOT NULL,
+       REVIEW_IMG           VARCHAR2(200) NOT NULL,
+       REVIEW_NO            NUMBER NOT NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW_IMAGE
+       ADD  ( PRIMARY KEY (REVIEW_IMG_NO) ) ;
+
+
+CREATE TABLE CAFE_REVIEW_REPLY (
+       REPLY_NO             NUMBER NOT NULL,
+       REPLY                VARCHAR2(3000) NULL,
+       REVIEW_NO            NUMBER NOT NULL,
+       CUST_NO              NUMBER NULL
+);
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( PRIMARY KEY (REPLY_NO) ) ;
+
+
+CREATE TABLE CUSTOMER (
+       CUST_NO              NUMBER NOT NULL,
+       CUST_NAME            VARCHAR2(20) NOT NULL,
+       CUST_NICK            VARCHAR2(20) NOT NULL,
+       CUST_IMG             VARCHAR2(200) NULL,
+       PHONE                VARCHAR2(50) NULL,
+       ADDR                 VARCHAR2(300) NULL,
+       EMAIL                VARCHAR2(100) NOT NULL,
+       ID                   VARCHAR2(20) NOT NULL,
+       PWD                  VARCHAR2(20) NOT NULL,
+       CUST_Q               VARCHAR2(200) NOT NULL,
+       CUST_A               VARCHAR2(200) NOT NULL
+);
+
+
+ALTER TABLE CUSTOMER
+       ADD  ( PRIMARY KEY (CUST_NO) ) ;
+
+
+CREATE TABLE EVT (
+       EVT_NO               NUMBER NOT NULL,
+       EVT_TITLE            VARCHAR2(1000) NOT NULL,
+       EVT_CONTENT          VARCHAR2(4000) NOT NULL,
+       DISCOUNT             NUMBER NULL,
+       EVT_START            DATE NULL,
+       EVT_END              DATE NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE EVT
+       ADD  ( PRIMARY KEY (EVT_NO) ) ;
+
+
+CREATE TABLE EVT_COUPON (
+       COUPON_NO            VARCHAR2(100) NOT NULL,
+       ISUSED               VARCHAR2(10) NOT NULL,
+       EVT_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( PRIMARY KEY (COUPON_NO) ) ;
+
+
+CREATE TABLE GET_PASS (
+       GET_PASS_NO          NUMBER NOT NULL,
+       TOTAL                NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PASS_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE GET_PASS
+       ADD  ( PRIMARY KEY (GET_PASS_NO) ) ;
+
+
+CREATE TABLE HASHTAG (
+       TAG_NO               NUMBER NOT NULL,
+       TAG_CONTENT          VARCHAR2(100) NOT NULL,
+       STD_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE HASHTAG
+       ADD  ( PRIMARY KEY (TAG_NO) ) ;
+
+
+CREATE TABLE KEYWORD_LOC (
+       KEY_LOC              VARCHAR2(100) NOT NULL,
+       KEY_LOC_HIT          NUMBER NULL,
+       CUST_NO              NUMBER NULL
+);
+
+
+ALTER TABLE KEYWORD_LOC
+       ADD  ( PRIMARY KEY (KEY_LOC) ) ;
+
+
+CREATE TABLE KEYWORD_NAME (
+       KEY_NAME             VARCHAR2(500) NOT NULL,
+       KEY_NAME_HIT         NUMBER NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE KEYWORD_NAME
+       ADD  ( PRIMARY KEY (KEY_NAME) ) ;
+
+
+CREATE TABLE MANAGER (
+       MAN_NO               NUMBER NOT NULL,
+       ID                   VARCHAR2(50) NOT NULL,
+       PW                   VARCHAR2(50) NOT NULL
+);
+
+
+ALTER TABLE MANAGER
+       ADD  ( PRIMARY KEY (MAN_NO) ) ;
+
+
+CREATE TABLE NOTICE (
+       NOTICE_NO            NUMBER NOT NULL,
+       NOTICE_TITLE         VARCHAR2(300) NOT NULL,
+       NOTICE_CONTENT       VARCHAR2(4000) NULL,
+       WRITE_DATE           DATE NOT NULL,
+       HITS                 NUMBER NOT NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE NOTICE
+       ADD  ( PRIMARY KEY (NOTICE_NO) ) ;
+
+
+CREATE TABLE PASS (
+       PASS_NO              NUMBER NOT NULL,
+       PASS_CONTENT         VARCHAR2(100) NOT NULL,
+       PRICE                NUMBER NOT NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE PASS
+       ADD  ( PRIMARY KEY (PASS_NO) ) ;
+
+
+CREATE TABLE PAYMENT (
+       PAY_NO               NUMBER NOT NULL,
+       PAY_NAME             VARCHAR2(200) NOT NULL,
+       RESER_NO             NUMBER NULL,
+       GET_PASS_NO          NUMBER NULL,
+       COUPON_NO            VARCHAR2(100) NULL
+);
+
+
+ALTER TABLE PAYMENT
+       ADD  ( PRIMARY KEY (PAY_NO) ) ;
+
+
+CREATE TABLE PROVIDER (
+       PROVIDER_NO          NUMBER NOT NULL,
+       PRO_NAME             VARCHAR2(20) NOT NULL,
+       PRO_NICK             VARCHAR2(20) NOT NULL,
+       PRO_IMG              VARCHAR2(200) NULL,
+       PHONE                VARCHAR2(50) NOT NULL,
+       ADDR                 VARCHAR2(300) NOT NULL,
+       EMAIL                VARCHAR2(100) NOT NULL,
+       ID                   VARCHAR2(20) NOT NULL,
+       PWD                  VARCHAR2(20) NOT NULL,
+       PRO_Q                VARCHAR2(200) NOT NULL,
+       PRO_A                VARCHAR2(200) NOT NULL
+);
+
+
+ALTER TABLE PROVIDER
+       ADD  ( PRIMARY KEY (PROVIDER_NO) ) ;
+
+
+CREATE TABLE QA (
+       QA_NO                NUMBER NOT NULL,
+       QA_TITLE             VARCHAR2(300) NOT NULL,
+       QA_WRITE_DATE        DATE NOT NULL,
+       QA_CONTENT           VARCHAR2(3000) NULL,
+       B_REF                NUMBER NULL,
+       B_LEVEL              NUMBER NULL,
+       B_STEP               NUMBER NULL,
+       CUST_NO              NUMBER NOT NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE QA
+       ADD  ( PRIMARY KEY (QA_NO) ) ;
+
+
+CREATE TABLE RESTAURANT (
+       REST_NO              NUMBER NOT NULL,
+       REST_NAME            VARCHAR2(200) NULL,
+       REST_LOC             VARCHAR2(500) NULL,
+       MAN_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE RESTAURANT
+       ADD  ( PRIMARY KEY (REST_NO) ) ;
+
+
+CREATE TABLE ROOM (
+       ROOM_NO              NUMBER NOT NULL,
+       ROOM_NAME            VARCHAR2(300) NULL,
+       CAFE_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM
+       ADD  ( PRIMARY KEY (ROOM_NO) ) ;
+
+
+CREATE TABLE ROOM_RESER (
+       RESER_NO             NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       RESER_DATE           DATE NOT NULL,
+       RESER_START          NUMBER NOT NULL,
+       RESER_TIME           NUMBER NULL,
+       USER_NUM             NUMBER NOT NULL,
+       TOTAL                NUMBER NOT NULL,
+       ROOM_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( PRIMARY KEY (RESER_NO) ) ;
+
+
+CREATE TABLE ROOM_TIME (
+       TIME_NO              NUMBER NOT NULL,
+       START_TIME           NUMBER NOT NULL,
+       END_TIME             NUMBER NOT NULL,
+       TIME_PRICE           NUMBER NOT NULL,
+       ROOM_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE ROOM_TIME
+       ADD  ( PRIMARY KEY (TIME_NO) ) ;
+
+
+CREATE TABLE SNS (
+       SNS_NO               NUMBER NOT NULL,
+       SNS_CONTENT          VARCHAR2(2000) NULL,
+       SNS_LIKE             NUMBER NULL,
+       SNS_WRITE_DATE       DATE NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS
+       ADD  ( PRIMARY KEY (SNS_NO) ) ;
+
+
+CREATE TABLE SNS_IMG (
+       SNS_IMG_NO           NUMBER NOT NULL,
+       SNS_IMG_NAME         VARCHAR(200) NULL,
+       SNS_NO               NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS_IMG
+       ADD  ( PRIMARY KEY (SNS_IMG_NO) ) ;
+
+
+CREATE TABLE SNS_REPLY (
+       REPLY_NO             NUMBER NOT NULL,
+       REPLY_CONTENT        VARCHAR2(500) NULL,
+       SNS_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       PROVIDER_NO          NUMBER NOT NULL
+);
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( PRIMARY KEY (REPLY_NO) ) ;
+
+
+CREATE TABLE STD (
+       STD_NO               NUMBER NOT NULL,
+       STD_IMAGE            VARCHAR2(200) NULL,
+       STD_NAME             VARCHAR2(500) NOT NULL,
+       STD_INTRO            VARCHAR2(1000) NOT NULL,
+       STD_START            DATE NOT NULL,
+       STD_END              DATE NULL,
+       STD_TIME             VARCHAR2(50) NOT NULL,
+       STD_LOC              VARCHAR2(50) NOT NULL,
+       STD_CLOSE            DATE NOT NULL,
+       STD_LIMIT            NUMBER NOT NULL,
+       STD_CONTENT          VARCHAR2(3000) NOT NULL,
+       STD_HITS             NUMBER NULL,
+       FOUNDER_INFO         VARCHAR2(3000) NOT NULL,
+       FOUNDER_NO           NUMBER NOT NULL
+);
+
+
+ALTER TABLE STD
+       ADD  ( PRIMARY KEY (STD_NO) ) ;
+
+
+CREATE TABLE STD_APPLY (
+       APPLY_NO             NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL,
+       STD_NO               NUMBER NOT NULL,
+       APPLY_CONTENT        VARCHAR2(3000) NOT NULL
+);
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( PRIMARY KEY (APPLY_NO) ) ;
+
+
+CREATE TABLE STD_PICKERS (
+       PICKERS_NO           NUMBER NOT NULL,
+       STD_NO               NUMBER NOT NULL,
+       CUST_NO              NUMBER NOT NULL
+);
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( PRIMARY KEY (PICKERS_NO) ) ;
+
+
+ALTER TABLE CAFE
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE CAFE_IMG
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_INQ
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE CAFE_REVIEW
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE CAFE_REVIEW_IMAGE
+       ADD  ( FOREIGN KEY (REVIEW_NO)
+                             REFERENCES CAFE_REVIEW ) ;
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE CAFE_REVIEW_REPLY
+       ADD  ( FOREIGN KEY (REVIEW_NO)
+                             REFERENCES CAFE_REVIEW ) ;
+
+
+ALTER TABLE EVT
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER ) ;
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE EVT_COUPON
+       ADD  ( FOREIGN KEY (EVT_NO)
+                             REFERENCES EVT ) ;
+
+
+ALTER TABLE GET_PASS
+       ADD  ( FOREIGN KEY (PASS_NO)
+                             REFERENCES PASS ) ;
+
+
+ALTER TABLE GET_PASS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE HASHTAG
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+ALTER TABLE KEYWORD_LOC
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE KEYWORD_NAME
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE NOTICE
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER ) ;
+
+
+ALTER TABLE PASS
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (COUPON_NO)
+                             REFERENCES EVT_COUPON
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (GET_PASS_NO)
+                             REFERENCES GET_PASS
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE PAYMENT
+       ADD  ( FOREIGN KEY (RESER_NO)
+                             REFERENCES ROOM_RESER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE QA
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE QA
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE RESTAURANT
+       ADD  ( FOREIGN KEY (MAN_NO)
+                             REFERENCES MANAGER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE ROOM
+       ADD  ( FOREIGN KEY (CAFE_NO)
+                             REFERENCES CAFE ) ;
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( FOREIGN KEY (ROOM_NO)
+                             REFERENCES ROOM ) ;
+
+
+ALTER TABLE ROOM_RESER
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE ROOM_TIME
+       ADD  ( FOREIGN KEY (ROOM_NO)
+                             REFERENCES ROOM ) ;
+
+
+ALTER TABLE SNS
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE SNS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE SNS_IMG
+       ADD  ( FOREIGN KEY (SNS_NO)
+                             REFERENCES SNS ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (PROVIDER_NO)
+                             REFERENCES PROVIDER ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE SNS_REPLY
+       ADD  ( FOREIGN KEY (SNS_NO)
+                             REFERENCES SNS
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE STD
+       ADD  ( FOREIGN KEY (FOUNDER_NO)
+                             REFERENCES CUSTOMER
+                             ON DELETE SET NULL ) ;
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+ALTER TABLE STD_APPLY
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( FOREIGN KEY (CUST_NO)
+                             REFERENCES CUSTOMER ) ;
+
+
+ALTER TABLE STD_PICKERS
+       ADD  ( FOREIGN KEY (STD_NO)
+                             REFERENCES STD ) ;
+
+
+
+
+create or replace trigger tD_CAFE after DELETE on CAFE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on CAFE 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/30 PASS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="PASS"
+    P2C_VERB_PHRASE="R/30", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_30", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from PASS
+      where
+        /*  %JoinFKPK(PASS,:%Old," = "," and") */
+        PASS.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE because PASS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/29 ROOM ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="ROOM"
+    P2C_VERB_PHRASE="R/29", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_29", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from ROOM
+      where
+        /*  %JoinFKPK(ROOM,:%Old," = "," and") */
+        ROOM.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE because ROOM exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/21 CAFE_INQ ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/21", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_21", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE because CAFE_INQ exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/20 CAFE_REVIEW ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/20", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_20", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /*  %JoinFKPK(CAFE_REVIEW,:%Old," = "," and") */
+        CAFE_REVIEW.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE because CAFE_REVIEW exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/14 CAFE_IMG ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_IMG"
+    P2C_VERB_PHRASE="R/14", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_14", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE_IMG
+      where
+        /*  %JoinFKPK(CAFE_IMG,:%Old," = "," and") */
+        CAFE_IMG.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE because CAFE_IMG exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE after INSERT on CAFE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/13 CAFE ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE"
+    P2C_VERB_PHRASE="R/13", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_13", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from PROVIDER
+      where
+        /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+        :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE because PROVIDER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE after UPDATE on CAFE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/30 PASS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="PASS"
+    P2C_VERB_PHRASE="R/30", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_30", FK_COLUMNS="CAFE_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CAFE_NO <> :new.CAFE_NO
+  then
+    select count(*) into numrows
+      from PASS
+      where
+        /*  %JoinFKPK(PASS,:%Old," = "," and") */
+        PASS.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE because PASS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/29 ROOM ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="ROOM"
+    P2C_VERB_PHRASE="R/29", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_29", FK_COLUMNS="CAFE_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CAFE_NO <> :new.CAFE_NO
+  then
+    select count(*) into numrows
+      from ROOM
+      where
+        /*  %JoinFKPK(ROOM,:%Old," = "," and") */
+        ROOM.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE because ROOM exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/21 CAFE_INQ ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/21", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_21", FK_COLUMNS="CAFE_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CAFE_NO <> :new.CAFE_NO
+  then
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE because CAFE_INQ exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/20 CAFE_REVIEW ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/20", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_20", FK_COLUMNS="CAFE_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CAFE_NO <> :new.CAFE_NO
+  then
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /*  %JoinFKPK(CAFE_REVIEW,:%Old," = "," and") */
+        CAFE_REVIEW.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE because CAFE_REVIEW exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/14 CAFE_IMG ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_IMG"
+    P2C_VERB_PHRASE="R/14", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_14", FK_COLUMNS="CAFE_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CAFE_NO <> :new.CAFE_NO
+  then
+    select count(*) into numrows
+      from CAFE_IMG
+      where
+        /*  %JoinFKPK(CAFE_IMG,:%Old," = "," and") */
+        CAFE_IMG.CAFE_NO = :old.CAFE_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE because CAFE_IMG exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/13 CAFE ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE"
+    P2C_VERB_PHRASE="R/13", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_13", FK_COLUMNS="PROVIDER_NO" */
+  select count(*) into numrows
+    from PROVIDER
+    where
+      /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+      :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE because PROVIDER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE_IMG after INSERT on CAFE_IMG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE_IMG 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/14 CAFE_IMG ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_IMG"
+    P2C_VERB_PHRASE="R/14", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_14", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /* %JoinFKPK(:%New,CAFE," = "," and") */
+        :new.CAFE_NO = CAFE.CAFE_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_IMG because CAFE does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE_IMG after UPDATE on CAFE_IMG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE_IMG 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/14 CAFE_IMG ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_IMG"
+    P2C_VERB_PHRASE="R/14", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_14", FK_COLUMNS="CAFE_NO" */
+  select count(*) into numrows
+    from CAFE
+    where
+      /* %JoinFKPK(:%New,CAFE," = "," and") */
+      :new.CAFE_NO = CAFE.CAFE_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_IMG because CAFE does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE_INQ after INSERT on CAFE_INQ for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE_INQ 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/70 CAFE_INQ ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/70", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_70", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_INQ because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/49 CAFE_INQ ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/49", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_49", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_INQ because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/21 CAFE_INQ ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/21", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_21", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /* %JoinFKPK(:%New,CAFE," = "," and") */
+        :new.CAFE_NO = CAFE.CAFE_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_INQ because CAFE does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE_INQ after UPDATE on CAFE_INQ for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE_INQ 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/70 CAFE_INQ ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/70", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_70", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_INQ because CUSTOMER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/49 CAFE_INQ ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/49", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_49", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_INQ because CUSTOMER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/21 CAFE_INQ ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/21", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_21", FK_COLUMNS="CAFE_NO" */
+  select count(*) into numrows
+    from CAFE
+    where
+      /* %JoinFKPK(:%New,CAFE," = "," and") */
+      :new.CAFE_NO = CAFE.CAFE_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_INQ because CAFE does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_CAFE_REVIEW after DELETE on CAFE_REVIEW for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on CAFE_REVIEW 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE_REVIEW R/47 CAFE_REVIEW_REPLY ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/47", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_47", FK_COLUMNS="REVIEW_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW_REPLY
+      where
+        /*  %JoinFKPK(CAFE_REVIEW_REPLY,:%Old," = "," and") */
+        CAFE_REVIEW_REPLY.REVIEW_NO = :old.REVIEW_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE_REVIEW because CAFE_REVIEW_REPLY exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE_REVIEW R/31 CAFE_REVIEW_IMAGE ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_IMAGE"
+    P2C_VERB_PHRASE="R/31", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_31", FK_COLUMNS="REVIEW_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW_IMAGE
+      where
+        /*  %JoinFKPK(CAFE_REVIEW_IMAGE,:%Old," = "," and") */
+        CAFE_REVIEW_IMAGE.REVIEW_NO = :old.REVIEW_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CAFE_REVIEW because CAFE_REVIEW_IMAGE exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE_REVIEW after INSERT on CAFE_REVIEW for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE_REVIEW 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/48 CAFE_REVIEW ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/48", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_48", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_REVIEW because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/20 CAFE_REVIEW ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/20", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_20", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /* %JoinFKPK(:%New,CAFE," = "," and") */
+        :new.CAFE_NO = CAFE.CAFE_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_REVIEW because CAFE does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE_REVIEW after UPDATE on CAFE_REVIEW for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE_REVIEW 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE_REVIEW R/47 CAFE_REVIEW_REPLY ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/47", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_47", FK_COLUMNS="REVIEW_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.REVIEW_NO <> :new.REVIEW_NO
+  then
+    select count(*) into numrows
+      from CAFE_REVIEW_REPLY
+      where
+        /*  %JoinFKPK(CAFE_REVIEW_REPLY,:%Old," = "," and") */
+        CAFE_REVIEW_REPLY.REVIEW_NO = :old.REVIEW_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE_REVIEW because CAFE_REVIEW_REPLY exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE_REVIEW R/31 CAFE_REVIEW_IMAGE ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_IMAGE"
+    P2C_VERB_PHRASE="R/31", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_31", FK_COLUMNS="REVIEW_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.REVIEW_NO <> :new.REVIEW_NO
+  then
+    select count(*) into numrows
+      from CAFE_REVIEW_IMAGE
+      where
+        /*  %JoinFKPK(CAFE_REVIEW_IMAGE,:%Old," = "," and") */
+        CAFE_REVIEW_IMAGE.REVIEW_NO = :old.REVIEW_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CAFE_REVIEW because CAFE_REVIEW_IMAGE exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/48 CAFE_REVIEW ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/48", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_48", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_REVIEW because CUSTOMER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/20 CAFE_REVIEW ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/20", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_20", FK_COLUMNS="CAFE_NO" */
+  select count(*) into numrows
+    from CAFE
+    where
+      /* %JoinFKPK(:%New,CAFE," = "," and") */
+      :new.CAFE_NO = CAFE.CAFE_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_REVIEW because CAFE does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE_REVIEW_IMAGE after INSERT on CAFE_REVIEW_IMAGE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE_REVIEW_IMAGE 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE_REVIEW R/31 CAFE_REVIEW_IMAGE ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_IMAGE"
+    P2C_VERB_PHRASE="R/31", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_31", FK_COLUMNS="REVIEW_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /* %JoinFKPK(:%New,CAFE_REVIEW," = "," and") */
+        :new.REVIEW_NO = CAFE_REVIEW.REVIEW_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_REVIEW_IMAGE because CAFE_REVIEW does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE_REVIEW_IMAGE after UPDATE on CAFE_REVIEW_IMAGE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE_REVIEW_IMAGE 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE_REVIEW R/31 CAFE_REVIEW_IMAGE ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_IMAGE"
+    P2C_VERB_PHRASE="R/31", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_31", FK_COLUMNS="REVIEW_NO" */
+  select count(*) into numrows
+    from CAFE_REVIEW
+    where
+      /* %JoinFKPK(:%New,CAFE_REVIEW," = "," and") */
+      :new.REVIEW_NO = CAFE_REVIEW.REVIEW_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_REVIEW_IMAGE because CAFE_REVIEW does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_CAFE_REVIEW_REPLY after INSERT on CAFE_REVIEW_REPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on CAFE_REVIEW_REPLY 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/57 CAFE_REVIEW_REPLY ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/57", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_57", FK_COLUMNS="CUST_NO" */
+    update CAFE_REVIEW_REPLY
+      set
+        /* %SetFK(CAFE_REVIEW_REPLY,NULL) */
+        CAFE_REVIEW_REPLY.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(CAFE_REVIEW_REPLY,:%New," = "," and") */
+         and CAFE_REVIEW_REPLY.REPLY_NO = :new.REPLY_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE_REVIEW R/47 CAFE_REVIEW_REPLY ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/47", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_47", FK_COLUMNS="REVIEW_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /* %JoinFKPK(:%New,CAFE_REVIEW," = "," and") */
+        :new.REVIEW_NO = CAFE_REVIEW.REVIEW_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT CAFE_REVIEW_REPLY because CAFE_REVIEW does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CAFE_REVIEW_REPLY after UPDATE on CAFE_REVIEW_REPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CAFE_REVIEW_REPLY 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/57 CAFE_REVIEW_REPLY ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/57", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_57", FK_COLUMNS="CUST_NO" */
+    update CAFE_REVIEW_REPLY
+      set
+        /* %SetFK(CAFE_REVIEW_REPLY,NULL) */
+        CAFE_REVIEW_REPLY.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(CAFE_REVIEW_REPLY,:%New," = "," and") */
+         and CAFE_REVIEW_REPLY.REPLY_NO = :new.REPLY_NO;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE_REVIEW R/47 CAFE_REVIEW_REPLY ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE_REVIEW"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/47", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_47", FK_COLUMNS="REVIEW_NO" */
+  select count(*) into numrows
+    from CAFE_REVIEW
+    where
+      /* %JoinFKPK(:%New,CAFE_REVIEW," = "," and") */
+      :new.REVIEW_NO = CAFE_REVIEW.REVIEW_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE CAFE_REVIEW_REPLY because CAFE_REVIEW does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_CUSTOMER after DELETE on CUSTOMER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on CUSTOMER 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/74 KEYWORD_NAME ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_NAME"
+    P2C_VERB_PHRASE="R/74", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_74", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_NAME
+      set
+        /* %SetFK(KEYWORD_NAME,NULL) */
+        KEYWORD_NAME.CUST_NO = NULL
+      where
+        /* %JoinFKPK(KEYWORD_NAME,:%Old," = "," and") */
+        KEYWORD_NAME.CUST_NO = :old.CUST_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/71 KEYWORD_LOC ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_LOC"
+    P2C_VERB_PHRASE="R/71", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_71", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_LOC
+      set
+        /* %SetFK(KEYWORD_LOC,NULL) */
+        KEYWORD_LOC.CUST_NO = NULL
+      where
+        /* %JoinFKPK(KEYWORD_LOC,:%Old," = "," and") */
+        KEYWORD_LOC.CUST_NO = :old.CUST_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/70 CAFE_INQ ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/70", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_70", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because CAFE_INQ exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/65 SNS_REPLY ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/65", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_65", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from SNS_REPLY
+      where
+        /*  %JoinFKPK(SNS_REPLY,:%Old," = "," and") */
+        SNS_REPLY.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because SNS_REPLY exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/64 SNS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/64", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_64", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from SNS
+      where
+        /*  %JoinFKPK(SNS,:%Old," = "," and") */
+        SNS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because SNS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/57 CAFE_REVIEW_REPLY ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/57", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_57", FK_COLUMNS="CUST_NO" */
+    update CAFE_REVIEW_REPLY
+      set
+        /* %SetFK(CAFE_REVIEW_REPLY,NULL) */
+        CAFE_REVIEW_REPLY.CUST_NO = NULL
+      where
+        /* %JoinFKPK(CAFE_REVIEW_REPLY,:%Old," = "," and") */
+        CAFE_REVIEW_REPLY.CUST_NO = :old.CUST_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/49 CAFE_INQ ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/49", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_49", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because CAFE_INQ exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/48 CAFE_REVIEW ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/48", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_48", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /*  %JoinFKPK(CAFE_REVIEW,:%Old," = "," and") */
+        CAFE_REVIEW.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because CAFE_REVIEW exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/43 STD ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD"
+    P2C_VERB_PHRASE="R/43", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_43", FK_COLUMNS="FOUNDER_NO" */
+    update STD
+      set
+        /* %SetFK(STD,NULL) */
+        STD.FOUNDER_NO = NULL
+      where
+        /* %JoinFKPK(STD,:%Old," = "," and") */
+        STD.FOUNDER_NO = :old.CUST_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/42 EVT_COUPON ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/42", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_42", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from EVT_COUPON
+      where
+        /*  %JoinFKPK(EVT_COUPON,:%Old," = "," and") */
+        EVT_COUPON.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because EVT_COUPON exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/35 QA ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/35", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_35", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from QA
+      where
+        /*  %JoinFKPK(QA,:%Old," = "," and") */
+        QA.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because QA exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/23 STD_PICKERS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/23", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_23", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from STD_PICKERS
+      where
+        /*  %JoinFKPK(STD_PICKERS,:%Old," = "," and") */
+        STD_PICKERS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because STD_PICKERS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/8 GET_PASS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/8", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_8", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from GET_PASS
+      where
+        /*  %JoinFKPK(GET_PASS,:%Old," = "," and") */
+        GET_PASS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because GET_PASS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/4 ROOM_RESER ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/4", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_4", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from ROOM_RESER
+      where
+        /*  %JoinFKPK(ROOM_RESER,:%Old," = "," and") */
+        ROOM_RESER.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because ROOM_RESER exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/3 STD_APPLY ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/3", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_3", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from STD_APPLY
+      where
+        /*  %JoinFKPK(STD_APPLY,:%Old," = "," and") */
+        STD_APPLY.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE CUSTOMER because STD_APPLY exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_CUSTOMER after UPDATE on CUSTOMER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on CUSTOMER 
+declare numrows INTEGER;
+begin
+  /* CUSTOMER R/74 KEYWORD_NAME ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_NAME"
+    P2C_VERB_PHRASE="R/74", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_74", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    update KEYWORD_NAME
+      set
+        /* %SetFK(KEYWORD_NAME,NULL) */
+        KEYWORD_NAME.CUST_NO = NULL
+      where
+        /* %JoinFKPK(KEYWORD_NAME,:%Old," = ",",") */
+        KEYWORD_NAME.CUST_NO = :old.CUST_NO;
+  end if;
+
+  /* CUSTOMER R/71 KEYWORD_LOC ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_LOC"
+    P2C_VERB_PHRASE="R/71", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_71", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    update KEYWORD_LOC
+      set
+        /* %SetFK(KEYWORD_LOC,NULL) */
+        KEYWORD_LOC.CUST_NO = NULL
+      where
+        /* %JoinFKPK(KEYWORD_LOC,:%Old," = ",",") */
+        KEYWORD_LOC.CUST_NO = :old.CUST_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/70 CAFE_INQ ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/70", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_70", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because CAFE_INQ exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/65 SNS_REPLY ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/65", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_65", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from SNS_REPLY
+      where
+        /*  %JoinFKPK(SNS_REPLY,:%Old," = "," and") */
+        SNS_REPLY.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because SNS_REPLY exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/64 SNS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/64", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_64", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from SNS
+      where
+        /*  %JoinFKPK(SNS,:%Old," = "," and") */
+        SNS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because SNS exists.'
+      );
+    end if;
+  end if;
+
+  /* CUSTOMER R/57 CAFE_REVIEW_REPLY ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW_REPLY"
+    P2C_VERB_PHRASE="R/57", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_57", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    update CAFE_REVIEW_REPLY
+      set
+        /* %SetFK(CAFE_REVIEW_REPLY,NULL) */
+        CAFE_REVIEW_REPLY.CUST_NO = NULL
+      where
+        /* %JoinFKPK(CAFE_REVIEW_REPLY,:%Old," = ",",") */
+        CAFE_REVIEW_REPLY.CUST_NO = :old.CUST_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/49 CAFE_INQ ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_INQ"
+    P2C_VERB_PHRASE="R/49", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_49", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from CAFE_INQ
+      where
+        /*  %JoinFKPK(CAFE_INQ,:%Old," = "," and") */
+        CAFE_INQ.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because CAFE_INQ exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/48 CAFE_REVIEW ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE_REVIEW"
+    P2C_VERB_PHRASE="R/48", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_48", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from CAFE_REVIEW
+      where
+        /*  %JoinFKPK(CAFE_REVIEW,:%Old," = "," and") */
+        CAFE_REVIEW.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because CAFE_REVIEW exists.'
+      );
+    end if;
+  end if;
+
+  /* CUSTOMER R/43 STD ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD"
+    P2C_VERB_PHRASE="R/43", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_43", FK_COLUMNS="FOUNDER_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    update STD
+      set
+        /* %SetFK(STD,NULL) */
+        STD.FOUNDER_NO = NULL
+      where
+        /* %JoinFKPK(STD,:%Old," = ",",") */
+        STD.FOUNDER_NO = :old.CUST_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/42 EVT_COUPON ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/42", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_42", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from EVT_COUPON
+      where
+        /*  %JoinFKPK(EVT_COUPON,:%Old," = "," and") */
+        EVT_COUPON.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because EVT_COUPON exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/35 QA ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/35", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_35", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from QA
+      where
+        /*  %JoinFKPK(QA,:%Old," = "," and") */
+        QA.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because QA exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/23 STD_PICKERS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/23", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_23", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from STD_PICKERS
+      where
+        /*  %JoinFKPK(STD_PICKERS,:%Old," = "," and") */
+        STD_PICKERS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because STD_PICKERS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/8 GET_PASS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/8", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_8", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from GET_PASS
+      where
+        /*  %JoinFKPK(GET_PASS,:%Old," = "," and") */
+        GET_PASS.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because GET_PASS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/4 ROOM_RESER ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/4", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_4", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from ROOM_RESER
+      where
+        /*  %JoinFKPK(ROOM_RESER,:%Old," = "," and") */
+        ROOM_RESER.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because ROOM_RESER exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/3 STD_APPLY ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/3", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_3", FK_COLUMNS="CUST_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.CUST_NO <> :new.CUST_NO
+  then
+    select count(*) into numrows
+      from STD_APPLY
+      where
+        /*  %JoinFKPK(STD_APPLY,:%Old," = "," and") */
+        STD_APPLY.CUST_NO = :old.CUST_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE CUSTOMER because STD_APPLY exists.'
+      );
+    end if;
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_EVT after DELETE on EVT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on EVT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* EVT R/41 EVT_COUPON ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/41", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_41", FK_COLUMNS="EVT_NO" */
+    select count(*) into numrows
+      from EVT_COUPON
+      where
+        /*  %JoinFKPK(EVT_COUPON,:%Old," = "," and") */
+        EVT_COUPON.EVT_NO = :old.EVT_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE EVT because EVT_COUPON exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_EVT after INSERT on EVT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on EVT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/38 EVT ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="EVT"
+    P2C_VERB_PHRASE="R/38", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_38", FK_COLUMNS="MAN_NO" */
+    select count(*) into numrows
+      from MANAGER
+      where
+        /* %JoinFKPK(:%New,MANAGER," = "," and") */
+        :new.MAN_NO = MANAGER.MAN_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT EVT because MANAGER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_EVT after UPDATE on EVT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on EVT 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* EVT R/41 EVT_COUPON ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/41", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_41", FK_COLUMNS="EVT_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.EVT_NO <> :new.EVT_NO
+  then
+    select count(*) into numrows
+      from EVT_COUPON
+      where
+        /*  %JoinFKPK(EVT_COUPON,:%Old," = "," and") */
+        EVT_COUPON.EVT_NO = :old.EVT_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE EVT because EVT_COUPON exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* MANAGER R/38 EVT ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="EVT"
+    P2C_VERB_PHRASE="R/38", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_38", FK_COLUMNS="MAN_NO" */
+  select count(*) into numrows
+    from MANAGER
+    where
+      /* %JoinFKPK(:%New,MANAGER," = "," and") */
+      :new.MAN_NO = MANAGER.MAN_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE EVT because MANAGER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_EVT_COUPON after DELETE on EVT_COUPON for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on EVT_COUPON 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* EVT_COUPON R/56 PAYMENT ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT_COUPON"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/56", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_56", FK_COLUMNS="COUPON_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.COUPON_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = "," and") */
+        PAYMENT.COUPON_NO = :old.COUPON_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_EVT_COUPON after INSERT on EVT_COUPON for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on EVT_COUPON 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/42 EVT_COUPON ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/42", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_42", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT EVT_COUPON because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* EVT R/41 EVT_COUPON ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/41", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_41", FK_COLUMNS="EVT_NO" */
+    select count(*) into numrows
+      from EVT
+      where
+        /* %JoinFKPK(:%New,EVT," = "," and") */
+        :new.EVT_NO = EVT.EVT_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT EVT_COUPON because EVT does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_EVT_COUPON after UPDATE on EVT_COUPON for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on EVT_COUPON 
+declare numrows INTEGER;
+begin
+  /* EVT_COUPON R/56 PAYMENT ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT_COUPON"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/56", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_56", FK_COLUMNS="COUPON_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.COUPON_NO <> :new.COUPON_NO
+  then
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.COUPON_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = ",",") */
+        PAYMENT.COUPON_NO = :old.COUPON_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/42 EVT_COUPON ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/42", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_42", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE EVT_COUPON because CUSTOMER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* EVT R/41 EVT_COUPON ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT"
+    CHILD_OWNER="", CHILD_TABLE="EVT_COUPON"
+    P2C_VERB_PHRASE="R/41", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_41", FK_COLUMNS="EVT_NO" */
+  select count(*) into numrows
+    from EVT
+    where
+      /* %JoinFKPK(:%New,EVT," = "," and") */
+      :new.EVT_NO = EVT.EVT_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE EVT_COUPON because EVT does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_GET_PASS after DELETE on GET_PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on GET_PASS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* GET_PASS R/55 PAYMENT ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="GET_PASS"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/55", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_55", FK_COLUMNS="GET_PASS_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.GET_PASS_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = "," and") */
+        PAYMENT.GET_PASS_NO = :old.GET_PASS_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_GET_PASS after INSERT on GET_PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on GET_PASS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PASS R/33 GET_PASS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PASS"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/33", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_33", FK_COLUMNS="PASS_NO" */
+    select count(*) into numrows
+      from PASS
+      where
+        /* %JoinFKPK(:%New,PASS," = "," and") */
+        :new.PASS_NO = PASS.PASS_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT GET_PASS because PASS does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/8 GET_PASS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/8", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_8", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT GET_PASS because CUSTOMER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_GET_PASS after UPDATE on GET_PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on GET_PASS 
+declare numrows INTEGER;
+begin
+  /* GET_PASS R/55 PAYMENT ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="GET_PASS"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/55", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_55", FK_COLUMNS="GET_PASS_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.GET_PASS_NO <> :new.GET_PASS_NO
+  then
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.GET_PASS_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = ",",") */
+        PAYMENT.GET_PASS_NO = :old.GET_PASS_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PASS R/33 GET_PASS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PASS"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/33", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_33", FK_COLUMNS="PASS_NO" */
+  select count(*) into numrows
+    from PASS
+    where
+      /* %JoinFKPK(:%New,PASS," = "," and") */
+      :new.PASS_NO = PASS.PASS_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE GET_PASS because PASS does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/8 GET_PASS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/8", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_8", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE GET_PASS because CUSTOMER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_HASHTAG after INSERT on HASHTAG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on HASHTAG 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/18 HASHTAG ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="HASHTAG"
+    P2C_VERB_PHRASE="R/18", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_18", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from STD
+      where
+        /* %JoinFKPK(:%New,STD," = "," and") */
+        :new.STD_NO = STD.STD_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT HASHTAG because STD does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_HASHTAG after UPDATE on HASHTAG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on HASHTAG 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/18 HASHTAG ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="HASHTAG"
+    P2C_VERB_PHRASE="R/18", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_18", FK_COLUMNS="STD_NO" */
+  select count(*) into numrows
+    from STD
+    where
+      /* %JoinFKPK(:%New,STD," = "," and") */
+      :new.STD_NO = STD.STD_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE HASHTAG because STD does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_KEYWORD_LOC after INSERT on KEYWORD_LOC for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on KEYWORD_LOC 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/71 KEYWORD_LOC ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_LOC"
+    P2C_VERB_PHRASE="R/71", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_71", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_LOC
+      set
+        /* %SetFK(KEYWORD_LOC,NULL) */
+        KEYWORD_LOC.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(KEYWORD_LOC,:%New," = "," and") */
+         and KEYWORD_LOC.KEY_LOC = :new.KEY_LOC;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_KEYWORD_LOC after UPDATE on KEYWORD_LOC for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on KEYWORD_LOC 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/71 KEYWORD_LOC ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_LOC"
+    P2C_VERB_PHRASE="R/71", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_71", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_LOC
+      set
+        /* %SetFK(KEYWORD_LOC,NULL) */
+        KEYWORD_LOC.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(KEYWORD_LOC,:%New," = "," and") */
+         and KEYWORD_LOC.KEY_LOC = :new.KEY_LOC;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_KEYWORD_NAME after INSERT on KEYWORD_NAME for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on KEYWORD_NAME 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/74 KEYWORD_NAME ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_NAME"
+    P2C_VERB_PHRASE="R/74", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_74", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_NAME
+      set
+        /* %SetFK(KEYWORD_NAME,NULL) */
+        KEYWORD_NAME.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(KEYWORD_NAME,:%New," = "," and") */
+         and KEYWORD_NAME.KEY_NAME = :new.KEY_NAME;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_KEYWORD_NAME after UPDATE on KEYWORD_NAME for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on KEYWORD_NAME 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/74 KEYWORD_NAME ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="KEYWORD_NAME"
+    P2C_VERB_PHRASE="R/74", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_74", FK_COLUMNS="CUST_NO" */
+    update KEYWORD_NAME
+      set
+        /* %SetFK(KEYWORD_NAME,NULL) */
+        KEYWORD_NAME.CUST_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.CUST_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(KEYWORD_NAME,:%New," = "," and") */
+         and KEYWORD_NAME.KEY_NAME = :new.KEY_NAME;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_MANAGER after DELETE on MANAGER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on MANAGER 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/63 RESTAURANT ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="RESTAURANT"
+    P2C_VERB_PHRASE="R/63", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_63", FK_COLUMNS="MAN_NO" */
+    update RESTAURANT
+      set
+        /* %SetFK(RESTAURANT,NULL) */
+        RESTAURANT.MAN_NO = NULL
+      where
+        /* %JoinFKPK(RESTAURANT,:%Old," = "," and") */
+        RESTAURANT.MAN_NO = :old.MAN_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/38 EVT ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="EVT"
+    P2C_VERB_PHRASE="R/38", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_38", FK_COLUMNS="MAN_NO" */
+    select count(*) into numrows
+      from EVT
+      where
+        /*  %JoinFKPK(EVT,:%Old," = "," and") */
+        EVT.MAN_NO = :old.MAN_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE MANAGER because EVT exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/37 NOTICE ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="NOTICE"
+    P2C_VERB_PHRASE="R/37", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_37", FK_COLUMNS="MAN_NO" */
+    select count(*) into numrows
+      from NOTICE
+      where
+        /*  %JoinFKPK(NOTICE,:%Old," = "," and") */
+        NOTICE.MAN_NO = :old.MAN_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE MANAGER because NOTICE exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/36 QA ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/36", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_36", FK_COLUMNS="MAN_NO" */
+    update QA
+      set
+        /* %SetFK(QA,NULL) */
+        QA.MAN_NO = NULL
+      where
+        /* %JoinFKPK(QA,:%Old," = "," and") */
+        QA.MAN_NO = :old.MAN_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_MANAGER after UPDATE on MANAGER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on MANAGER 
+declare numrows INTEGER;
+begin
+  /* MANAGER R/63 RESTAURANT ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="RESTAURANT"
+    P2C_VERB_PHRASE="R/63", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_63", FK_COLUMNS="MAN_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.MAN_NO <> :new.MAN_NO
+  then
+    update RESTAURANT
+      set
+        /* %SetFK(RESTAURANT,NULL) */
+        RESTAURANT.MAN_NO = NULL
+      where
+        /* %JoinFKPK(RESTAURANT,:%Old," = ",",") */
+        RESTAURANT.MAN_NO = :old.MAN_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* MANAGER R/38 EVT ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="EVT"
+    P2C_VERB_PHRASE="R/38", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_38", FK_COLUMNS="MAN_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.MAN_NO <> :new.MAN_NO
+  then
+    select count(*) into numrows
+      from EVT
+      where
+        /*  %JoinFKPK(EVT,:%Old," = "," and") */
+        EVT.MAN_NO = :old.MAN_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE MANAGER because EVT exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* MANAGER R/37 NOTICE ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="NOTICE"
+    P2C_VERB_PHRASE="R/37", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_37", FK_COLUMNS="MAN_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.MAN_NO <> :new.MAN_NO
+  then
+    select count(*) into numrows
+      from NOTICE
+      where
+        /*  %JoinFKPK(NOTICE,:%Old," = "," and") */
+        NOTICE.MAN_NO = :old.MAN_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE MANAGER because NOTICE exists.'
+      );
+    end if;
+  end if;
+
+  /* MANAGER R/36 QA ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/36", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_36", FK_COLUMNS="MAN_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.MAN_NO <> :new.MAN_NO
+  then
+    update QA
+      set
+        /* %SetFK(QA,NULL) */
+        QA.MAN_NO = NULL
+      where
+        /* %JoinFKPK(QA,:%Old," = ",",") */
+        QA.MAN_NO = :old.MAN_NO;
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_NOTICE after INSERT on NOTICE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on NOTICE 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/37 NOTICE ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="NOTICE"
+    P2C_VERB_PHRASE="R/37", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_37", FK_COLUMNS="MAN_NO" */
+    select count(*) into numrows
+      from MANAGER
+      where
+        /* %JoinFKPK(:%New,MANAGER," = "," and") */
+        :new.MAN_NO = MANAGER.MAN_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT NOTICE because MANAGER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_NOTICE after UPDATE on NOTICE for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on NOTICE 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* MANAGER R/37 NOTICE ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="NOTICE"
+    P2C_VERB_PHRASE="R/37", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_37", FK_COLUMNS="MAN_NO" */
+  select count(*) into numrows
+    from MANAGER
+    where
+      /* %JoinFKPK(:%New,MANAGER," = "," and") */
+      :new.MAN_NO = MANAGER.MAN_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE NOTICE because MANAGER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_PASS after DELETE on PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on PASS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PASS R/33 GET_PASS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PASS"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/33", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_33", FK_COLUMNS="PASS_NO" */
+    select count(*) into numrows
+      from GET_PASS
+      where
+        /*  %JoinFKPK(GET_PASS,:%Old," = "," and") */
+        GET_PASS.PASS_NO = :old.PASS_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE PASS because GET_PASS exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_PASS after INSERT on PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on PASS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/30 PASS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="PASS"
+    P2C_VERB_PHRASE="R/30", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_30", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /* %JoinFKPK(:%New,CAFE," = "," and") */
+        :new.CAFE_NO = CAFE.CAFE_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT PASS because CAFE does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_PASS after UPDATE on PASS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on PASS 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PASS R/33 GET_PASS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PASS"
+    CHILD_OWNER="", CHILD_TABLE="GET_PASS"
+    P2C_VERB_PHRASE="R/33", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_33", FK_COLUMNS="PASS_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.PASS_NO <> :new.PASS_NO
+  then
+    select count(*) into numrows
+      from GET_PASS
+      where
+        /*  %JoinFKPK(GET_PASS,:%Old," = "," and") */
+        GET_PASS.PASS_NO = :old.PASS_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE PASS because GET_PASS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/30 PASS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="PASS"
+    P2C_VERB_PHRASE="R/30", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_30", FK_COLUMNS="CAFE_NO" */
+  select count(*) into numrows
+    from CAFE
+    where
+      /* %JoinFKPK(:%New,CAFE," = "," and") */
+      :new.CAFE_NO = CAFE.CAFE_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE PASS because CAFE does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_PAYMENT after INSERT on PAYMENT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on PAYMENT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* EVT_COUPON R/56 PAYMENT ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT_COUPON"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/56", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_56", FK_COLUMNS="COUPON_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.COUPON_NO = NULL
+      where
+        not exists (
+          select * from EVT_COUPON
+            where
+              /* %JoinFKPK(:%New,EVT_COUPON," = "," and") */
+              :new.COUPON_NO = EVT_COUPON.COUPON_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* GET_PASS R/55 PAYMENT ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="GET_PASS"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/55", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_55", FK_COLUMNS="GET_PASS_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.GET_PASS_NO = NULL
+      where
+        not exists (
+          select * from GET_PASS
+            where
+              /* %JoinFKPK(:%New,GET_PASS," = "," and") */
+              :new.GET_PASS_NO = GET_PASS.GET_PASS_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM_RESER R/54 PAYMENT ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM_RESER"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/54", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_54", FK_COLUMNS="RESER_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.RESER_NO = NULL
+      where
+        not exists (
+          select * from ROOM_RESER
+            where
+              /* %JoinFKPK(:%New,ROOM_RESER," = "," and") */
+              :new.RESER_NO = ROOM_RESER.RESER_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_PAYMENT after UPDATE on PAYMENT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on PAYMENT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* EVT_COUPON R/56 PAYMENT ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="EVT_COUPON"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/56", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_56", FK_COLUMNS="COUPON_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.COUPON_NO = NULL
+      where
+        not exists (
+          select * from EVT_COUPON
+            where
+              /* %JoinFKPK(:%New,EVT_COUPON," = "," and") */
+              :new.COUPON_NO = EVT_COUPON.COUPON_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* GET_PASS R/55 PAYMENT ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="GET_PASS"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/55", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_55", FK_COLUMNS="GET_PASS_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.GET_PASS_NO = NULL
+      where
+        not exists (
+          select * from GET_PASS
+            where
+              /* %JoinFKPK(:%New,GET_PASS," = "," and") */
+              :new.GET_PASS_NO = GET_PASS.GET_PASS_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM_RESER R/54 PAYMENT ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM_RESER"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/54", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_54", FK_COLUMNS="RESER_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.RESER_NO = NULL
+      where
+        not exists (
+          select * from ROOM_RESER
+            where
+              /* %JoinFKPK(:%New,ROOM_RESER," = "," and") */
+              :new.RESER_NO = ROOM_RESER.RESER_NO
+        ) 
+        /* %JoinPKPK(PAYMENT,:%New," = "," and") */
+         and PAYMENT.PAY_NO = :new.PAY_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_PROVIDER after DELETE on PROVIDER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on PROVIDER 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/69 SNS_REPLY ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/69", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_69", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from SNS_REPLY
+      where
+        /*  %JoinFKPK(SNS_REPLY,:%Old," = "," and") */
+        SNS_REPLY.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE PROVIDER because SNS_REPLY exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/66 SNS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/66", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_66", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from SNS
+      where
+        /*  %JoinFKPK(SNS,:%Old," = "," and") */
+        SNS.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE PROVIDER because SNS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/13 CAFE ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE"
+    P2C_VERB_PHRASE="R/13", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_13", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /*  %JoinFKPK(CAFE,:%Old," = "," and") */
+        CAFE.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE PROVIDER because CAFE exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_PROVIDER after UPDATE on PROVIDER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on PROVIDER 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/69 SNS_REPLY ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/69", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_69", FK_COLUMNS="PROVIDER_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.PROVIDER_NO <> :new.PROVIDER_NO
+  then
+    select count(*) into numrows
+      from SNS_REPLY
+      where
+        /*  %JoinFKPK(SNS_REPLY,:%Old," = "," and") */
+        SNS_REPLY.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE PROVIDER because SNS_REPLY exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/66 SNS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/66", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_66", FK_COLUMNS="PROVIDER_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.PROVIDER_NO <> :new.PROVIDER_NO
+  then
+    select count(*) into numrows
+      from SNS
+      where
+        /*  %JoinFKPK(SNS,:%Old," = "," and") */
+        SNS.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE PROVIDER because SNS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/13 CAFE ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="CAFE"
+    P2C_VERB_PHRASE="R/13", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_13", FK_COLUMNS="PROVIDER_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.PROVIDER_NO <> :new.PROVIDER_NO
+  then
+    select count(*) into numrows
+      from CAFE
+      where
+        /*  %JoinFKPK(CAFE,:%Old," = "," and") */
+        CAFE.PROVIDER_NO = :old.PROVIDER_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE PROVIDER because CAFE exists.'
+      );
+    end if;
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_QA after INSERT on QA for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on QA 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/36 QA ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/36", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_36", FK_COLUMNS="MAN_NO" */
+    update QA
+      set
+        /* %SetFK(QA,NULL) */
+        QA.MAN_NO = NULL
+      where
+        not exists (
+          select * from MANAGER
+            where
+              /* %JoinFKPK(:%New,MANAGER," = "," and") */
+              :new.MAN_NO = MANAGER.MAN_NO
+        ) 
+        /* %JoinPKPK(QA,:%New," = "," and") */
+         and QA.QA_NO = :new.QA_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/35 QA ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/35", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_35", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT QA because CUSTOMER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_QA after UPDATE on QA for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on QA 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/36 QA ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/36", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_36", FK_COLUMNS="MAN_NO" */
+    update QA
+      set
+        /* %SetFK(QA,NULL) */
+        QA.MAN_NO = NULL
+      where
+        not exists (
+          select * from MANAGER
+            where
+              /* %JoinFKPK(:%New,MANAGER," = "," and") */
+              :new.MAN_NO = MANAGER.MAN_NO
+        ) 
+        /* %JoinPKPK(QA,:%New," = "," and") */
+         and QA.QA_NO = :new.QA_NO;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/35 QA ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="QA"
+    P2C_VERB_PHRASE="R/35", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_35", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE QA because CUSTOMER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_RESTAURANT after INSERT on RESTAURANT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on RESTAURANT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/63 RESTAURANT ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="RESTAURANT"
+    P2C_VERB_PHRASE="R/63", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_63", FK_COLUMNS="MAN_NO" */
+    update RESTAURANT
+      set
+        /* %SetFK(RESTAURANT,NULL) */
+        RESTAURANT.MAN_NO = NULL
+      where
+        not exists (
+          select * from MANAGER
+            where
+              /* %JoinFKPK(:%New,MANAGER," = "," and") */
+              :new.MAN_NO = MANAGER.MAN_NO
+        ) 
+        /* %JoinPKPK(RESTAURANT,:%New," = "," and") */
+         and RESTAURANT.REST_NO = :new.REST_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_RESTAURANT after UPDATE on RESTAURANT for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on RESTAURANT 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* MANAGER R/63 RESTAURANT ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="MANAGER"
+    CHILD_OWNER="", CHILD_TABLE="RESTAURANT"
+    P2C_VERB_PHRASE="R/63", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_63", FK_COLUMNS="MAN_NO" */
+    update RESTAURANT
+      set
+        /* %SetFK(RESTAURANT,NULL) */
+        RESTAURANT.MAN_NO = NULL
+      where
+        not exists (
+          select * from MANAGER
+            where
+              /* %JoinFKPK(:%New,MANAGER," = "," and") */
+              :new.MAN_NO = MANAGER.MAN_NO
+        ) 
+        /* %JoinPKPK(RESTAURANT,:%New," = "," and") */
+         and RESTAURANT.REST_NO = :new.REST_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_ROOM after DELETE on ROOM for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on ROOM 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM R/44 ROOM_TIME ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_TIME"
+    P2C_VERB_PHRASE="R/44", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_44", FK_COLUMNS="ROOM_NO" */
+    select count(*) into numrows
+      from ROOM_TIME
+      where
+        /*  %JoinFKPK(ROOM_TIME,:%Old," = "," and") */
+        ROOM_TIME.ROOM_NO = :old.ROOM_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE ROOM because ROOM_TIME exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM R/34 ROOM_RESER ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/34", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_34", FK_COLUMNS="ROOM_NO" */
+    select count(*) into numrows
+      from ROOM_RESER
+      where
+        /*  %JoinFKPK(ROOM_RESER,:%Old," = "," and") */
+        ROOM_RESER.ROOM_NO = :old.ROOM_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE ROOM because ROOM_RESER exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_ROOM after INSERT on ROOM for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on ROOM 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CAFE R/29 ROOM ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="ROOM"
+    P2C_VERB_PHRASE="R/29", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_29", FK_COLUMNS="CAFE_NO" */
+    select count(*) into numrows
+      from CAFE
+      where
+        /* %JoinFKPK(:%New,CAFE," = "," and") */
+        :new.CAFE_NO = CAFE.CAFE_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT ROOM because CAFE does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_ROOM after UPDATE on ROOM for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on ROOM 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* ROOM R/44 ROOM_TIME ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_TIME"
+    P2C_VERB_PHRASE="R/44", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_44", FK_COLUMNS="ROOM_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.ROOM_NO <> :new.ROOM_NO
+  then
+    select count(*) into numrows
+      from ROOM_TIME
+      where
+        /*  %JoinFKPK(ROOM_TIME,:%Old," = "," and") */
+        ROOM_TIME.ROOM_NO = :old.ROOM_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE ROOM because ROOM_TIME exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* ROOM R/34 ROOM_RESER ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/34", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_34", FK_COLUMNS="ROOM_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.ROOM_NO <> :new.ROOM_NO
+  then
+    select count(*) into numrows
+      from ROOM_RESER
+      where
+        /*  %JoinFKPK(ROOM_RESER,:%Old," = "," and") */
+        ROOM_RESER.ROOM_NO = :old.ROOM_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE ROOM because ROOM_RESER exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CAFE R/29 ROOM ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CAFE"
+    CHILD_OWNER="", CHILD_TABLE="ROOM"
+    P2C_VERB_PHRASE="R/29", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_29", FK_COLUMNS="CAFE_NO" */
+  select count(*) into numrows
+    from CAFE
+    where
+      /* %JoinFKPK(:%New,CAFE," = "," and") */
+      :new.CAFE_NO = CAFE.CAFE_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE ROOM because CAFE does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_ROOM_RESER after DELETE on ROOM_RESER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on ROOM_RESER 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM_RESER R/54 PAYMENT ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM_RESER"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/54", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_54", FK_COLUMNS="RESER_NO" */
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.RESER_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = "," and") */
+        PAYMENT.RESER_NO = :old.RESER_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_ROOM_RESER after INSERT on ROOM_RESER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on ROOM_RESER 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM R/34 ROOM_RESER ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/34", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_34", FK_COLUMNS="ROOM_NO" */
+    select count(*) into numrows
+      from ROOM
+      where
+        /* %JoinFKPK(:%New,ROOM," = "," and") */
+        :new.ROOM_NO = ROOM.ROOM_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT ROOM_RESER because ROOM does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/4 ROOM_RESER ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/4", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_4", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT ROOM_RESER because CUSTOMER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_ROOM_RESER after UPDATE on ROOM_RESER for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on ROOM_RESER 
+declare numrows INTEGER;
+begin
+  /* ROOM_RESER R/54 PAYMENT ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM_RESER"
+    CHILD_OWNER="", CHILD_TABLE="PAYMENT"
+    P2C_VERB_PHRASE="R/54", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_54", FK_COLUMNS="RESER_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.RESER_NO <> :new.RESER_NO
+  then
+    update PAYMENT
+      set
+        /* %SetFK(PAYMENT,NULL) */
+        PAYMENT.RESER_NO = NULL
+      where
+        /* %JoinFKPK(PAYMENT,:%Old," = ",",") */
+        PAYMENT.RESER_NO = :old.RESER_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* ROOM R/34 ROOM_RESER ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/34", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_34", FK_COLUMNS="ROOM_NO" */
+  select count(*) into numrows
+    from ROOM
+    where
+      /* %JoinFKPK(:%New,ROOM," = "," and") */
+      :new.ROOM_NO = ROOM.ROOM_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE ROOM_RESER because ROOM does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/4 ROOM_RESER ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_RESER"
+    P2C_VERB_PHRASE="R/4", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_4", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE ROOM_RESER because CUSTOMER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_ROOM_TIME after INSERT on ROOM_TIME for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on ROOM_TIME 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* ROOM R/44 ROOM_TIME ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_TIME"
+    P2C_VERB_PHRASE="R/44", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_44", FK_COLUMNS="ROOM_NO" */
+    select count(*) into numrows
+      from ROOM
+      where
+        /* %JoinFKPK(:%New,ROOM," = "," and") */
+        :new.ROOM_NO = ROOM.ROOM_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT ROOM_TIME because ROOM does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_ROOM_TIME after UPDATE on ROOM_TIME for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on ROOM_TIME 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* ROOM R/44 ROOM_TIME ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="ROOM"
+    CHILD_OWNER="", CHILD_TABLE="ROOM_TIME"
+    P2C_VERB_PHRASE="R/44", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_44", FK_COLUMNS="ROOM_NO" */
+  select count(*) into numrows
+    from ROOM
+    where
+      /* %JoinFKPK(:%New,ROOM," = "," and") */
+      :new.ROOM_NO = ROOM.ROOM_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE ROOM_TIME because ROOM does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_SNS after DELETE on SNS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on SNS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* SNS R/62 SNS_REPLY ON PARENT DELETE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/62", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_62", FK_COLUMNS="SNS_NO" */
+    update SNS_REPLY
+      set
+        /* %SetFK(SNS_REPLY,NULL) */
+        SNS_REPLY.SNS_NO = NULL
+      where
+        /* %JoinFKPK(SNS_REPLY,:%Old," = "," and") */
+        SNS_REPLY.SNS_NO = :old.SNS_NO;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* SNS R/61 SNS_IMG ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_IMG"
+    P2C_VERB_PHRASE="R/61", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_61", FK_COLUMNS="SNS_NO" */
+    select count(*) into numrows
+      from SNS_IMG
+      where
+        /*  %JoinFKPK(SNS_IMG,:%Old," = "," and") */
+        SNS_IMG.SNS_NO = :old.SNS_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE SNS because SNS_IMG exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_SNS after INSERT on SNS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on SNS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/66 SNS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/66", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_66", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from PROVIDER
+      where
+        /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+        :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT SNS because PROVIDER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/64 SNS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/64", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_64", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT SNS because CUSTOMER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_SNS after UPDATE on SNS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on SNS 
+declare numrows INTEGER;
+begin
+  /* SNS R/62 SNS_REPLY ON PARENT UPDATE SET NULL */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/62", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_62", FK_COLUMNS="SNS_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.SNS_NO <> :new.SNS_NO
+  then
+    update SNS_REPLY
+      set
+        /* %SetFK(SNS_REPLY,NULL) */
+        SNS_REPLY.SNS_NO = NULL
+      where
+        /* %JoinFKPK(SNS_REPLY,:%Old," = ",",") */
+        SNS_REPLY.SNS_NO = :old.SNS_NO;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* SNS R/61 SNS_IMG ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_IMG"
+    P2C_VERB_PHRASE="R/61", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_61", FK_COLUMNS="SNS_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.SNS_NO <> :new.SNS_NO
+  then
+    select count(*) into numrows
+      from SNS_IMG
+      where
+        /*  %JoinFKPK(SNS_IMG,:%Old," = "," and") */
+        SNS_IMG.SNS_NO = :old.SNS_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE SNS because SNS_IMG exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/66 SNS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/66", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_66", FK_COLUMNS="PROVIDER_NO" */
+  select count(*) into numrows
+    from PROVIDER
+    where
+      /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+      :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE SNS because PROVIDER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/64 SNS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS"
+    P2C_VERB_PHRASE="R/64", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_64", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE SNS because CUSTOMER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_SNS_IMG after INSERT on SNS_IMG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on SNS_IMG 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* SNS R/61 SNS_IMG ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_IMG"
+    P2C_VERB_PHRASE="R/61", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_61", FK_COLUMNS="SNS_NO" */
+    select count(*) into numrows
+      from SNS
+      where
+        /* %JoinFKPK(:%New,SNS," = "," and") */
+        :new.SNS_NO = SNS.SNS_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT SNS_IMG because SNS does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_SNS_IMG after UPDATE on SNS_IMG for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on SNS_IMG 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* SNS R/61 SNS_IMG ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_IMG"
+    P2C_VERB_PHRASE="R/61", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_61", FK_COLUMNS="SNS_NO" */
+  select count(*) into numrows
+    from SNS
+    where
+      /* %JoinFKPK(:%New,SNS," = "," and") */
+      :new.SNS_NO = SNS.SNS_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE SNS_IMG because SNS does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_SNS_REPLY after INSERT on SNS_REPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on SNS_REPLY 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* PROVIDER R/69 SNS_REPLY ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/69", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_69", FK_COLUMNS="PROVIDER_NO" */
+    select count(*) into numrows
+      from PROVIDER
+      where
+        /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+        :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT SNS_REPLY because PROVIDER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/65 SNS_REPLY ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/65", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_65", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT SNS_REPLY because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* SNS R/62 SNS_REPLY ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/62", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_62", FK_COLUMNS="SNS_NO" */
+    update SNS_REPLY
+      set
+        /* %SetFK(SNS_REPLY,NULL) */
+        SNS_REPLY.SNS_NO = NULL
+      where
+        not exists (
+          select * from SNS
+            where
+              /* %JoinFKPK(:%New,SNS," = "," and") */
+              :new.SNS_NO = SNS.SNS_NO
+        ) 
+        /* %JoinPKPK(SNS_REPLY,:%New," = "," and") */
+         and SNS_REPLY.REPLY_NO = :new.REPLY_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_SNS_REPLY after UPDATE on SNS_REPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on SNS_REPLY 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* PROVIDER R/69 SNS_REPLY ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="PROVIDER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/69", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_69", FK_COLUMNS="PROVIDER_NO" */
+  select count(*) into numrows
+    from PROVIDER
+    where
+      /* %JoinFKPK(:%New,PROVIDER," = "," and") */
+      :new.PROVIDER_NO = PROVIDER.PROVIDER_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE SNS_REPLY because PROVIDER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/65 SNS_REPLY ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/65", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_65", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE SNS_REPLY because CUSTOMER does not exist.'
+    );
+  end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* SNS R/62 SNS_REPLY ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="SNS"
+    CHILD_OWNER="", CHILD_TABLE="SNS_REPLY"
+    P2C_VERB_PHRASE="R/62", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_62", FK_COLUMNS="SNS_NO" */
+    update SNS_REPLY
+      set
+        /* %SetFK(SNS_REPLY,NULL) */
+        SNS_REPLY.SNS_NO = NULL
+      where
+        not exists (
+          select * from SNS
+            where
+              /* %JoinFKPK(:%New,SNS," = "," and") */
+              :new.SNS_NO = SNS.SNS_NO
+        ) 
+        /* %JoinPKPK(SNS_REPLY,:%New," = "," and") */
+         and SNS_REPLY.REPLY_NO = :new.REPLY_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tD_STD after DELETE on STD for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- DELETE trigger on STD 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/22 STD_PICKERS ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/22", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_22", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from STD_PICKERS
+      where
+        /*  %JoinFKPK(STD_PICKERS,:%Old," = "," and") */
+        STD_PICKERS.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE STD because STD_PICKERS exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/18 HASHTAG ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="HASHTAG"
+    P2C_VERB_PHRASE="R/18", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_18", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from HASHTAG
+      where
+        /*  %JoinFKPK(HASHTAG,:%Old," = "," and") */
+        HASHTAG.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE STD because HASHTAG exists.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/7 STD_APPLY ON PARENT DELETE RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/7", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_7", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from STD_APPLY
+      where
+        /*  %JoinFKPK(STD_APPLY,:%Old," = "," and") */
+        STD_APPLY.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then
+      raise_application_error(
+        -20001,
+        'Cannot DELETE STD because STD_APPLY exists.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_STD after INSERT on STD for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on STD 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/43 STD ON CHILD INSERT SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD"
+    P2C_VERB_PHRASE="R/43", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_43", FK_COLUMNS="FOUNDER_NO" */
+    update STD
+      set
+        /* %SetFK(STD,NULL) */
+        STD.FOUNDER_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.FOUNDER_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(STD,:%New," = "," and") */
+         and STD.STD_NO = :new.STD_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_STD after UPDATE on STD for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on STD 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/22 STD_PICKERS ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/22", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_22", FK_COLUMNS="STD_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.STD_NO <> :new.STD_NO
+  then
+    select count(*) into numrows
+      from STD_PICKERS
+      where
+        /*  %JoinFKPK(STD_PICKERS,:%Old," = "," and") */
+        STD_PICKERS.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE STD because STD_PICKERS exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/18 HASHTAG ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="HASHTAG"
+    P2C_VERB_PHRASE="R/18", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_18", FK_COLUMNS="STD_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.STD_NO <> :new.STD_NO
+  then
+    select count(*) into numrows
+      from HASHTAG
+      where
+        /*  %JoinFKPK(HASHTAG,:%Old," = "," and") */
+        HASHTAG.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE STD because HASHTAG exists.'
+      );
+    end if;
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/7 STD_APPLY ON PARENT UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/7", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_7", FK_COLUMNS="STD_NO" */
+  if
+    /* %JoinPKPK(:%Old,:%New," <> "," or ") */
+    :old.STD_NO <> :new.STD_NO
+  then
+    select count(*) into numrows
+      from STD_APPLY
+      where
+        /*  %JoinFKPK(STD_APPLY,:%Old," = "," and") */
+        STD_APPLY.STD_NO = :old.STD_NO;
+    if (numrows > 0)
+    then 
+      raise_application_error(
+        -20005,
+        'Cannot UPDATE STD because STD_APPLY exists.'
+      );
+    end if;
+  end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/43 STD ON CHILD UPDATE SET NULL */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD"
+    P2C_VERB_PHRASE="R/43", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_43", FK_COLUMNS="FOUNDER_NO" */
+    update STD
+      set
+        /* %SetFK(STD,NULL) */
+        STD.FOUNDER_NO = NULL
+      where
+        not exists (
+          select * from CUSTOMER
+            where
+              /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+              :new.FOUNDER_NO = CUSTOMER.CUST_NO
+        ) 
+        /* %JoinPKPK(STD,:%New," = "," and") */
+         and STD.STD_NO = :new.STD_NO;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_STD_APPLY after INSERT on STD_APPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on STD_APPLY 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/7 STD_APPLY ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/7", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_7", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from STD
+      where
+        /* %JoinFKPK(:%New,STD," = "," and") */
+        :new.STD_NO = STD.STD_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT STD_APPLY because STD does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/3 STD_APPLY ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/3", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_3", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT STD_APPLY because CUSTOMER does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_STD_APPLY after UPDATE on STD_APPLY for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on STD_APPLY 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/7 STD_APPLY ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/7", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_7", FK_COLUMNS="STD_NO" */
+  select count(*) into numrows
+    from STD
+    where
+      /* %JoinFKPK(:%New,STD," = "," and") */
+      :new.STD_NO = STD.STD_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE STD_APPLY because STD does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/3 STD_APPLY ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_APPLY"
+    P2C_VERB_PHRASE="R/3", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_3", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE STD_APPLY because CUSTOMER does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tI_STD_PICKERS after INSERT on STD_PICKERS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- INSERT trigger on STD_PICKERS 
+declare numrows INTEGER;
+begin
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* CUSTOMER R/23 STD_PICKERS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/23", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_23", FK_COLUMNS="CUST_NO" */
+    select count(*) into numrows
+      from CUSTOMER
+      where
+        /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+        :new.CUST_NO = CUSTOMER.CUST_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT STD_PICKERS because CUSTOMER does not exist.'
+      );
+    end if;
+
+    /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+    /* STD R/22 STD_PICKERS ON CHILD INSERT RESTRICT */
+    /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/22", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_22", FK_COLUMNS="STD_NO" */
+    select count(*) into numrows
+      from STD
+      where
+        /* %JoinFKPK(:%New,STD," = "," and") */
+        :new.STD_NO = STD.STD_NO;
+    if (
+      /* %NotnullFK(:%New," is not null and") */
+      
+      numrows = 0
+    )
+    then
+      raise_application_error(
+        -20002,
+        'Cannot INSERT STD_PICKERS because STD does not exist.'
+      );
+    end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+
+create or replace trigger tU_STD_PICKERS after UPDATE on STD_PICKERS for each row
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+-- UPDATE trigger on STD_PICKERS 
+declare numrows INTEGER;
+begin
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* CUSTOMER R/23 STD_PICKERS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="CUSTOMER"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/23", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_23", FK_COLUMNS="CUST_NO" */
+  select count(*) into numrows
+    from CUSTOMER
+    where
+      /* %JoinFKPK(:%New,CUSTOMER," = "," and") */
+      :new.CUST_NO = CUSTOMER.CUST_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE STD_PICKERS because CUSTOMER does not exist.'
+    );
+  end if;
+
+  /* ERwin Builtin Thu Sep 05 00:18:47 2019 */
+  /* STD R/22 STD_PICKERS ON CHILD UPDATE RESTRICT */
+  /* ERWIN_RELATION:PARENT_OWNER="", PARENT_TABLE="STD"
+    CHILD_OWNER="", CHILD_TABLE="STD_PICKERS"
+    P2C_VERB_PHRASE="R/22", C2P_VERB_PHRASE="", 
+    FK_CONSTRAINT="R_22", FK_COLUMNS="STD_NO" */
+  select count(*) into numrows
+    from STD
+    where
+      /* %JoinFKPK(:%New,STD," = "," and") */
+      :new.STD_NO = STD.STD_NO;
+  if (
+    /* %NotnullFK(:%New," is not null and") */
+    
+    numrows = 0
+  )
+  then
+    raise_application_error(
+      -20007,
+      'Cannot UPDATE STD_PICKERS because STD does not exist.'
+    );
+  end if;
+
+
+-- ERwin Builtin Thu Sep 05 00:18:47 2019
+end;
+/
+

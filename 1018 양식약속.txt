@@ -1,0 +1,19 @@
+메인페이지 		- classic / index / slider 
+카페목록 		  	- real-estate/ listing-row/
+카페상세			-education/course-single
+스투더목록		-education/course-list
+스투더상세		-real-estate/listiong-detail  
+로그인 			-/admin-dashboardUi/html/page-sign-in-2.html
+회원가입			-classic/elements/form Elements
+확인및 완료		-classic/success-page
+내부탭 			-classic/Tabs
+워드클라우드		http://bl.ocks.org/e9t/e462f7462e9d83b03464
+신청양식 			-classic/contatc-basic
+스투더/카페 개설		수정하거나 직접만들어서쓰기
+맛집찾기			-일단패스
+이벤트
+헤더 			-sticky light
+푸터			-footer2
+소셜아이콘		네모에 하얀거
+일반아이콘 		Et-Line Icons
+사각버튼			Outline buttons

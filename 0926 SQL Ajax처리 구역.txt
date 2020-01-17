@@ -1,0 +1,59 @@
+ajax >
+카페목록)
+기본리스트뽑아올때
+검색 판매 평점 최저가 최고가 정렬할때
+<select> id = listAllCafe  	/cafevo
+<select> id = listSortCafe	/cafevo
+<select> id = listSeachCafe	/cafevo
+
+-----------------------------------------
+카페 상세)
+상세내용 최초 가져올때 ajax 
+리뷰등록시 ajax통신으로 리뷰목록 다시뽑아오기
+<select> id = detailCafe  	/cafevo
+<select> id = listCafeReview 	/cafereviewvo
+<update> id = updateCafeReview 	/cafereviewvo
+<insert> id = insertCafeReview  /cafereviewvo
+
+------------------------------------------
+
+개마페 -카페)
+최초 내용 불러올때 ajax
+전체 / 예약 /이용완료 정렬시 ajax통신
+<select> id = listSortMyCafe	/cafevo
+
+------------------------------------------------
+
+카페개설)
+insert내용 ajax통신으로 insert
+<insert> id = inserCafe 	/cafevo
+
+------------------------------------------------
+
+카페수정)
+update하기전 기본내용 ajax로 불러오기
+update된 내용 ajax로 uodate
+<update> id = updateCafe 	/cafevo
+
+-----------------------------------------------
+
+이벤트페이지)
+이벤트목록 ajax
+이벤트상세 ajax로 불러와서 다운로드시 
+쿠폰다운로드시 고객목록에 ajax로 고객에게 
+쿠폰데이터 넣어주기
+<select> id = listEvt 		/evtvo
+<select> id = getEvtCoupon	/evtcouponvo
+<insert> id = insertEvt		/evtvo
+<insert> id = insertEvtCoupon 	/evtcouponvo //쿠폰다운받은 고객번호가 들어감
+
+
+-----------------------------------------------
+CafeList (카페목록)
+CafeDetail(카페상세)
+CustMyPage(개마페-카페)
+AddLicense(사업자번호확인)
+InsertCafe(카페등록)
+EVTList(이벤트목록)
+EVTDetail(이벤트상세)
+----------------------
