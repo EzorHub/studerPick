@@ -1,0 +1,20 @@
+ <!-- 1  --> <div class="cafe_list">
+                            <!--추후 동적쿼리로 예약은 예약취소, 이용완료는 재구매로!--> 
+                        <!-- 2 -->    <div class="list_header">
+                           <!-- 3 -->     <div style="float: left;">
+                       <!-- cname -->      <p style="font-size: 13.5;"><b>카페명:&nbsp;&nbsp;카페이름</b></p>
+                                </div>
+                       <!-- 4 -->         <div style="float: right;">
+                                    <button id="btnCls_reser" class="btn btn-secondary mr-1 mb-2">예약취소</button>
+                                </div>
+                            </div>
+                          <!-- 5 -->  <div style="clear:both;"></div>
+                          <!-- 6 -->  <div class="list_content">
+                                <p id="content_date">날짜: </p>
+                                <p id="content_time">이용 시작시간: </p>
+                                <p id="content_time_all">총 이용시간: </p>
+                                <p id="content_room_name">룸 이름: </p>                                
+                                <p id="content_limit">사용인원: </p>
+                                <p id="content_addr">해당 카페 주소: </p>
+                            </div>
+                        </div>오후 12:44 2019-11-02

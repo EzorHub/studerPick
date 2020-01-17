@@ -1,0 +1,35 @@
+var div1 = ('<div><div/>').addClass('cafe_list');
+var div2 = ('<div><div/>').addClass('list_header');
+
+var div3 = ('<div id="div3"></div>').attr({
+"style":"float:left;"});
+
+document.getElementById("div3").style.float="left";
+var cname = ('<p></p>').html("<b>카페명: "+mp.cafe_name+"</b>").attr({
+"style":"font-size:13.5;"});
+$(div3).append(cname);
+-----------------------------
+var div4 = ('<div><div/>').attr({
+"style":"float:right;"});
+if문으로 예약취소/재구매 구현 해야할 것같음---우선은 버튼을 없애쟈..!
+var btnCls_reser = ().addClass(btn btn-secondary mr-1 mb-2).html("예약취소");
+var btnAgn = ().addClass(btn btn-secondary mr-1 mb-2).html("재구매");
+$(div4).append(btn*);
+-----------------------------
+$(div2).append(div3, div4(미정)); - header(카페이름, 버튼)
+var div5 = ('<div><div/>').attr({"style":"clear:both;"});
+var div6 = ('<div><div/>').addClass("list_content");
+var content_date = ('<p></p>').html("날짜: "+mp.reser_date);
+var content_time = ('<p></p>').html("시간: "+mp.reser_start+"부터  "+mp.reser_time+" 시간");
+var content_limit = ('<p></p>').html("인원: "+mp.user_num);
+var content_addr = ('<p></p>').html("주소: "+mp.cafe_loc);
+
+$(div1).append() - 최종(헤더, 따라오는거 방지-div,listcontent' div )
+------------------------------------------------------------
+$(div1).append(div2, div5, div6);
+- 최종(헤더, 따라오는거 방지-div,listcontent' div )
+------------------------------------------------------------
+$("#_all").append(div1);
+최종적으로 해당 all tab에 append해줌!
+----아이디가 all/used/reserved 인것에 append
+

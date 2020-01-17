@@ -1,0 +1,62 @@
+
+	Dropzone.autoDiscover = false;
+	if ($('#demo-upload').length) {
+		   /* $("div#demo-upload").dropzone({  url: "cafeInsert3.do/upload.do"  }); */
+		  var dropzone = new Dropzone('#demo-upload', {	
+			 /*  url: '@Url.Action("upload.do", "data")', */	
+			  uploadMultiple: true,
+			  autoProcessQueue: false,	
+			  
+			  maxFilesize: 3,
+			  filesizeBase: 1000,
+			  
+				init: function() {
+					
+/* 					  this.on("sending", function(file, xhr, formData){
+	                        formData.append("data", "loremipsum");
+	                });
+				 */
+			    // first set autoProcessQueue = false
+              /*   $('#s').on("click", function(e) {
+
+                	dropzone.processQueue();
+                }); */
+			    
+			    
+	  	      this.on("addedfile", function(file) {            	    
+	  	    	
+	  	         var removeButton = Dropzone.createElement("<button id='removed' class='btn-primary btn-xs'>삭&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제</button>");
+				 var _this = this;
+				 
+				    
+	  	        removeButton.addEventListener("click", function(e) {
+	  	          e.preventDefault();
+	  	          e.stopPropagation();         	          
+	  	       
+	  	          _this.removeFile(file);
+	  	          // If you want to the delete the file on the server as well,
+	  	          // you can do the AJAX request here.
+	  	        });
+	  	        file.previewElement.appendChild(removeButton); 
+	  	        
+	  	      	
+	  	      });
+	  	      
+	  	      this.on("error", function(file, response) {
+	              var _this = this;                
+	              var index = dropzone.files.map(function (obj, index) {
+	                    if (file == obj) {
+	                        return index;
+	                    }
+	                }).filter(isFinite)[0];
+	               if(index == 4){
+	            	   _this.removeFile(file);            	  
+	            	   response = "파일은 최대 4개까지 업로드 가능합니다.";
+	                   alert(response).one(); // one 말고 다른 문법은 없음? html console에서 오류남 혹은 아예 비활성화되거나 자동 삭제 되는 방법은 없는지? 
+	               }
+	        	});
+			  }
+		  });
+			
+
+		}

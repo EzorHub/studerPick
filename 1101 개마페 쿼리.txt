@@ -1,0 +1,71 @@
+[전체]
+select rr.reser_date, rr.reser_time, rr.user_num, r.room_name, c.cafe_name, c.cafe_loc from room_reser rr, room r, cafe c where rr.room_no = r.room_no and r.cafe_no = c.cafe_no and rr.pay_no in (select pay_no from payment where cust_no = (select cust_no from customer where id = 'ezor123')) order by rr.reser_no;
+
+[예약 사용전]
+SELECT rr.reser_date,
+  rr.reser_start,
+  rr.reser_time,
+  rr.user_num,
+  r.room_name,
+  c.cafe_name,
+  c.cafe_loc
+FROM room_reser rr,
+  room r,
+  cafe c
+WHERE rr.room_no = r.room_no
+AND r.cafe_no    = c.cafe_no
+and rr.reser_date > sysdate
+AND rr.pay_no   IN
+  (SELECT pay_no
+  FROM payment
+  WHERE cust_no =
+    (SELECT cust_no FROM customer WHERE id = 'ezor123'
+    )
+  );
+[이용완료 예약후 사용함-혹은 날짜 지남]
+SELECT rr.reser_date,
+  rr.reser_start,
+  rr.reser_time,
+  rr.user_num,
+  r.room_name,
+  c.cafe_name,
+  c.cafe_loc
+FROM room_reser rr,
+  room r,
+  cafe c
+WHERE rr.room_no = r.room_no
+AND r.cafe_no    = c.cafe_no
+and rr.reser_date < sysdate
+AND rr.pay_no   IN
+  (SELECT pay_no
+  FROM payment
+  WHERE cust_no =
+    (SELECT cust_no FROM customer WHERE id = 'ezor123'
+    )
+  );
+
+
+
+------------------------------
+<select id="cnt_reserved_mypage" parameterType="Integer" resultType="java.lang.Integer">
+			SELECT count(*)
+			FROM room_reser rr,
+			  room r,
+			  cafe c
+			WHERE rr.room_no = r.room_no
+			AND r.cafe_no    = c.cafe_no
+				<if test ="test == -1">
+					<![CDATA[and rr.reser_date < sysdate]]>			
+				</if>
+				<if test ="test == 1">
+					<![CDATA[and rr.reser_date < sysdate]]>			
+				</if>
+			AND rr.pay_no   IN
+			  (SELECT pay_no
+			  FROM payment
+			  WHERE cust_no =
+			    (SELECT cust_no FROM customer WHERE id = #{id}
+			    )
+			  )
+	</select>
+

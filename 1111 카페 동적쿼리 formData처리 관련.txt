@@ -1,0 +1,29 @@
+$("#btnInsert").click(function() {
+      var sns_content = $("#sns_content").val();
+      const formData = new FormData();
+      formData.append("sns_content",sns_content);
+      formData.append("cust_no",cust_no);
+      formData.append("provider_no",provider_no);
+      
+      for(var i=0; i<arr_file.length; i++) {
+         formData.append("arr_file"+i,arr_file[i]);
+      }
+      
+      
+      var tags = $('[name=tags]').val();
+      var j_tags = eval("(" + tags + ")");
+      $.each(j_tags, function(idx, item) {
+         //alert(item.value);
+         formData.append("tags",item.value); 
+         
+      });
+      
+      $.ajax({url:"snsInsert", processData: false, contentType: false,
+         data:formData, 
+         type:"POST", success:function(re) {
+            if(re>1) {
+               //window.location.href="main.do";
+               alert("성공");
+            }
+      }});
+   });

@@ -1,0 +1,135 @@
+폼2 - 카페 정보 및 소개
+<form id="f2_cafe_info" action="list1" target="iframe" style="margin-top:30px;">
+	카페이름:<input type="text" id="c_name" required>
+	카페한줄소개:<input type="text" id="c_info" required>
+	주소:<input type="text" id="c_addr" required>
+	전화번호:<input type="text" id="c_phone" required>
+	영업시간:<input type="text" id="c_time" required>
+	좌석수:<input type="number" id="c_seat" required>
+	*버튼 <input id="f2_submit" type="submit">
+</form>
+폼3 - 이용권 및 룸
+<form id="f3_pass_room" action="list2" target="iframe">
+	이용권:<input type="text" id="pass_name" style="width: 400px!important" required>
+	가격:<input type="text" id="pass_price" style="width: 400px!important; display: inline;" required>
+	룸이름:<input type="text" id="room_name" style="width: 865px!important; display: inline;" required>
+	예약가능한 룸 시작시간:<input class="two_line" type="number" id="room_time_start" style="width: 250px!important; display: inline;" required>
+	예약가능한 룸 종료시간:<input  class="two_line" type="number" id="room_time_end" style="width: 250px!important; display: inline;" required>
+	시간별 룸가격:<input  class="two_line" type="number" id="room_price" style="width: 230px!important; display: inline;" required>	
+	*버튼<input id="f3_submit" type="submit">
+</form>
+폼4 - 취소 환불 규정
+<form id="f4_cafe_r_p" action="list3" target="iframe" style="margin-top: 30px;">
+	상품정보 제공 고시:<textarea id="ta_1" class="md-textarea form-control" rows="6" placeholder="ex)채움 스터디 카페
+1.스터디카페 이용에 관련한 스터디룸 및 이용권 장소제공
+2.기타 간단한 식음료 제공"></textarea>
+	취소 및 환불 규정:<textarea id="ta_2" class="md-textarea form-control" rows="10" placeholder="ex)1. 채움스터디카페의 모든 예약은 시작일 5일 이전까지 취소 시에는 전액 환불이 가능합니다. 단, 예약일 3일전까지 취소 시 50% 환불이 가능하며, 그 이후와 예약 당일 취소 시 환불 불가 (단, 지인에게 양도 가능)합니다. 예시) 예약일이 2020년 3월 6일 (금) 일 경우 3월 1일 이전까지 취소 신청시 : 전액 환불 (결제수단에 따라 취소 수수료,부가세 발생가능) 3월 3일까지 취소 신청시 : 50% 환불 (결제수단 관계없이 취소 수수료, 부가세 채움스터디카페가 부담) 3월 4일~3월 6일 강좌 당일 취소 신청 시 : 환불 불가 (지인에게 양도 가능)
+2. 결제 수단에 따라 취소 수수료와 부가세 발생 (채움스터디카페 ‘결제수단별 취소 수수료, 부가세 부과 안내’ 참고) 예약일 5일 이전까지 취소 시 전액 환불이 가능하지만 이 경우에도 실시간 계좌이체와 가상계좌를 통해 결제하신 경우는 PG사 매입기준에 따라 전액 환불금에서 취소수수료와 10% 부가세를 제외하고 환불해 드립니다. 신용카드와 무통장 입금은 취소 시 취소수수료와 10% 부가세가 발생하지 않습니다. 예약일 3일 전까지 취소 신청하여 50% 환불 처리 하는 경우, 결제 수단에 관계없이 취소 수수료와 부가세는 채움스터디 카페가 부담합니다.
+3. 카페측 사정으로 인한 예약 취소 시에는 100% 환불하여 드립니다."></textarea>
+	<input id="f4_submit" type="submit">
+</form>
+가상폼 - 개설 - 서버로 제출 
+
+	개설
+<form action="list4" target="iframe">
+	<input id="create" type="submit" value="개설">
+</form> 
+	가상폼
+<form action="listController.do" target="iframe">
+	카페이름:<input name="c_nameR" id="c_nameR" type="text">
+	카페한줄소개:<input name="c_infoR" id="c_infoR" type="text">
+	주소:<input name="c_addrR" id="c_addrR" type="text">
+	전화번호:<input name="c_phoneR" id="c_phoneR" type="text">
+	영업시간:<input name="c_timeR" id="c_timeR" type="text">
+	좌석수:<input name="c_seatR" id="c_seatR" type="number" >
+
+	이용권:<input name="pass_nameR" id="pass_nameR" type="text" >
+	가격:<input name="pass_priceR" id="pass_priceR" type="number" >
+	룸이름:<input name="room_nameR" id="room_nameR" type="text" >
+	예약가능한 룸 시작시간:<input name="room_time_startR" type="number" id="room_time_startR">
+	예약가능한 룸 종료시간:<input name="room_time_endR" type="number" id="room_time_endR" >
+	시간별 룸가격:<input name="room_priceR"  type="number" id="room_priceR" >
+
+	상품정보 제공 고시:<textarea name="ta_1R" id="ta_1R" ></textarea>
+	취소 및 환불 규정:<textarea name="ta_2R" id="ta_2R" ></textarea>
+	<input id="real" name="real"  type="submit">
+</form>
+	페이지 이동 막기위한 iframe
+<iframe src="#" name="iframe" style="width:1px; height:1px; border:0; visibility:hidden;"></iframe>
+
+
+
+
+-------------------------------------------------
+
+$("#create").click(function(){
+		//create submit을 클릭하면 
+	
+		$("f2_submit").trigger('click');	//룸 을 위한 폼을 섭밋	
+		$("f3_submit").trigger('click');	//이용권을 위한 폼을 섭밋
+		$("f4_submit").trigger('click');	//취소 환불을 위한 폼을 섭밋
+									//submit을 하면 각 폼의 input태그에 value값이 입력한 값으로 저장됨
+									
+		//SUBMIT을 통해 저장된 value값을 제이쿼리 변수에 담아두는 구간				
+		var r =	$("#room").val();
+		var rt =$("#roomt").val();
+		var rp =$("#roomp").val();
+		var p =$("#pass").val();
+		var pt =$("#passt").val();
+		var pp =$("#passp").val();
+		var cc =$("#cancle").val();
+		var re =$("#re").val();
+
+
+---------------------------------------
+                            		var val_1 = $("#c_name").val();
+                            		var val_2 = $("#c_info").val();
+                            		var val_3 = $("#c_addr").val();
+                            		var val_4 = $("#c_phone").val();
+                            		var val_5 = $("#c_time").val();
+                            		var val_6 = $("#c_seat").val();
+                            		var val_7 = $("#pass_name").val();
+                            		var val_8 = $("#pass_price").val();
+                            		var val_9 = $("#room_name").val();
+                            		var val_10 = $("#room_time_start").val();
+                            		var val_11 = $("#room_time_end").val();
+                            		var val_12 = $("#room_price").val();
+                            		var val_13 = $("#ta_1").val();
+                            		var val_14 = $("#ta_2").val();
+
+		
+		//제이쿼리 변수에 담겨있던 폼안의 값들을 가상폼에 value로 지정
+		$("#roomR").val(r);
+		$("#roomtR").val(rt);
+		$("#roompR").val(rp);
+		$("#passR").val(p);
+		$("#passtR").val(pt);
+		$("#passpR").val(pp);
+		$("#cancleR").val(cc);
+		$("#reR").val(re);
+		
+-----------------------------------------
+      		$("#c_nameR").val(val_1);
+      		$("#c_infoR").val(val_2);
+      		$("#c_addrR").val(val_3);
+      		$("#c_phoneR").val(val_4);
+      		$("#c_timeR").val(val_5);
+      		$("#c_seatR").val(val_6);
+      		$("#pass_nameR").val(val_7);
+      		$("#pass_priceR").val(val_8);
+      		$("#room_nameR").val(val_9);
+      		$("#room_time_startR").val(val_10);
+      		$("#room_time_endR").val(val_11);
+      		$("#room_priceR").val(val_12);
+      		$("#ta_1R").val(val_13);
+      		$("#ta_2R").val(val_14);
+
+
+		//가상폼에 value설정이 완료되면 마지막으로 가상폼의 submit을 trigger로 작동시켜서 컨트롤러로 모든 값을 가지고 이동
+		$("#real").trigger('click');
+			
+	})
+
+
+사서 고생하는 타입...
+왜그랬어여.....ㅠㅠ..

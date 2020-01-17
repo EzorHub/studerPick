@@ -1,0 +1,55 @@
+  
+	메인페이지
+$(location).attr("href", "스투더픽 소개페이지");
+	카페개설
+$(location).attr("href", "사업자 마이페이지");
+
+
+---------------------------------------------------------------------------------------------------------Mapper 쿼리문	
+
+select count(*)
+from payment pt, pass ps, cafe c, get_pass gp
+where pt.pay_no = gp.pay_no 
+and ps.pass_no = gp.pass_no
+and ps.cafe_no = c.cafe_no
+and pt.cust_no = 11;
+
+
+select pt.pay_no, pt.totalprice, gp.get_pass_no, ps.pass_content, c.cafe_name, c.cafe_hrs, c.cafe_loc
+from payment pt, pass ps, cafe c, get_pass gp
+where pt.pay_no = gp.pay_no 
+and ps.pass_no = gp.pass_no
+and ps.cafe_no = c.cafe_no
+and pt.cust_no = 11;
+---------------------------------------------------------------------------------------------------------
+*gp.get_pass_no 따로 고유번호가 아닌 그냥 1,2,3..으로 시작하는 번호임, 의미없음
+       $("#_get_pass(이용권관련탭)").click(function(){ -------------------------------------------------삭제예정*
+    	   
+    	  // $("#cafe_get_pass").empty();
+    	     $.getJSON("get_pass",cust_no, function(data){
+	       	    $.each(data, function (idx, mp) {
+	       	    	
+	       	    	//--------------------------------------------------------------
+	       	    	div1 = $('<div></div>').addClass('cafe_list');
+					div2 = $('<div></div>').addClass('list_header');					
+					div3 = $('<div></div>').attr({"style":"float:left;"});					
+					cname = $('<p></p>').html("<b>카페명: <font color='#e17804;'>"+mp.mp_cafe_name+"</font></b>").attr({
+					"style":"font-size:13.5;"});
+					$(div3).append(cname);					
+				$(div2).append(div3);
+					div5 = $('<div></div>').attr({"style":"clear:both;"});
+					div6 = $('<div></div>').addClass("list_content").attr({"style":"text-align:left;"});
+					mp.mp_reser_date = mp.mp_reser_date.substr(0,10);		
+					content_date = $('<p></p>').html("<b>날짜: "+mp.mp_reser_date+"</b>");
+					content_time = $('<p></p>').html("이용권명: "+mp.mp_reser_start+":00 ~  ("+mp.mp_reser_time+" 시간 이용)");
+					content_limit = $('<p></p>').html("결제금액: "+mp.mp_user_num+" 명");
+					content_addr = $('<p></p>').html("주소: "+mp.mp_cafe_loc);
+					$(div6).append(content_date, content_time, content_limit, content_addr);					
+					$(div1).append(div2, div5, div6);					
+					//------------------------------------------------------------
+					$("#cafe_used").append(div1);
+	       	    	//--------------------------------------------------------------
+	       	    });
+       		}); 
+        });
+      

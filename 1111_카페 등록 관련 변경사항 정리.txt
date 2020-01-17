@@ -1,0 +1,11 @@
+			변경
+[cafe 테이블]
+cafe_r, cafe_c	--->	cafe_policy 
+
+
+			추가
+[cafe_chkbox 테이블추가]
+CAFE_CHKBOX_NO		NUMBER			NotNull
+CAFE_CHKBOX_NAME	VARCHAR2(100 BYTE)	NotNull
+CAFE_NO			NUMBER			NotNull
+

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+	<select id="allStd" resultType="stdvo">
+		select s.std_no, s.std_image,
+		s.std_name, TO_CHAR(s.std_start,'YYYY-MM-DD')
+		std_start,TO_CHAR(s.std_end,'YYYY-MM-DD') std_end, s.std_time,
+		s.std_loc, TO_CHAR(s.std_close,'YYYY-MM-DD') std_close, s.std_limit,
+		s.founder_no
+		from std s, std_apply a
+		where a.std_no=s.std_no
+		and
+		cust_no=#{cust_no}
+		order
+		by s.std_no
+	</select>
+	<select id="watingStd" resultType="stdvo">
+		select s.std_no, s.std_image,
+		s.std_name, TO_CHAR(s.std_start,'YYYY-MM-DD')
+		std_start,TO_CHAR(s.std_end,'YYYY-MM-DD') std_end, s.std_time,
+		s.std_loc, TO_CHAR(s.std_close,'YYYY-MM-DD') std_close, s.std_limit,
+		s.founder_no, a.std_aprv
+		from std s, std_apply a
+		where s.std_no=a.std_no
+		and std_aprv='false'
+		and a.cust_no=#{cust_no}
+		order by s.std_no
+	</select>
+	<select id="ingStd" resultType="stdvo">
+		select s.std_no, s.std_image,
+		s.std_name, TO_CHAR(s.std_start,'YYYY-MM-DD')
+		std_start,TO_CHAR(s.std_end,'YYYY-MM-DD') std_end, s.std_time,
+		s.std_loc, TO_CHAR(s.std_close,'YYYY-MM-DD') std_close, s.std_limit,
+		s.founder_no
+		from std s, std_apply a
+		where s.std_no=a.std_no
+		and sysdate
+		>= std_start
+		and std_end >= sysdate
+		and std_aprv='true'
+		and
+		a.cust_no=#{cust_no}
+		order by s.std_no
+	</select>
+	<select id="endStd" resultType="stdvo">
+		select s.std_no, s.std_image,
+		s.std_name, TO_CHAR(s.std_start,'YYYY-MM-DD')
+		std_start,TO_CHAR(s.std_end,'YYYY-MM-DD') std_end, s.std_time,
+		s.std_loc, TO_CHAR(s.std_close,'YYYY-MM-DD') std_close, s.std_limit,
+		s.founder_no
+		from std s, std_apply a
+		where s.std_no=a.std_no
+		and sysdate
+		>= std_end
+		and std_aprv='true'
+		and a.cust_no=#{cust_no}
+		order by s.std_no
+	</select>
+	<select id="myStd" resultType="stdvo">
+		select std_no, std_image,
+		std_name, TO_CHAR(std_start,'YYYY-MM-DD')
+		std_start,TO_CHAR(std_end,'YYYY-MM-DD') std_end, std_time, std_loc,
+		TO_CHAR(std_close,'YYYY-MM-DD') std_close, std_limit, founder_no
+		from
+		std
+		where founder_no=#{founder_no}
+	</select>
+	<select id="allStdCnt" resultType="java.lang.Integer">
+		select count(*)
+		from std s,
+		std_apply a
+		where a.std_no=s.std_no
+		and cust_no=#{cust_no}
+	</select>
+	<select id="watingStdCnt" resultType="java.lang.Integer">
+		select count(*)
+		from std s,
+		std_apply a
+		where s.std_no=a.std_no
+		and std_aprv='false'
+		and
+		a.cust_no=#{cust_no}
+	</select>
+	<select id="ingStdCnt" resultType="java.lang.Integer">
+		select count(*)
+		from std s,
+		std_apply a
+		where s.std_no=a.std_no
+		and sysdate >= std_start
+		and std_end
+		>= sysdate
+		and std_aprv='true'
+		and a.cust_no=#{cust_no}
+	</select>
+	<select id="endStdCnt" resultType="java.lang.Integer">
+		select count(*)
+		from std s,
+		std_apply a
+		where s.std_no=a.std_no
+		and sysdate >= std_end
+		and
+		std_aprv='true'
+		and a.cust_no=#{cust_no}
+	</select>
+	<!-- <select id="myStd" resultType="java.lang.Integer"> -->
+	<!-- select count(*) from std where founder_no=#{founder_no} -->
+	<!-- </select> -->
+
+
+	<!-- 개마페 카페 시작 -->
+	<!-- 카페 전체 -->
+	<select id="cnt_all_mypage" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM
+		room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no = r.room_no
+		AND r.cafe_no =
+		c.cafe_no
+		AND rr.pay_no
+		IN
+		(SELECT pay_no
+		FROM payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+		ORDER BY rr.reser_no
+	</select>
+	<select id="all_mypage" resultType="mpcafevo">
+		SELECT rr.reser_no
+		mp_reser_no,
+		rr.reser_date mp_reser_date ,
+		rr.reser_start
+		mp_reser_start,
+		rr.reser_time mp_reser_time,
+		rr.user_num mp_user_num,
+		r.room_name mp_room_name,
+		c.cafe_name mp_cafe_name,
+		c.cafe_loc
+		mp_cafe_loc
+		FROM room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no =
+		r.room_no
+		AND r.cafe_no = c.cafe_no
+		AND rr.pay_no
+		IN
+		(SELECT pay_no
+		FROM
+		payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+		ORDER BY rr.reser_no desc
+	</select>
+	<!--카페 예약 후 이용전 목록 -->
+	<select id="cnt_reserved_mypage" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no =
+		r.room_no
+		AND r.cafe_no = c.cafe_no
+		and
+		rr.reser_date <![CDATA[>]]>
+		sysdate
+		AND rr.pay_no IN
+		(SELECT pay_no
+		FROM payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+	</select>
+	<select id="reserved_mypage" resultType="mpcafevo">
+		SELECT rr.reser_no mp_reser_no,
+		rr.reser_date mp_reser_date ,
+		rr.reser_start mp_reser_start,
+		rr.reser_time mp_reser_time,
+		rr.user_num
+		mp_user_num,
+		r.room_name mp_room_name,
+		c.cafe_name mp_cafe_name,
+		c.cafe_loc mp_cafe_loc
+		FROM room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no
+		= r.room_no
+		AND r.cafe_no = c.cafe_no
+		AND
+		rr.reser_date <![CDATA[>]]>
+		sysdate
+		AND rr.pay_no IN
+		(SELECT pay_no
+		FROM payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+		ORDER BY rr.reser_no desc
+	</select>
+	<!--카페 예약 후 이용후(기간만료)목록 -->
+	<select id="cnt_used_mypage" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no =
+		r.room_no
+		AND r.cafe_no = c.cafe_no
+		and
+		rr.reser_date <![CDATA[<]]>
+		sysdate
+		AND rr.pay_no IN
+		(SELECT pay_no
+		FROM payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+	</select>
+	<select id="used_mypage" resultType="mpcafevo">
+		SELECT rr.reser_no mp_reser_no,
+		rr.reser_date mp_reser_date ,
+		rr.reser_start mp_reser_start,
+		rr.reser_time mp_reser_time,
+		rr.user_num
+		mp_user_num,
+		r.room_name mp_room_name,
+		c.cafe_name mp_cafe_name,
+		c.cafe_loc mp_cafe_loc
+		FROM room_reser rr,
+		room r,
+		cafe c
+		WHERE rr.room_no
+		= r.room_no
+		AND r.cafe_no = c.cafe_no
+		AND
+		rr.reser_date <![CDATA[<]]>
+		sysdate
+		AND rr.pay_no IN
+		(SELECT pay_no
+		FROM payment
+		WHERE cust_no =
+		#{cust_no}
+		)
+		ORDER BY rr.reser_no desc
+	</select>
+	<!--이용권 목록 -->
+	<select id="cnt_pass_mypage" resultType="java.lang.Integer">
+		select count(*)
+		from
+		payment pt, pass ps, cafe c, get_pass gp
+		where pt.pay_no =
+		gp.pay_no
+		and
+		ps.pass_no = gp.pass_no
+		and ps.cafe_no = c.cafe_no
+		and
+		pt.cust_no =
+		#{cust_no}
+	</select>
+	<select id="pass_mypage" resultType="mpscafevo">
+		select pt.pay_no
+		mps_pay_no, pt.totalprice mps_totalprice,
+		ps.pass_content mps_pass_content,
+		c.cafe_name mps_cafe_name, c.cafe_hrs mps_cafe_hrs,
+		c.cafe_loc mps_cafe_loc, c.cafe_phone mps_cafe_phone
+		from
+		payment pt,
+		pass ps, cafe c, get_pass gp
+		where pt.pay_no = gp.pay_no
+		and ps.pass_no
+		= gp.pass_no
+		and ps.cafe_no = c.cafe_no
+		and pt.cust_no =
+		#{cust_no}
+		order
+		by pt.pay_no desc
+	</select>
+
+
+</mapper>

@@ -1,0 +1,17 @@
+#_start{
+margin-left: auto !important;
+margin-right: auto !important;
+-ms-flex: 0 0 66.666667%;
+flex: 0 0 66.666667%;
+max-width: 66.66%;
+}
+
+     <form id="reviewIMG" action="requestupload2.do" method="post" enctype="multipart/form-data" target="iframe1">
+                                  <input type="hidden" name="cafe_no" value="${cafe.cafe_no }">
+                                  <input type="hidden" name="cust_no" value="1">
+                                <input id="upFiles" multiple="multiple" type="file" name="file" ><br>
+                                <input type="submit" id="upload">
+                             </form>
+
+
+<iframe src="#" name="iframe1" style="width:1px; height:1px; border:0; visibility:hidden;"></iframe>

@@ -1,0 +1,16 @@
+form1 = form id dropzoneForm
+formData.append('image', $('input[type=file]')[0].files[0]); 
+$.each(form
+form2 = form id c_info
+form3 = form id p_info
+form4 = form id c_r_info
+
+/* 
+	var formData = new FormData();
+	formData.append('img', document.getElementById('input[type=file]').files[0]);
+	formData.append('img', document.getElementById('input[type=file]').files[1]);
+	formData.append('img', document.getElementById('input[type=file]').files[2]);
+	formData.append('img', document.getElementById('input[type=file]').files[3]);
+	var entries = formData.entries();
+	alert(entries);
+ */

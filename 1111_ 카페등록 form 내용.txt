@@ -1,0 +1,22 @@
+input
+#f1
+cafe_name	c_name
+cafe_info	c_info
+cafe_loc	c_addr
+cafe_phone	c_phone
+cafe_hrs	c_time
+seats		c_seat
+
+checkboxes
+#f2
+pass_content	pass_name
+price		pass_p
+#f3
+room_name	r_name
+#f4
+start_time	room_time_start
+end_time	room_time_end
+time_price	room_price
+#f5
+cafe_notice	ta_1
+cafe_policy	ta_2

@@ -1,0 +1,67 @@
+	    
+	    @ResponseBody
+		@RequestMapping(value = "/insert_pass", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+//	   public String insert_pass(int cafe_no, @RequestBody List<Map<String, Object>> list) {
+	    public String insert_pass(int cafe_no, @RequestBody String[] pass_content, @RequestBody int[] price) {
+	    		System.out.println(cafe_no);
+	    		System.out.println(pass_content.length);
+	    		System.out.println(price.length);
+	    		
+	    		String re = null;	
+		   		   
+		   try {
+//			   for(int i = 0;i<p.getPass_content().size();i++) {
+//				   System.out.println("세팅전");
+//				   System.out.println(p.toString());
+//				   p.setPass_no(cafedao.getNextNo_pass());
+//				   for(String pass_content :p.getPass_content()) {
+//						System.out.println("pass_content : " + pass_content);
+//						}
+//				   for(int price :p.getPrice()) {
+//					   System.out.println("price : " + price);
+//				   }
+//				   p.setCafe_no(cafe_no);
+//				   System.out.println("세팅후");
+//				   System.out.println(p.toString());
+//				   //after insert_pass
+//			   }
+			   
+			   
+			   
+			   
+			   
+//			   for(PassVo p: passVo) {
+//				   for(int i = 0;i<p.getPass_content().length();i++) {
+//					   p.setPass_no(cafedao.getNextNo_pass());
+//					   p.setPass_content(p.getPass_content());
+//					   p.setCafe_no(cafe_no);
+//					   System.out.println(p.toString());
+//					   
+//					   ObjectMapper mapper = new ObjectMapper();
+//					   re = mapper.writeValueAsString(cafedao.insert_pass(p));
+//					   System.out.println("---------------------------");
+//					   System.out.println(re);
+//					   System.out.println("i는요: "+i);
+//					   System.out.println("insert_pass 완료!"); 
+//				   }
+//				  
+//			   } 
+
+//			   for(int i=0; i<p.getPass_content().length(); i++) {				   
+//				   p.setPass_no(cafedao.getNextNo_pass());
+//				   p.setPass_content(pass_content[i]);
+//				   p.setCafe_no(cafe_no);
+//				   
+//				   ObjectMapper mapper = new ObjectMapper();
+//				   re = mapper.writeValueAsString(cafedao.insert_pass(p));
+//				   System.out.println("---------------------------");
+//				   System.out.println(re);
+//				   System.out.println("i는요: "+i);
+//				   System.out.println("insert_pass 완료!"); 
+//			   }
+			    
+		   }catch (Exception e) {
+			   e.printStackTrace();
+		   }
+		   return re;
+	   }  

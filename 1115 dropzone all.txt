@@ -1,0 +1,92 @@
+Dropzone.autoDiscover = false;
+var arFiles = [];
+/*var arExistingFiles; */
+if ($('#demo-upload').length) {
+	  $("div#demo-upload").dropzone({ url: "file.do" });
+	  var dropzone = new Dropzone('#demo-upload', {		  
+		  parallelUploads: 2,
+		  thumbnailHeight: 120,
+		  thumbnailWidth: 120,
+		  maxFilesize: 3,
+		  filesizeBase: 1000/* ,
+		  thumbnail: function(file, dataUrl) {
+		    if (file.previewElement) {
+		      file.previewElement.classList.remove("dz-file-preview");
+		      var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+		      for (var i = 0; i < images.length; i++) {
+		        var thumbnailElement = images[i];
+		        thumbnailElement.alt = file.name;
+		        thumbnailElement.src = dataUrl;
+		      }
+		      setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
+		    }
+		  } */
+
+		,init: function() {
+  	      this.on("addedfile", function(file) {            	    
+  	    	
+  	         var removeButton = Dropzone.createElement("<button id='removed' class='btn-primary btn-xs'>삭&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;제</button>");
+			 var _this = this;
+			    
+  	        removeButton.addEventListener("click", function(e) {
+  	          e.preventDefault();
+  	          e.stopPropagation();         	          
+  	       
+  	          _this.removeFile(file);
+  	          // If you want to the delete the file on the server as well,
+  	          // you can do the AJAX request here.
+  	        });
+  	        file.previewElement.appendChild(removeButton); 
+  	      
+  	      });
+  	      
+  	      this.on("error", function(file, response) {
+              var _this = this;                
+              var index = dropzone.files.map(function (obj, index) {
+                    if (file == obj) {
+                        return index;
+                    }
+                }).filter(isFinite)[0];
+               if(index == 4){
+            	   _this.removeFile(file);            	  
+            	   arFiles.pop();
+            	   response = "파일은 최대 4개까지 업로드 가능합니다.";
+                   alert(response).one(); // one 말고 다른 문법은 없음? html console에서 오류남 혹은 아예 비활성화되거나 자동 삭제 되는 방법은 없는지? 
+               }
+        	});
+		  }, accept: function(file, done) {
+			  arFiles.push(file.name);
+			  var extension = file.name.substring(file.name.lastIndexOf('.')+1);
+	          //console.log("extension - " + extension + ", arExistingFiles - " + arExistingFiles);
+	          if (extension == "exe" || extension == "bat") {
+	              done("Error! File(s) of these type(s) are not accepted.");
+	          } else { 
+		          done(); 
+		          console.log(arFiles);
+	          }
+	          
+	         
+	      }
+		  
+		  
+		/*   accept: function(file, done) 
+		   {
+		        var re = /(?:\.([^.]+))?$/;
+		        var ext = re.exec(file.name)[1];
+		        
+		        
+		         alert('filename: '+file.name); 
+		      	
+		        
+		        ext = ext.toUpperCase();
+		        if ( ext == "JPG" || ext == "JPEG" || ext == "PNG" ||  ext == "GIF" ||  ext == "BMP") 
+		        {
+		            done();
+		        }else { 
+		            done("Please select only supported picture files."); 
+		        }
+		    } */
+	        
+	  });
+
+	}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<properties resource="com/bit/std_1st/db/bit.properties"/>
+<typeAliases>
+	<typeAlias type="com.bit.std_1st.vo.CafeVo" alias="cafevo"/>
+	<typeAlias type="com.bit.std_1st.vo.StarVo" alias="starvo"/>
+	<typeAlias type="com.bit.std_1st.vo.PassVo" alias="passvo"/>
+	<typeAlias type="com.bit.std_1st.vo.InqVo" alias="inqvo"/>
+	<typeAlias type="com.bit.std_1st.vo.ReviewVo" alias="reivewvo"/>
+	<typeAlias type="com.bit.std_1st.vo.CustomerVo" alias="custvo"/>
+	<typeAlias type="com.bit.std_1st.vo.ReviewAvg" alias="reviewavg"/>
+	<typeAlias type="com.bit.std_1st.vo.ReviewCount" alias="reviewcount"/>
+	<typeAlias type="com.bit.std_1st.vo.CafeReviewImg" alias="reviewimgvo"/>
+	<typeAlias type="com.bit.std_1st.vo.Cafe_chkboxVo" alias="cafechkbox"/>
+	<typeAlias type="com.bit.std_1st.vo.CustomerVo" alias="customervo"/>
+    <typeAlias type="com.bit.std_1st.vo.ProviderVo" alias="providervo"/>
+    <typeAlias type="com.bit.std_1st.vo.StdVo" alias="stdvo"/>
+    <typeAlias type="com.bit.std_1st.vo.HashTagVo" alias="hashtagvo"/>
+    <typeAlias type="com.bit.std_1st.vo.StdApplyVo" alias="stdapplyvo"/>
+    <typeAlias type="com.bit.std_1st.vo.CustomerVo" alias="customervo"/>
+    <typeAlias type="com.bit.std_1st.vo.CustomerApplyVo" alias="custaplyvo"/>
+  	<typeAlias type="com.bit.std_1st.vo.QaVo" alias="qavo"/>
+  	<typeAlias type="com.bit.std_1st.vo.NoticeVo" alias="noticevo"/>
+  	<typeAlias type="com.bit.std_1st.vo.EvtVo" alias="evtvo"/>
+  	<typeAlias type="com.bit.std_1st.vo.EvtCouponVo" alias="evtcouponvo"/>
+	<typeAlias type="com.bit.std_1st.vo.RoomVo" alias="roomvo"/>
+	<typeAlias type="com.bit.std_1st.vo.RoomTimeVo" alias="roomtimevo"/>
+	<typeAlias type="com.bit.std_1st.vo.RoomReserVo" alias="roomreservo"/>
+	<typeAlias type="com.bit.std_1st.vo.EvtCouponDiscountVo" alias="evtcoupondiscountvo"/>
+	<typeAlias type="com.bit.std_1st.vo.PaymentVo" alias="paymentvo"/>
+	<typeAlias type="com.bit.std_1st.vo.PassVo" alias="passvo"/>
+	<typeAlias type="com.bit.std_1st.vo.GetPassVo" alias="getpassvo"/>
+	<typeAlias type="com.bit.std_1st.vo.ProvAllSaleVo" alias="provallsalevo"/>
+	<typeAlias type="com.bit.std_1st.vo.ReserCountVo" alias="resercountvo"/>
+	<typeAlias type="com.bit.std_1st.vo.MPCafeVo" alias="mpcafevo"/>
+	<typeAlias type="com.bit.std_1st.vo.MPCafePassVo" alias="mpscafevo"/>
+	<typeAlias type="com.bit.std_1st.vo.Cafe_Img_Vo" alias="cafeimgvo"/>
+</typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${pwd}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/bit/std_1st/db/CafeMapper.xml"/>
+    <mapper resource="com/bit/std_1st/db/UserMapper.xml"/>
+    <mapper resource="com/bit/std_1st/db/StdMapper.xml"/>
+    <mapper resource="com/bit/std_1st/db/CSMapper.xml"/>
+    <mapper resource="com/bit/std_1st/db/MPMapper.xml"/>
+  </mappers>
+</configuration>

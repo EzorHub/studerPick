@@ -1,0 +1,44 @@
+											 <div class="form-row" id="room">
+											    <!-- Grid column -->
+											    <!-- Grid column -->
+											    <div class="col-md-4" id="room_t">
+											      <!-- Material input -->
+											     <div class="group rt_float">      
+												     <input class="two_line" type="text" id="room_time_start" style="width: 250px!important; display: inline;" required>
+												     <!-- <span class="highlight"></span> -->
+												     <!-- <span class="bar"></span> -->
+												     <label class="two_line" for="room_time_start" style="font-size: 15px; margin-top: -15px !important;">예약가능한<br> 룸 시작 시간</label>												     
+												   </div>
+												   </div>
+												   <div class="col-md-4" id="room_t">
+											     <div class="group rt_float">      
+												     <input  class="two_line" type="text" id="room_time_end"style="width: 250px!important; display: inline;" required>
+												     <!-- <span class="highlight"></span> -->
+												     <!-- <span class="bar"></span> -->
+												     <label  class="two_line" for="room_time_end" style="font-size: 15px; margin-top: -15px !important;">예약가능한<br> 룸 종료 시간</label>												     
+												   </div>
+											    </div>
+											    <!-- Grid column -->
+											
+											    <!-- Grid column -->
+											    <div class="col-md-4" id="room_p">
+											      <!-- Material input -->
+											      <input  class="two_line" type="text" id="room_price" style="width: 230px!important; display: inline;" required>
+											      &nbsp;
+											      <i class="fas fa-plus" id="room_plus"></i>&nbsp;
+												  <i class="fas fa-minus" id="room-minus"></i>
+												  <!-- <span class="highlight"></span>
+											      <span class="bar" ></span> -->											    
+											      <label for="room_price" style="font-size: 15px;">시간 별 룸가격</label>
+									
+											    </div>
+											    <!-- Grid column -->
+											  </div>
+
+
+
+
+
+var rt_start_input = $('<input class="two_line" type="text" id="room_time_start" style="width: 250px !important; display: inline;" required><label class="two_line" for="room_time_start" style="font-size: 15px; margin-top: -15px !important;">예약가능한<br> 룸 시작 시간</label>');
+var rt_end_input = $('<input class="two_line" type="text" id="room_time_end" style="width: 250px !important; display: inline;" required><label class="two_line" for="room_time_end" style="font-size: 15px; margin-top: -15px !important;">예약가능한<br> 룸 종료 시간</label>');
+var rp_input = $(' <input  class="two_line" type="text" id="room_price" style="width: 230px!important; display: inline;" required> <span class="highlight"></span> <span class="bar"></span> <label for="room_price" style="font-size: 15px;">시간 별 룸가격</label>');

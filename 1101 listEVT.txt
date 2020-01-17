@@ -1,0 +1,41 @@
+$.getJSON("listEvt", function(data){
+    		 $("#btnDetail").click(function(data){ 
+    			//상세보기 기능구현	
+    			
+    			
+    			$(location).attr("href", "getEvt.do");
+        	});
+        	
+    		$.each(data, function(idx, item){
+    			
+    			//alert(item.evt_title);
+    		 //---------------------------------------------------------------	동적노드 생성
+    		 	evt_no = item.evt_no;
+    		 	
+    		 	
+    		 	
+    	        var evt_title = $("<h3></h3>").html(item.evt_title);
+    	        /* var strong = $("<strong></strong>").addClass(".text-primary").html(item.evt_start+"~"+item.evt_end); */
+    	        
+    	        var evt_date = $("<p></p>").html("<strong class='text-primary'>"+item.evt_start+" ~ "+item.evt_end+"</strong>");
+    	        
+    	        var title = $("<div></div>").addClass("col-md-8");    	        
+    	        $(title).append(evt_title, evt_date);
+    	        
+    	        var btns = $("<div><div>").addClass("col-md-4");
+    	        var a = $("<a></a>").attr({"href":"getEvt.do?evt_no="+item.evt_no,
+    	        						"class":"btn btn-outline-primary mb5"}).html("<i class='fa fas fa-key'></i> 상세보기");
+    	        $(btns).append(a);
+    	        var row = $("<div></div>").addClass("row");
+    	        $(row).append(title, btns);
+    	        var box = $("<div id='box'></div>").addClass("promo-box promo-border text-center");
+    	        $(box).append(row);
+    	        
+    	        $("#container").append(box);
+    	        
+    	        
+    	    //---------------------------------------------------------------    
+    	       		
+    		});
+    	});
+    	

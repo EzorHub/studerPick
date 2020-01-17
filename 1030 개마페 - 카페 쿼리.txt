@@ -1,0 +1,17 @@
+전체
+select * from cafe where cafe_no in ( select cafe_no from room where room_no in ( select room_no from room_reser where pay_no in ( select pay_no from payment where cust_no =(select cust_no from customer where cust_name='박스녕') ) ) )
+
+
+
+이용완료
+
+
+select * from cafe where cafe_no in ( select cafe_no from room where room_no in ( select room_no from room_reser where reser_date < sysdate and pay_no in ( select pay_no from payment where cust_no =#{cust_no} ) ) )
+
+
+ 
+
+이용전 == 예약?
+select * from cafe where cafe_no in ( select cafe_no from room where room_no in ( select room_no from room_reser where reser_date > sysdate and pay_no in ( select pay_no from payment where cust_no =#{cust_no} ) ) )
+
+

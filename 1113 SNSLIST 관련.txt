@@ -1,0 +1,2 @@
+url요청명 == SNSlist.do
+그림자 효과 rounded shadow-sm p-3 bg-white

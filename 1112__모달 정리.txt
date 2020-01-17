@@ -1,0 +1,80 @@
+<!--Stylesheets-->
+	<link href="jquery.modal-master/css/jquery.modal.css" type="text/css" rel="stylesheet" />
+	<link href="jquery.modal-master/css/jquery.modal.theme-xenon.css" type="text/css" rel="stylesheet" />
+	<link href="jquery.modal-master/css/jquery.modal.theme-atlant.css" type="text/css" rel="stylesheet" />
+	
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.4.1.min.js">	
+</script>
+<script type="text/javascript" src="jquery.modal-master/js/jquery.modal.js"></script>
+<script type="text/javascript">
+ $(function(e){ 
+	//$(document).ready(function(e) {
+	
+	$('a#custom3').click(function() {
+		modal({
+			type: 'confirm',
+			theme: 'reseted',
+			buttons: [{
+				text: '예', //Button Text
+				val: 'true', //Button Value
+				eKey: true, //Enter Keypress
+				addClass: 'btn-white btn-square'				
+			}],
+				
+				title: '확인',
+				text: '작성한 정보로 신규 카페를 개설하시겠습니까?',
+				callback: function(result) {
+					if(result){
+						/* alert('예 누름') */
+						modal({
+							type: 'warning',
+							theme: 'reseted',
+							 buttons: [{
+								text: '확인', //Button Text				
+								eKey: true, //Enter Keypress
+								addClass: 'btn-orange btn-square'				
+							}], 
+								
+								title: '알림',
+								text: '예 누름',
+								callback: function(result) {
+									if(result==false){
+										alert('확인 누름')
+									}
+								}
+						});
+					}else{
+						alert('아니오 누름')
+					}
+				}
+		});
+	});
+	$('a#custom4').click(function() {
+		modal({
+			type: 'warning',
+			theme: 'reseted',
+			 buttons: [{
+				text: '확인', //Button Text				
+				eKey: true, //Enter Keypress
+				addClass: 'btn-orange btn-square'				
+			}], 
+				
+				title: '알림',
+				text: '입력값이 올바른지 확인해주세요.',
+				callback: function(result) {
+					if(result==false){
+						alert('확인 누름')
+					}
+				}
+		});
+	});
+})
+</script>
+
+<body>
+
+<a href="#" id="custom3">카페개설</a> <br>
+<a href="#" id="custom4">..?</a> <br>
+
+</body>

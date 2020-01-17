@@ -1,0 +1,25 @@
+/*            var dropzoneForm = new Dropzone("form#dropzoneForm", {
+            	url:"/file/post",            	
+            	maxFiles: 4,
+            	paramName: "file",
+            	success: function(file,response){
+            		alert('하이')
+            		/* var img_name = response.serFileNm;
+            		var ori_name = response.orgFileNm;
+            		if(imgName != ''){
+            			var adClass = imgName.replace('.',"");
+            			file.previewElement.classList.add("dz-success");
+            			file.previewElement.classList.add(adClass);
+            			var html = '<input type="hidden" name="severFILeNm" value="'+imgName+'">';
+            			 html += '<input type="hidden" name="oriFILeNm" value="'+oriName+'">';
+            			$("."+adClass).append(html); */
+            		}
+            	},
+            	error: function(file, response){
+            		alert('에러하이')
+            	/* 	file.previewElement.classList.add("dz-maxsize-error");
+            		alert("파일은 최대 4개까지만 업로드 가능합니다. ");
+            		$(".dz-maxsize-error").empty(); */
+            	}             
+                	 
+            }); */

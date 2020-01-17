@@ -1,0 +1,39 @@
+룸예약
+13	1	19/01/01	9	18	1	1901010001
+14	1	19/01/02	9	18	2	1901020001
+15	1	19/01/03	9	18	3	1901030001
+16	1	19/01/04	9	18	3	1901040001
+
+
+카페이름, 예약날짜,예약시작~예약끝(사용시간), 인원, 카페주소
+cafe_name,reser_date, reser_start, reser_end, user_num, cafe_loc
+-----------------------------------------------------------------------
+select pay_no from payment where cust_no = (select cust_no from customer where cust_name='박스녕'); * 고객이름으로 pay_no알기
+select pay_no, totalprice from payment where cust_no = 11;  - cust-payment *
+select room_no from room_reser where pay_no in(select pay_no, totalprice from payment where cust_no = 11); *
+select cafe_no from room where room_no in (select room_no from room_reser where pay_no in(select pay_no from payment where cust_no = (select cust_no from customer where cust_name='박스녕'))) *
+select rr.pay_no, rr.reser_date, rr.reser_time,rt.start_time, rt.end_time 
+from room_reser rr, room_time rt
+where rr.room_no = rt.room_no * room에 관한 정보?
+
+select r.room_no, r.cafe_no, rr.reser_date, rr.reser_time, rr.user_num, rr.reser_time, rt.start_time, rt.end_time 
+from room_reser rr, room_time rt, room r
+where rr.room_no = rt.room_no and r.room_no = rr.room_no and r.room_no = rt.room_no and rr.room_no in (select room_no from room_reser where pay_no from payment where cust_no = (select cust_no from customer where id = 'ezor123')); * 룸 시리즈 조인
+
+select c.cafe_name,c.cafe_loc, r.* from cafe c, () r where c.cafe_no = r.cafe_no and c.cafe_no =()
+
+
+
+select pp.cust_no, rr.room_no from payment pp, room_reser rr where pp.pay_no = rr.pay_no;
+
+
+select cafe_name, cafe_loc from room where room_no in (select room_no from room_reser where pay_no in(select pay_no from payment where cust_no = (select cust_no from customer where cust_name='박선영'))) and cafe_no = (select cafe_no from room where room_no in (select room_no from room_reser where pay_no in(select pay_no from payment where cust_no = (select cust_no from customer where cust_name='박스녕'))));
+
+아무튼 룸까지 가서 카페번호는 = () 하기!
+
+
+룸예약과 룸을 조인 후 해당 룸번호의 카페 정보를 알고싶다
+select rr.reser_date, rr.reser_time, rr.user_num, r.room_name, c.cafe_name, c.cafe_loc from room_reser rr, room r, cafe c where rr.room_no = r.room_no and r.cafe_no = c.cafe_no and rr.pay_no in (select pay_no from payment where cust_no = (select cust_no from customer where id = 'ezor123'));
+
+
+
